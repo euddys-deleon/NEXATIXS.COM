@@ -1,7 +1,10 @@
-import { useTranslations } from "next-intl";
-import { ComingSoon } from "@/components/layout/ComingSoon";
+import { Suspense } from "react";
+import { ConsultaEstatusClient } from "@/components/estatus/ConsultaEstatusClient";
 
 export default function ConsultaEstatusPage() {
-  const t = useTranslations("ComingSoon");
-  return <ComingSoon title={t("statusTitle")} body={t("statusBody")} />;
+  return (
+    <Suspense>
+      <ConsultaEstatusClient />
+    </Suspense>
+  );
 }

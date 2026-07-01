@@ -1,4 +1,54 @@
 {
+  "Estatus": {
+    "homeBar": {
+      "title": "¿Ya tiene un ID con nosotros?",
+      "subtitle": "Consulte el avance de su solicitud sin necesidad de iniciar sesión.",
+      "placeholder": "Ej. NXT-2026-00042",
+      "cta": "Consultar"
+    },
+    "page": {
+      "eyebrow": "Consulta tu Estatus",
+      "title": "Consulte el avance de su solicitud",
+      "subtitle": "Ingrese el identificador único que recibió al completar el formulario de evaluación.",
+      "placeholder": "Ej. NXT-2026-00042",
+      "cta": "Consultar",
+      "searching": "Buscando...",
+      "notFound": "No encontramos ninguna solicitud con ese identificador. Verifique que esté escrito correctamente.",
+      "errorGeneric": "Ocurrió un error al consultar. Intente nuevamente.",
+      "prospectTitle": "Estado de su solicitud",
+      "prospectSubtitle": "ID {id} — recibido el {date}",
+      "discarded": "Esta solicitud fue marcada como descartada. Si cree que esto es un error, contáctenos a soporte@nexatixs.com.",
+      "underReview": "Su solicitud está siendo evaluada por nuestro equipo.",
+      "clientTitle": "{company} es cliente activo de NEXATIXS",
+      "clientSubtitle": "Resumen público de su cuenta. Para ver el detalle completo, notas y archivos, inicie sesión en el Portal de Cliente.",
+      "activeProjects": "Proyectos activos",
+      "activeLicenses": "Licencias activas",
+      "projectsListTitle": "Proyectos",
+      "licensesListTitle": "Software y licencias",
+      "goToLogin": "Ir al Portal de Cliente",
+      "noProjects": "Sin proyectos registrados.",
+      "noLicenses": "Sin licencias registradas."
+    },
+    "pipeline": {
+      "contacto_inicial": "Contacto inicial",
+      "entrevista_virtual": "Entrevista virtual",
+      "auditoria_levantamiento": "Auditoría / Levantamiento",
+      "propuesta_cotizacion": "Propuesta y Cotización",
+      "firma_contrato": "Firma de contrato",
+      "desarrollo_implementacion": "Desarrollo / Implementación"
+    },
+    "projectStatus": {
+      "en_desarrollo": "En desarrollo",
+      "completado": "Completado",
+      "en_cola": "En cola",
+      "en_soporte": "En soporte"
+    },
+    "licenseStatus": {
+      "activa": "Activa",
+      "por_vencer": "Por vencer",
+      "expirada": "Expirada"
+    }
+  },
   "Captacion": {
     "categoryStep": {
       "title": "¿Qué lo describe mejor?",

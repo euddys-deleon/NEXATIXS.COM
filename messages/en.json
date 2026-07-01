@@ -1,4 +1,54 @@
 {
+  "Estatus": {
+    "homeBar": {
+      "title": "Already have an ID with us?",
+      "subtitle": "Check the progress of your request without logging in.",
+      "placeholder": "e.g. NXT-2026-00042",
+      "cta": "Check status"
+    },
+    "page": {
+      "eyebrow": "Check Your Status",
+      "title": "Check the progress of your request",
+      "subtitle": "Enter the unique ID you received when you completed the evaluation form.",
+      "placeholder": "e.g. NXT-2026-00042",
+      "cta": "Check status",
+      "searching": "Searching...",
+      "notFound": "We couldn't find any request with that ID. Please check that it's typed correctly.",
+      "errorGeneric": "There was an error checking your status. Please try again.",
+      "prospectTitle": "Your request status",
+      "prospectSubtitle": "ID {id} — received on {date}",
+      "discarded": "This request was marked as discarded. If you believe this is a mistake, contact us at soporte@nexatixs.com.",
+      "underReview": "Your request is being evaluated by our team.",
+      "clientTitle": "{company} is an active NEXATIXS client",
+      "clientSubtitle": "Public summary of your account. To see full details, notes, and files, log in to the Client Portal.",
+      "activeProjects": "Active projects",
+      "activeLicenses": "Active licenses",
+      "projectsListTitle": "Projects",
+      "licensesListTitle": "Software and licenses",
+      "goToLogin": "Go to Client Portal",
+      "noProjects": "No projects on record.",
+      "noLicenses": "No licenses on record."
+    },
+    "pipeline": {
+      "contacto_inicial": "Initial contact",
+      "entrevista_virtual": "Virtual interview",
+      "auditoria_levantamiento": "Audit / Assessment",
+      "propuesta_cotizacion": "Proposal & Quote",
+      "firma_contrato": "Contract signing",
+      "desarrollo_implementacion": "Development / Implementation"
+    },
+    "projectStatus": {
+      "en_desarrollo": "In development",
+      "completado": "Completed",
+      "en_cola": "Queued",
+      "en_soporte": "In support"
+    },
+    "licenseStatus": {
+      "activa": "Active",
+      "por_vencer": "Expiring soon",
+      "expirada": "Expired"
+    }
+  },
   "Captacion": {
     "categoryStep": {
       "title": "What best describes you?",
