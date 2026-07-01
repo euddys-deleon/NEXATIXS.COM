@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { supabase } from "@/lib/supabase/client";
+import type { Json } from "@/lib/supabase/database.types";
 import { generateProspectPdf } from "@/lib/pdf/generate-prospect-pdf";
 import {
   categoryToFormType,
@@ -104,7 +105,7 @@ export function AgendarCitaWizard() {
   async function submitProspect(
     formType: "F1" | "F2" | "F3",
     categoryTag: ProspectCategory,
-    payload: Record<string, unknown>,
+    payload: Json,
     contact: { name: string; email: string; phone: string },
     fields: PdfField[],
     formTypeLabel: string,
