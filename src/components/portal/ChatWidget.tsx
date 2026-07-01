@@ -74,7 +74,7 @@ export function ChatWidget() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Cerrar"
-                className="text-foreground/50 hover:text-foreground"
+                className="text-foreground/60 hover:text-foreground"
               >
                 <X size={18} />
               </button>
@@ -98,7 +98,7 @@ export function ChatWidget() {
                 </p>
               ))}
               {loading && (
-                <p className="max-w-[85%] rounded-xl bg-foreground/5 px-3 py-2 text-sm text-foreground/50">
+                <p className="max-w-[85%] rounded-xl bg-foreground/5 px-3 py-2 text-sm text-foreground/60">
                   {t("thinking")}
                 </p>
               )}
@@ -113,7 +113,7 @@ export function ChatWidget() {
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
                 placeholder={t("placeholder")}
-                className="h-10 flex-1 rounded-full border border-foreground/15 bg-background px-3.5 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-brand-blue/40"
+                className="h-10 flex-1 rounded-full border border-foreground/15 bg-background px-3.5 text-sm text-foreground placeholder:text-foreground/60 focus:outline-none focus:ring-2 focus:ring-brand-blue/40"
               />
               <button
                 type="submit"

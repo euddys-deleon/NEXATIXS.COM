@@ -86,7 +86,7 @@ export function AnalyticsReports({
       <p className="mt-1 text-sm text-foreground/60">{t("subtitle")}</p>
 
       <div className="mt-6 h-56">
-        <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-foreground/50">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-foreground/60">
           {t("ticketsByStatus")}
         </p>
         <ResponsiveContainer width="100%" height="100%">

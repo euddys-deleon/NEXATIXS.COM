@@ -28,7 +28,7 @@ export function SuccessStep({
       </h2>
 
       <div className="mx-auto mt-6 inline-block rounded-2xl border border-brand-blue/30 bg-brand-blue/5 px-8 py-4">
-        <p className="text-xs font-semibold uppercase tracking-wide text-foreground/50">
+        <p className="text-xs font-semibold uppercase tracking-wide text-foreground/60">
           {t("idLabel")}
         </p>
         <p className="mt-1 font-heading text-2xl font-bold text-brand-blue">{displayId}</p>

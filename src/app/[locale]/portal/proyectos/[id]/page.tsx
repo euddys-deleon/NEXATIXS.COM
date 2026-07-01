@@ -78,7 +78,7 @@ export default async function PortalProyectoDetallePage({
         </div>
 
         <Card className="mt-8 bg-background">
-          <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground/50">
+          <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground/60">
             {t("timelineTitle")}
           </h2>
 
@@ -87,7 +87,7 @@ export default async function PortalProyectoDetallePage({
               <PipelineTimeline currentPhase={currentPhase} />
             </div>
           ) : (
-            <p className="mt-4 text-sm text-foreground/50">{t("noHistory")}</p>
+            <p className="mt-4 text-sm text-foreground/60">{t("noHistory")}</p>
           )}
 
           {allHistory.length > 0 && (
@@ -99,7 +99,7 @@ export default async function PortalProyectoDetallePage({
                   <li key={`${entry.phase}-${index}`} className="text-sm">
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-foreground">{tPipeline(entry.phase)}</span>
-                      <span className="text-xs text-foreground/50">
+                      <span className="text-xs text-foreground/60">
                         {new Date(entry.changed_at).toLocaleDateString(dateLocale)}
                       </span>
                     </div>

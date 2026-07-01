@@ -41,7 +41,7 @@ export default async function PortalProyectosPage({
 
         <Card className="mt-8 bg-background">
           {allProjects.length === 0 ? (
-            <p className="text-sm text-foreground/50">{t("empty")}</p>
+            <p className="text-sm text-foreground/60">{t("empty")}</p>
           ) : (
             <ul className="space-y-3">
               {allProjects.map((project) => (

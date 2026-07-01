@@ -29,7 +29,7 @@ export function PartnersMarquee() {
             <span
               key={`${partner.name}-${index}`}
               title={partner.detail}
-              className="font-heading text-2xl font-bold text-foreground/40 transition-colors hover:text-brand-blue"
+              className="font-heading text-2xl font-bold text-foreground/60 transition-colors hover:text-brand-blue"
             >
               {partner.name}
             </span>

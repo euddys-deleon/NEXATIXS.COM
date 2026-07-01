@@ -22,7 +22,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       </select>
       <ChevronDown
         size={16}
-        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-foreground/40"
+        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-foreground/60"
       />
     </div>
   ),

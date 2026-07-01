@@ -66,7 +66,7 @@ export default async function PortalTicketDetallePage({
             <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               {ticket.subject}
             </h1>
-            <p className="mt-1 text-sm text-foreground/50">
+            <p className="mt-1 text-sm text-foreground/60">
               {ticket.category} · {tPriority(ticket.priority)} ·{" "}
               {new Date(ticket.created_at).toLocaleDateString(dateLocale)}
             </p>
@@ -86,12 +86,12 @@ export default async function PortalTicketDetallePage({
         </Card>
 
         <Card className="mt-6 bg-background">
-          <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground/50">
+          <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground/60">
             {t("detail.messagesTitle")}
           </h2>
 
           {allMessages.length === 0 ? (
-            <p className="mt-4 text-sm text-foreground/50">{t("detail.noMessages")}</p>
+            <p className="mt-4 text-sm text-foreground/60">{t("detail.noMessages")}</p>
           ) : (
             <ul className="mt-4 space-y-4">
               {allMessages.map((message) => {
@@ -110,7 +110,7 @@ export default async function PortalTicketDetallePage({
                     <p
                       className={cn(
                         "mt-1 text-[11px]",
-                        isMine ? "text-white/70" : "text-foreground/40",
+                        isMine ? "text-white/70" : "text-foreground/60",
                       )}
                     >
                       {new Date(message.created_at).toLocaleString(dateLocale)}

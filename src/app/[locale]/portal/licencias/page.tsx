@@ -48,11 +48,11 @@ export default async function PortalLicenciasPage({
 
         <Card className="mt-8 bg-background !p-0">
           {allLicenses.length === 0 ? (
-            <p className="p-6 text-sm text-foreground/50">{t("empty")}</p>
+            <p className="p-6 text-sm text-foreground/60">{t("empty")}</p>
           ) : (
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-foreground/10 text-xs uppercase tracking-wide text-foreground/50">
+                <tr className="border-b border-foreground/10 text-xs uppercase tracking-wide text-foreground/60">
                   <th className="px-5 py-3 font-medium">{t("columns.name")}</th>
                   <th className="hidden px-5 py-3 font-medium sm:table-cell">
                     {t("columns.category")}

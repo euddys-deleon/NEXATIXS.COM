@@ -90,7 +90,7 @@ export default async function PortalUpsellPage({
           </h2>
           <Card className="mt-4 bg-background !p-0">
             {!myRequests || myRequests.length === 0 ? (
-              <p className="p-6 text-sm text-foreground/50">{t("noRequests")}</p>
+              <p className="p-6 text-sm text-foreground/60">{t("noRequests")}</p>
             ) : (
               <ul>
                 {myRequests.map((request) => (
@@ -100,7 +100,7 @@ export default async function PortalUpsellPage({
                   >
                     <div>
                       <p className="text-sm font-medium text-foreground">{request.item_name}</p>
-                      <p className="text-xs text-foreground/50">
+                      <p className="text-xs text-foreground/60">
                         {new Date(request.created_at).toLocaleDateString(
                           locale === "en" ? "en-US" : "es-DO",
                         )}

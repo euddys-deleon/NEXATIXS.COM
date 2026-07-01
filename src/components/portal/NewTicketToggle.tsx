@@ -34,7 +34,7 @@ export function NewTicketToggle({
           type="button"
           onClick={() => setOpen(false)}
           aria-label="Cerrar"
-          className="text-foreground/50 hover:text-foreground"
+          className="text-foreground/60 hover:text-foreground"
         >
           <X size={18} />
         </button>

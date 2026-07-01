@@ -10,7 +10,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     <input
       ref={ref}
       className={cn(
-        "h-11 w-full rounded-lg border bg-background px-3.5 text-sm text-foreground placeholder:text-foreground/40 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue/40",
+        "h-11 w-full rounded-lg border bg-background px-3.5 text-sm text-foreground placeholder:text-foreground/60 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue/40",
         invalid ? "border-red-500" : "border-foreground/15 focus:border-brand-blue",
         className,
       )}

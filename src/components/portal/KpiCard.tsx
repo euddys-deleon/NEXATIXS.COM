@@ -31,7 +31,7 @@ export function KpiCard({
           </span>
         </div>
         <p className="mt-3 font-heading text-3xl font-bold text-foreground">{value}</p>
-        {hint && <p className="mt-1 text-xs text-foreground/50">{hint}</p>}
+        {hint && <p className="mt-1 text-xs text-foreground/60">{hint}</p>}
       </Card>
     </motion.div>
   );

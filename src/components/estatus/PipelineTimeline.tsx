@@ -29,7 +29,7 @@ export function PipelineTimeline({ currentPhase }: { currentPhase: string }) {
                 "flex h-9 w-9 items-center justify-center rounded-full border-2 text-sm font-semibold",
                 done && "border-brand-blue bg-brand-blue text-white",
                 active && "border-brand-blue text-brand-blue",
-                !done && !active && "border-foreground/20 text-foreground/40",
+                !done && !active && "border-foreground/20 text-foreground/60",
               )}
             >
               {done ? <Check size={16} /> : index + 1}

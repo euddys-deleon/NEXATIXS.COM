@@ -163,12 +163,12 @@ export function ConsultaEstatusClient() {
 
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground/50">
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground/60">
                     {t("projectsListTitle")}
                   </h3>
                   <ul className="mt-3 space-y-2">
                     {result.projects.length === 0 && (
-                      <li className="text-sm text-foreground/50">{t("noProjects")}</li>
+                      <li className="text-sm text-foreground/60">{t("noProjects")}</li>
                     )}
                     {result.projects.map((project) => (
                       <li
@@ -184,12 +184,12 @@ export function ConsultaEstatusClient() {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground/50">
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground/60">
                     {t("licensesListTitle")}
                   </h3>
                   <ul className="mt-3 space-y-2">
                     {result.licenses.length === 0 && (
-                      <li className="text-sm text-foreground/50">{t("noLicenses")}</li>
+                      <li className="text-sm text-foreground/60">{t("noLicenses")}</li>
                     )}
                     {result.licenses.map((license) => (
                       <li

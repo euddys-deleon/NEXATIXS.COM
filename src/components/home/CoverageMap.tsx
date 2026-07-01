@@ -33,14 +33,14 @@ export function CoverageMap() {
           </div>
 
           <div className="rounded-2xl border border-foreground/10 bg-background p-6">
-            <p className="text-xs font-semibold uppercase tracking-wide text-foreground/50">
+            <p className="text-xs font-semibold uppercase tracking-wide text-foreground/60">
               {t("hqLabel")}
             </p>
             <p className="mt-1 font-heading text-lg font-semibold text-foreground">
               {t("hqValue")}
             </p>
 
-            <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-foreground/50">
+            <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-foreground/60">
               {t("presenceLabel")}
             </p>
 

@@ -57,7 +57,7 @@ export default async function PortalTicketsPage({
 
         <Card className="mt-8 bg-background !p-0">
           {allTickets.length === 0 ? (
-            <p className="p-6 text-sm text-foreground/50">{t("empty")}</p>
+            <p className="p-6 text-sm text-foreground/60">{t("empty")}</p>
           ) : (
             <ul>
               {allTickets.map((ticket) => (
@@ -68,7 +68,7 @@ export default async function PortalTicketsPage({
                   >
                     <div>
                       <p className="text-sm font-semibold text-foreground">{ticket.subject}</p>
-                      <p className="mt-0.5 text-xs text-foreground/50">
+                      <p className="mt-0.5 text-xs text-foreground/60">
                         {ticket.category} · {tPriority(ticket.priority)} ·{" "}
                         {new Date(ticket.created_at).toLocaleDateString(
                           locale === "en" ? "en-US" : "es-DO",

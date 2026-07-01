@@ -20,7 +20,7 @@ export function UsageBar({
         <span className="flex items-center gap-2 font-medium text-foreground">
           <Icon size={16} className="text-brand-blue" />
           {name}
-          {category && <span className="text-foreground/40">— {category}</span>}
+          {category && <span className="text-foreground/60">— {category}</span>}
         </span>
         <span className="font-semibold text-foreground/70">{percent}%</span>
       </div>

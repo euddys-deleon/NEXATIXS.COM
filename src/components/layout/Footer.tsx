@@ -40,7 +40,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground/50">
+            <h3 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground/60">
               {t("contactTitle")}
             </h3>
             <ul className="mt-4 space-y-2 text-sm text-foreground/70">
@@ -50,10 +50,10 @@ export function Footer() {
                   soporte@nexatixs.com
                 </a>
               </li>
-              <li className="text-foreground/40">{t("phonePending")}</li>
+              <li className="text-foreground/60">{t("phonePending")}</li>
             </ul>
 
-            <h3 className="mt-8 font-heading text-sm font-semibold uppercase tracking-wide text-foreground/50">
+            <h3 className="mt-8 font-heading text-sm font-semibold uppercase tracking-wide text-foreground/60">
               {t("legalTitle")}
             </h3>
             <ul className="mt-4 space-y-2 text-sm text-foreground/70">
@@ -71,7 +71,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground/50">
+            <h3 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground/60">
               {t("leadershipTitle")}
             </h3>
             <ul className="mt-4 space-y-4">
@@ -90,7 +90,7 @@ export function Footer() {
                     </span>
                     <div>
                       <p className="text-sm font-semibold text-foreground">{info.name}</p>
-                      <p className="text-xs text-foreground/50">
+                      <p className="text-xs text-foreground/60">
                         {t("ceoTitle")} — {info.formation}
                       </p>
                     </div>
@@ -101,7 +101,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-foreground/10 pt-6 text-xs text-foreground/40">
+        <div className="mt-12 border-t border-foreground/10 pt-6 text-xs text-foreground/60">
           © {new Date().getFullYear()} NEXATIXS. {t("rightsReserved")}
         </div>
       </Container>

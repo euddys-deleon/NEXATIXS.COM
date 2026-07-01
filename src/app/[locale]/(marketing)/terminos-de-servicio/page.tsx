@@ -24,7 +24,7 @@ export default async function TerminosDeServicioPage({
           <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             {t("title")}
           </h1>
-          <p className="mt-2 text-sm text-foreground/50">{t("updated", { date: updatedDate })}</p>
+          <p className="mt-2 text-sm text-foreground/60">{t("updated", { date: updatedDate })}</p>
 
           <div className="mt-10 space-y-8">
             {sections.map((section) => (
@@ -37,7 +37,7 @@ export default async function TerminosDeServicioPage({
             ))}
           </div>
 
-          <p className="mt-12 rounded-xl border border-foreground/10 bg-background-subtle p-4 text-xs leading-relaxed text-foreground/50">
+          <p className="mt-12 rounded-xl border border-foreground/10 bg-background-subtle p-4 text-xs leading-relaxed text-foreground/60">
             {t("disclaimer")}
           </p>
         </Container>

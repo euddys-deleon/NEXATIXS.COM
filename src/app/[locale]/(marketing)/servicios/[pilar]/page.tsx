@@ -60,7 +60,7 @@ export default async function ServicioDetallePage({
           </p>
 
           <div className="mt-10 max-w-2xl rounded-2xl border border-foreground/10 bg-background-subtle p-6">
-            <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground/50">
+            <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground/60">
               {t("detailTitle")}
             </h2>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">

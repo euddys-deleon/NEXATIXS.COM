@@ -124,7 +124,7 @@ export default async function PortalDashboardPage({
             <CardTitle>{t("usageTitle")}</CardTitle>
             <div className="mt-5 space-y-5">
               {allLicenses.length === 0 && (
-                <p className="text-sm text-foreground/50">{t("noLicenses")}</p>
+                <p className="text-sm text-foreground/60">{t("noLicenses")}</p>
               )}
               {allLicenses.map((license) => (
                 <UsageBar
@@ -142,7 +142,7 @@ export default async function PortalDashboardPage({
             <CardTitle>{t("recentProjectsTitle")}</CardTitle>
             <ul className="mt-5 space-y-3">
               {allProjects.length === 0 && (
-                <p className="text-sm text-foreground/50">{t("noProjects")}</p>
+                <p className="text-sm text-foreground/60">{t("noProjects")}</p>
               )}
               {allProjects.map((project) => (
                 <ProjectListItem
