@@ -1,4 +1,67 @@
 {
+  "Admin": {
+    "nav": { "prospects": "Prospects", "clients": "Clients" },
+    "logout": "Log out",
+    "prospects": {
+      "title": "Prospects",
+      "subtitle": "Requests received from the public site.",
+      "columns": { "id": "ID", "name": "Name", "category": "Category", "status": "Status", "date": "Date" },
+      "viewDetail": "View detail",
+      "empty": "No prospects yet.",
+      "detail": {
+        "backToAll": "Back to all prospects",
+        "contactInfo": "Contact details",
+        "email": "Email",
+        "phone": "Phone",
+        "formData": "Form data",
+        "statusTitle": "Status and phase",
+        "statusLabel": "Status",
+        "phaseLabel": "Pipeline phase",
+        "save": "Save changes",
+        "saving": "Saving...",
+        "saved": "Saved",
+        "convertTitle": "Activate as client",
+        "convertHelp": "The contact must already have an account created in Supabase Auth (Authentication → Users) with this email before activating.",
+        "authEmail": "Email of the account already created in Supabase Auth",
+        "companyName": "Company name (client)",
+        "contactFullName": "Contact's full name",
+        "convertSubmit": "Activate as client",
+        "convertSuccess": "Client activated successfully.",
+        "convertErrorNotFound": "No Auth user exists with that email. Create it first in the Supabase Dashboard.",
+        "convertErrorAlreadyLinked": "That user is already linked to another client.",
+        "convertErrorGeneric": "There was an error activating the prospect.",
+        "alreadyClient": "This prospect is already an active client.",
+        "notFound": "Prospect not found."
+      }
+    },
+    "clients": {
+      "title": "Clients",
+      "subtitle": "Companies with an active contract.",
+      "empty": "No active clients yet.",
+      "viewDetail": "Manage",
+      "detail": {
+        "backToAll": "Back to all clients",
+        "notFound": "Client not found.",
+        "usersTitle": "Portal users",
+        "projectsTitle": "Projects",
+        "addProject": "Add project",
+        "projectName": "Project name",
+        "projectStatus": "Status",
+        "addPhase": "Add phase to history",
+        "phaseNotes": "Notes (optional)",
+        "licensesTitle": "Licenses",
+        "addLicense": "Add license",
+        "licenseName": "License name",
+        "licenseCategory": "Category",
+        "licenseStatus": "Status",
+        "licenseExpiry": "Expiration date",
+        "ticketsTitle": "Tickets",
+        "upsellTitle": "Up-sell requests",
+        "add": "Add",
+        "updateStatus": "Update status"
+      }
+    }
+  },
   "Login": {
     "eyebrow": "Client Portal",
     "title": "Log in",
@@ -117,6 +180,14 @@
         "send": "Send",
         "notFound": "Ticket not found."
       }
+    },
+    "attachments": {
+      "title": "Attachments",
+      "upload": "Upload file",
+      "uploading": "Uploading...",
+      "uploadError": "Couldn't upload the file. Please try again.",
+      "empty": "No attachments.",
+      "delete": "Delete"
     },
     "licenses": {
       "title": "License Manager",

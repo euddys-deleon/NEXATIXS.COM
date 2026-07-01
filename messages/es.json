@@ -1,4 +1,67 @@
 {
+  "Admin": {
+    "nav": { "prospects": "Prospectos", "clients": "Clientes" },
+    "logout": "Cerrar sesión",
+    "prospects": {
+      "title": "Prospectos",
+      "subtitle": "Solicitudes recibidas desde el sitio público.",
+      "columns": { "id": "ID", "name": "Nombre", "category": "Categoría", "status": "Estado", "date": "Fecha" },
+      "viewDetail": "Ver detalle",
+      "empty": "No hay prospectos todavía.",
+      "detail": {
+        "backToAll": "Volver a todos los prospectos",
+        "contactInfo": "Datos de contacto",
+        "email": "Correo",
+        "phone": "Teléfono",
+        "formData": "Datos del formulario",
+        "statusTitle": "Estado y fase",
+        "statusLabel": "Estado",
+        "phaseLabel": "Fase del pipeline",
+        "save": "Guardar cambios",
+        "saving": "Guardando...",
+        "saved": "Guardado",
+        "convertTitle": "Convertir en cliente activo",
+        "convertHelp": "El contacto debe tener ya una cuenta creada en Supabase Auth (Authentication → Users) con este correo antes de convertir.",
+        "authEmail": "Correo de la cuenta ya creada en Supabase Auth",
+        "companyName": "Nombre de la empresa (cliente)",
+        "contactFullName": "Nombre completo del contacto",
+        "convertSubmit": "Convertir en cliente",
+        "convertSuccess": "Cliente activado correctamente.",
+        "convertErrorNotFound": "No existe ningún usuario de Auth con ese correo. Créelo primero en el Dashboard de Supabase.",
+        "convertErrorAlreadyLinked": "Ese usuario ya está vinculado a otro cliente.",
+        "convertErrorGeneric": "Ocurrió un error al convertir el prospecto.",
+        "alreadyClient": "Este prospecto ya es cliente activo.",
+        "notFound": "Prospecto no encontrado."
+      }
+    },
+    "clients": {
+      "title": "Clientes",
+      "subtitle": "Empresas con contrato activo.",
+      "empty": "Aún no hay clientes activos.",
+      "viewDetail": "Gestionar",
+      "detail": {
+        "backToAll": "Volver a todos los clientes",
+        "notFound": "Cliente no encontrado.",
+        "usersTitle": "Usuarios del portal",
+        "projectsTitle": "Proyectos",
+        "addProject": "Agregar proyecto",
+        "projectName": "Nombre del proyecto",
+        "projectStatus": "Estado",
+        "addPhase": "Agregar fase al historial",
+        "phaseNotes": "Notas (opcional)",
+        "licensesTitle": "Licencias",
+        "addLicense": "Agregar licencia",
+        "licenseName": "Nombre de la licencia",
+        "licenseCategory": "Categoría",
+        "licenseStatus": "Estado",
+        "licenseExpiry": "Fecha de vencimiento",
+        "ticketsTitle": "Tickets",
+        "upsellTitle": "Solicitudes de up-selling",
+        "add": "Agregar",
+        "updateStatus": "Actualizar estado"
+      }
+    }
+  },
   "Login": {
     "eyebrow": "Portal de Cliente",
     "title": "Inicia sesión",
@@ -117,6 +180,14 @@
         "send": "Enviar",
         "notFound": "Ticket no encontrado."
       }
+    },
+    "attachments": {
+      "title": "Archivos adjuntos",
+      "upload": "Subir archivo",
+      "uploading": "Subiendo...",
+      "uploadError": "No se pudo subir el archivo. Intente de nuevo.",
+      "empty": "Sin archivos adjuntos.",
+      "delete": "Eliminar"
     },
     "licenses": {
       "title": "Gestor de Licencias",

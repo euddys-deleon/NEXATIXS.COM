@@ -7,6 +7,8 @@ import { Section } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import { Link } from "@/i18n/navigation";
 import { TicketReplyForm } from "@/components/portal/TicketReplyForm";
+import { AttachmentsPanel } from "@/components/portal/AttachmentsPanel";
+import { getAttachmentsWithUrls } from "@/lib/supabase/get-attachments";
 import { cn } from "@/lib/utils";
 
 const statusStyles: Record<string, string> = {
@@ -50,6 +52,7 @@ export default async function PortalTicketDetallePage({
     .order("created_at", { ascending: true });
 
   const allMessages = messages ?? [];
+  const attachments = await getAttachmentsWithUrls(supabase, "ticket", ticket.id);
 
   return (
     <Section>
@@ -83,6 +86,15 @@ export default async function PortalTicketDetallePage({
 
         <Card className="mt-6 bg-background">
           <p className="text-sm text-foreground/70">{ticket.description}</p>
+        </Card>
+
+        <Card className="mt-6 bg-background">
+          <AttachmentsPanel
+            entityType="ticket"
+            entityId={ticket.id}
+            items={attachments}
+            canDelete={false}
+          />
         </Card>
 
         <Card className="mt-6 bg-background">

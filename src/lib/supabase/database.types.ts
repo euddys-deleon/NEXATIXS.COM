@@ -14,6 +14,44 @@ export type Database = {
   }
   public: {
     Tables: {
+      attachments: {
+        Row: {
+          created_at: string
+          entity_id: string
+          entity_type: string
+          file_name: string
+          id: string
+          storage_path: string
+          uploaded_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          entity_id: string
+          entity_type: string
+          file_name: string
+          id?: string
+          storage_path: string
+          uploaded_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          entity_id?: string
+          entity_type?: string
+          file_name?: string
+          id?: string
+          storage_path?: string
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "attachments_uploaded_by_fkey"
+            columns: ["uploaded_by"]
+            isOneToOne: false
+            referencedRelation: "client_users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       client_users: {
         Row: {
           client_id: string
@@ -258,6 +296,27 @@ export type Database = {
         }
         Relationships: []
       }
+      staff_users: {
+        Row: {
+          created_at: string
+          full_name: string
+          id: string
+          role: string
+        }
+        Insert: {
+          created_at?: string
+          full_name: string
+          id: string
+          role?: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string
+          id?: string
+          role?: string
+        }
+        Relationships: []
+      }
       ticket_messages: {
         Row: {
           author_id: string | null
@@ -401,6 +460,19 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      admin_activate_client: {
+        Args: {
+          p_auth_email: string
+          p_company_name: string
+          p_contact_full_name: string
+          p_prospect_id: string
+        }
+        Returns: string
+      }
+      can_access_attachment: {
+        Args: { p_entity_id: string; p_entity_type: string }
+        Returns: boolean
+      }
       create_prospect: {
         Args: {
           p_category: string
@@ -414,6 +486,7 @@ export type Database = {
       }
       current_client_id: { Args: never; Returns: string }
       get_prospect_status: { Args: { p_display_id: string }; Returns: Json }
+      is_staff: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never

@@ -7,6 +7,8 @@ import { Section } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import { Link } from "@/i18n/navigation";
 import { PipelineTimeline } from "@/components/estatus/PipelineTimeline";
+import { AttachmentsPanel } from "@/components/portal/AttachmentsPanel";
+import { getAttachmentsWithUrls } from "@/lib/supabase/get-attachments";
 
 export default async function PortalProyectoDetallePage({
   params,
@@ -43,6 +45,7 @@ export default async function PortalProyectoDetallePage({
   const allHistory = history ?? [];
   const currentPhase = allHistory.at(-1)?.phase;
   const dateLocale = locale === "en" ? "en-US" : "es-DO";
+  const attachments = await getAttachmentsWithUrls(supabase, "project", project.id);
 
   return (
     <Section>
@@ -108,6 +111,15 @@ export default async function PortalProyectoDetallePage({
                 ))}
             </ul>
           )}
+        </Card>
+
+        <Card className="mt-6 bg-background">
+          <AttachmentsPanel
+            entityType="project"
+            entityId={project.id}
+            items={attachments}
+            canDelete={false}
+          />
         </Card>
       </Container>
     </Section>
