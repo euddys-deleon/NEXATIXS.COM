@@ -1,4 +1,99 @@
 {
+  "Captacion": {
+    "categoryStep": {
+      "title": "What best describes you?",
+      "subtitle": "Choose the option that best represents your situation so we can route you to the right form.",
+      "empresa": { "title": "Company", "description": "An established business of any size." },
+      "organizacion": {
+        "title": "Organization (Public, Private, Semi-private)",
+        "description": "Government institutions, NGOs, or semi-private organizations."
+      },
+      "personaFisica": {
+        "title": "Individual",
+        "description": "Independent professionals or private individuals."
+      }
+    },
+    "companySizeStep": {
+      "title": "What is the size of your company?",
+      "subtitle": "This helps us route you to the right evaluation process.",
+      "grande": { "title": "Large", "description": "More than 200 employees" },
+      "mediana": { "title": "Medium", "description": "51–200 employees" },
+      "pequena": { "title": "Small", "description": "Up to 50 employees" }
+    },
+    "orgPathStep": {
+      "title": "What type of evaluation do you need?",
+      "subtitle": "Choose the option that best describes the scope of your request.",
+      "analisisProfundo": {
+        "title": "In-Depth Analysis",
+        "description": "Complete this form if your request involves multiple departments or specific technical needs."
+      },
+      "consultaRapida": {
+        "title": "Quick Consultation",
+        "description": "Complete this form for initial advice or one-off services."
+      }
+    },
+    "back": "Back",
+    "continue": "Continue",
+    "submit": "Submit request",
+    "submitting": "Submitting...",
+    "legalCheckbox": "I have read and accept the <privacy>Privacy Policy</privacy> and the <terms>Terms of Service</terms>",
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Invalid email address"
+    },
+    "errorGeneric": "There was an error submitting your request. Please try again or write to us at soporte@nexatixs.com.",
+    "f1": {
+      "title": "Detailed Information",
+      "subtitle": "Tell us about your company so we can prepare a tailored evaluation.",
+      "razonSocial": "Legal / registered company name",
+      "rnc": "Tax ID (RNC)",
+      "sector": "Sector or industry",
+      "sectorPlaceholder": "Select a sector",
+      "sectorOptions": ["Technology", "Manufacturing", "Services", "Healthcare", "Education", "Retail / Commerce", "Construction", "Finance", "Tourism", "Other"],
+      "employeeCount": "Approximate number of employees",
+      "employeeOptions": { "15-50": "15–50", "51-200": "51–200", "+200": "More than 200" },
+      "contactName": "Contact person's name",
+      "contactRole": "Contact person's role",
+      "email": "Corporate email address",
+      "phone": "Contact phone / extension",
+      "currentInfra": "Describe the infrastructure or tools you currently use",
+      "mainObjective": "What is the main goal or challenge you want to solve with our services?",
+      "timeline": "Expected timeline for implementation or resolution",
+      "timelineOptions": { "inmediato": "Immediate", "1-3-meses": "1–3 months", "mas-3-meses": "More than 3 months" }
+    },
+    "f2": {
+      "title": "Simple Information",
+      "subtitle": "Tell us briefly about your business and how we can help.",
+      "businessName": "Business trade name",
+      "requesterName": "Requester or manager's name",
+      "email": "Contact email address",
+      "phone": "Phone or WhatsApp",
+      "businessActivity": "What does your business mainly do?",
+      "helpArea": "What specific area do you need help with?",
+      "website": "Website or social media (optional)"
+    },
+    "f3": {
+      "title": "Basic Questions",
+      "subtitle": "Express process — under 1 minute.",
+      "fullName": "Full name",
+      "cedula": "National ID (optional)",
+      "email": "Email address",
+      "phone": "Phone number / WhatsApp",
+      "occupation": "Occupation, profession, or main activity",
+      "reason": "Briefly describe the reason for your meeting"
+    },
+    "success": {
+      "badge": "Request submitted",
+      "title": "Thank you! We've received your request",
+      "idLabel": "Your unique ID",
+      "idHint": "Save this code: you'll need it to check the status of your request.",
+      "downloadPdf": "Download PDF receipt",
+      "scheduleTitle": "Schedule your virtual interview",
+      "scheduleSubtitle": "Pick an available date and time with our team.",
+      "calendlyPending": "Online scheduling will be enabled very soon. In the meantime, our team will reach out directly using the details you provided.",
+      "backHome": "Back to home"
+    }
+  },
   "Team": [
     { "name": "Euddys Daviel De León Feliz", "formation": "Systems and Computer Engineer, Cybersecurity Analyst" },
     { "name": "Brayam Herrera Peralta", "formation": "Systems and Computer Engineer, Infrastructure Specialist" },
@@ -10,8 +105,6 @@
     "statusBody": "This section will let you check the progress of your project or request with your unique ID (format NXT-2026-00042). It ships in development Phase 4.",
     "loginTitle": "Log In",
     "loginBody": "Secure Client Portal authentication ships in development Phase 5.",
-    "bookingTitle": "Book a Meeting",
-    "bookingBody": "The full category selection and evaluation form flow ships in development Phase 3.",
     "backHome": "Back to home"
   },
   "Nav": {

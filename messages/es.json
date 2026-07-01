@@ -1,4 +1,99 @@
 {
+  "Captacion": {
+    "categoryStep": {
+      "title": "¿Qué lo describe mejor?",
+      "subtitle": "Selecciona la opción que mejor represente su situación para dirigirlo al formulario correcto.",
+      "empresa": { "title": "Empresa", "description": "Negocio constituido, de cualquier tamaño." },
+      "organizacion": {
+        "title": "Organización (Pública, Privada, Semi-privada)",
+        "description": "Instituciones gubernamentales, ONG u organizaciones semi-privadas."
+      },
+      "personaFisica": {
+        "title": "Persona Física",
+        "description": "Profesionales independientes o particulares."
+      }
+    },
+    "companySizeStep": {
+      "title": "¿Cuál es el tamaño de su empresa?",
+      "subtitle": "Esto nos ayuda a dirigirlo al proceso de evaluación adecuado.",
+      "grande": { "title": "Grande", "description": "Más de 200 empleados" },
+      "mediana": { "title": "Mediana", "description": "51–200 empleados" },
+      "pequena": { "title": "Pequeña", "description": "Hasta 50 empleados" }
+    },
+    "orgPathStep": {
+      "title": "¿Qué tipo de evaluación necesita?",
+      "subtitle": "Elija la opción que mejor describa el alcance de su requerimiento.",
+      "analisisProfundo": {
+        "title": "Análisis Profundo",
+        "description": "Complete este formulario si su requerimiento involucra múltiples departamentos o necesidades técnicas específicas."
+      },
+      "consultaRapida": {
+        "title": "Consulta Rápida",
+        "description": "Complete este formulario para asesorías iniciales o servicios puntuales."
+      }
+    },
+    "back": "Atrás",
+    "continue": "Continuar",
+    "submit": "Enviar solicitud",
+    "submitting": "Enviando...",
+    "legalCheckbox": "He leído y acepto la <privacy>Política de Privacidad</privacy> y los <terms>Términos de Servicio</terms>",
+    "errors": {
+      "required": "Este campo es obligatorio",
+      "invalidEmail": "Correo electrónico inválido"
+    },
+    "errorGeneric": "Ocurrió un error al enviar su solicitud. Intente nuevamente o escríbanos a soporte@nexatixs.com.",
+    "f1": {
+      "title": "Información Detallada",
+      "subtitle": "Cuéntenos sobre su empresa para preparar una evaluación a la medida.",
+      "razonSocial": "Razón Social / Nombre legal de la empresa",
+      "rnc": "RNC (Registro Nacional del Contribuyente)",
+      "sector": "Sector o industria",
+      "sectorPlaceholder": "Selecciona un sector",
+      "sectorOptions": ["Tecnología", "Manufactura", "Servicios", "Salud", "Educación", "Retail / Comercio", "Construcción", "Finanzas", "Turismo", "Otro"],
+      "employeeCount": "Cantidad aproximada de empleados",
+      "employeeOptions": { "15-50": "15–50", "51-200": "51–200", "+200": "Más de 200" },
+      "contactName": "Nombre de la persona de contacto",
+      "contactRole": "Cargo de la persona de contacto",
+      "email": "Correo electrónico corporativo",
+      "phone": "Teléfono de contacto / Extensión",
+      "currentInfra": "Describa la infraestructura o herramientas que utilizan actualmente",
+      "mainObjective": "¿Cuál es el objetivo principal o el desafío que busca resolver con nuestros servicios?",
+      "timeline": "Plazo esperado para la implementación o resolución",
+      "timelineOptions": { "inmediato": "Inmediato", "1-3-meses": "1–3 meses", "mas-3-meses": "Más de 3 meses" }
+    },
+    "f2": {
+      "title": "Información Sencilla",
+      "subtitle": "Cuéntenos brevemente sobre su negocio y en qué podemos ayudarle.",
+      "businessName": "Nombre comercial del negocio",
+      "requesterName": "Nombre del solicitante o encargado",
+      "email": "Correo electrónico de contacto",
+      "phone": "Teléfono o WhatsApp",
+      "businessActivity": "¿A qué se dedica su negocio principalmente?",
+      "helpArea": "¿En qué área específica necesita nuestra ayuda?",
+      "website": "Página web o Redes Sociales (opcional)"
+    },
+    "f3": {
+      "title": "Preguntas Básicas",
+      "subtitle": "Proceso Express — menos de 1 minuto.",
+      "fullName": "Nombre completo",
+      "cedula": "Cédula de Identidad (opcional)",
+      "email": "Correo electrónico",
+      "phone": "Número de teléfono / WhatsApp",
+      "occupation": "Ocupación, profesión o actividad principal",
+      "reason": "Describa brevemente el motivo de su cita"
+    },
+    "success": {
+      "badge": "Solicitud enviada",
+      "title": "¡Gracias! Hemos recibido su solicitud",
+      "idLabel": "Su identificador único",
+      "idHint": "Guarde este código: lo necesitará para consultar el estatus de su solicitud.",
+      "downloadPdf": "Descargar comprobante en PDF",
+      "scheduleTitle": "Agende su entrevista virtual",
+      "scheduleSubtitle": "Seleccione una fecha y hora disponible con nuestro equipo.",
+      "calendlyPending": "El calendario de citas en línea se activará muy pronto. Mientras tanto, nuestro equipo se pondrá en contacto directamente usando los datos suministrados.",
+      "backHome": "Volver al inicio"
+    }
+  },
   "Team": [
     { "name": "Euddys Daviel De León Feliz", "formation": "Ingeniero en Sistemas y Computación, Analista de Ciberseguridad" },
     { "name": "Brayam Herrera Peralta", "formation": "Ingeniero en Sistemas y Computación, Especialista en Infraestructura" },
@@ -10,8 +105,6 @@
     "statusBody": "Esta sección permitirá consultar el avance de tu proyecto o solicitud con tu ID único (formato NXT-2026-00042). Se habilita en la Fase 4 del desarrollo.",
     "loginTitle": "Iniciar Sesión",
     "loginBody": "El acceso al Portal de Cliente con autenticación segura se habilita en la Fase 5 del desarrollo.",
-    "bookingTitle": "Agendar Cita",
-    "bookingBody": "El flujo completo de selección de categoría y formularios de evaluación se habilita en la Fase 3 del desarrollo.",
     "backHome": "Volver al inicio"
   },
   "Nav": {
