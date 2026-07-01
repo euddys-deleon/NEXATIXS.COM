@@ -1,7 +1,193 @@
 {
-  "HomePage": {
-    "title": "NEXATIXS",
-    "tagline": "Tecnología • Integración • Innovación",
-    "placeholder": "El contenido completo del sitio se construye en la Fase 2."
+  "Team": [
+    { "name": "Euddys Daviel De León Feliz", "formation": "Ingeniero en Sistemas y Computación, Analista de Ciberseguridad" },
+    { "name": "Brayam Herrera Peralta", "formation": "Ingeniero en Sistemas y Computación, Especialista en Infraestructura" },
+    { "name": "Yohan Matos", "formation": "Ingeniero en Sistemas y Computación, Analista de Ciberseguridad" }
+  ],
+  "ComingSoon": {
+    "badge": "Próximamente",
+    "statusTitle": "Consulta tu Estatus",
+    "statusBody": "Esta sección permitirá consultar el avance de tu proyecto o solicitud con tu ID único (formato NXT-2026-00042). Se habilita en la Fase 4 del desarrollo.",
+    "loginTitle": "Iniciar Sesión",
+    "loginBody": "El acceso al Portal de Cliente con autenticación segura se habilita en la Fase 5 del desarrollo.",
+    "bookingTitle": "Agendar Cita",
+    "bookingBody": "El flujo completo de selección de categoría y formularios de evaluación se habilita en la Fase 3 del desarrollo.",
+    "backHome": "Volver al inicio"
+  },
+  "Nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "statusCheck": "Consulta tu Estatus",
+    "login": "Iniciar Sesión",
+    "menu": "Menú"
+  },
+  "Footer": {
+    "description": "Aliado estratégico en transformación digital: desarrollo, infraestructura, automatización, cloud, ciberseguridad y soporte.",
+    "contactTitle": "Contacto",
+    "phonePending": "[TELÉFONO PENDIENTE]",
+    "socialTitle": "Síguenos",
+    "leadershipTitle": "Liderazgo",
+    "ceoTitle": "CEO",
+    "legalTitle": "Legal",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio",
+    "rightsReserved": "Todos los derechos reservados."
+  },
+  "Home": {
+    "hero": {
+      "eyebrow": "Tecnología • Integración • Innovación",
+      "title": "Convertimos la tecnología en el motor de crecimiento de su empresa",
+      "subtitle": "No somos un proveedor tradicional: somos el aliado estratégico que diseña, integra y acompaña su transformación digital de principio a fin.",
+      "ctaPrimary": "Agendar Cita / Iniciar Evaluación",
+      "ctaSecondary": "Consulta tu Estatus"
+    },
+    "metrics": {
+      "clientsLabel": "Clientes confían en nosotros",
+      "projectsLabel": "Proyectos Completados",
+      "engineersLabel": "Ingenieros Especializados",
+      "growthLabel": "Crecimiento Proyectado"
+    },
+    "reason": {
+      "eyebrow": "Nuestra razón de ser",
+      "title": "Misión, visión y valores",
+      "missionTitle": "Misión",
+      "missionText": "Diseñar, desarrollar e implementar soluciones tecnológicas innovadoras que impulsen la transformación digital de empresas y organizaciones, integrando software, infraestructura, automatización e inteligencia artificial con altos estándares de calidad, seguridad y eficiencia.",
+      "visionTitle": "Visión",
+      "visionText": "Ser una empresa líder en soluciones tecnológicas integrales, reconocida por transformar organizaciones mediante la innovación, la excelencia y el compromiso, convirtiéndonos en un aliado estratégico para el crecimiento digital en República Dominicana y Latinoamérica.",
+      "valuesTitle": "Nuestros valores",
+      "values": [
+        { "title": "Innovación", "description": "Buscamos constantemente nuevas formas de resolver los retos tecnológicos de nuestros clientes." },
+        { "title": "Integridad", "description": "Actuamos con honestidad y transparencia en cada proyecto y relación comercial." },
+        { "title": "Excelencia", "description": "Aplicamos altos estándares de calidad en cada solución que desarrollamos." },
+        { "title": "Compromiso", "description": "Nos involucramos con los objetivos de nuestros clientes como si fueran propios." },
+        { "title": "Responsabilidad", "description": "Priorizamos la seguridad y la continuidad operativa en cada implementación." },
+        { "title": "Transparencia", "description": "Comunicamos con claridad avances, riesgos y resultados en todo momento." }
+      ]
+    },
+    "services": {
+      "eyebrow": "Lo que hacemos",
+      "title": "Un ecosistema completo de servicios tecnológicos",
+      "subtitle": "Integramos desarrollo, infraestructura, automatización, cloud, ciberseguridad y soporte para construir soluciones completas.",
+      "ctaMore": "Ver más",
+      "ctaAll": "Ver todos los servicios"
+    },
+    "coverage": {
+      "eyebrow": "Alcance",
+      "title": "Presencia en República Dominicana y Estados Unidos",
+      "subtitle": "Operamos desde Santo Domingo Este con cobertura en múltiples provincias y soporte en la costa este de EE. UU.",
+      "hqLabel": "Sede Principal",
+      "hqValue": "República Dominicana — Santo Domingo Este",
+      "presenceLabel": "Presencia & Cobertura",
+      "countryDO": "República Dominicana",
+      "countryUS": "Estados Unidos"
+    },
+    "partners": {
+      "eyebrow": "Alianzas",
+      "title": "Partners y certificaciones",
+      "subtitle": "Nuestro equipo está certificado por las principales marcas de tecnología a nivel mundial."
+    },
+    "ctaFinal": {
+      "title": "¿Listo para transformar su empresa?",
+      "subtitle": "Agende una evaluación inicial y descubra cómo podemos acompañar su crecimiento digital.",
+      "cta": "Agendar Cita"
+    }
+  },
+  "Nosotros": {
+    "eyebrow": "Nosotros",
+    "title": "Un aliado estratégico en transformación digital",
+    "historyTitle": "Nuestra filosofía",
+    "historyText": "En NEXATIXS creemos que la tecnología no solo debe resolver problemas, sino convertirse en el motor que impulse el crecimiento de las organizaciones. Cada proyecto representa una oportunidad para innovar, conectar personas y procesos, y construir soluciones que generen un impacto real y duradero.",
+    "objectivesTitle": "Objetivos",
+    "objectivesText": "Brindar soluciones tecnológicas integrales que permitan a empresas e instituciones optimizar sus procesos, mejorar su productividad y acelerar su transformación digital mediante el uso de tecnologías innovadoras, seguras y escalables.",
+    "teamTitle": "Equipo directivo",
+    "teamSubtitle": "Ingenieros certificados al frente de cada proyecto.",
+    "ceoRole": "CEO",
+    "whyTitle": "¿Por qué elegir a NEXATIXS?",
+    "whyParagraphs": [
+      "En NEXATIXS entendemos que la tecnología no es un fin, sino una herramienta para impulsar el crecimiento de su organización. No nos limitamos a implementar soluciones; nos convertimos en un aliado estratégico que analiza cada necesidad, diseña soluciones a la medida y acompaña a nuestros clientes durante todo el proceso de transformación digital.",
+      "Nos distinguimos por combinar innovación, experiencia y compromiso para ofrecer soluciones tecnológicas seguras, escalables y orientadas a resultados. Cada proyecto es desarrollado bajo altos estándares de calidad, con una visión enfocada en la eficiencia, la continuidad operativa y el crecimiento sostenible de nuestros clientes.",
+      "Nuestra fortaleza radica en integrar diversas áreas de la tecnología —desarrollo de software, infraestructura, redes, computación en la nube, ciberseguridad, automatización e inteligencia artificial— para construir soluciones completas que optimicen procesos, reduzcan costos y mejoren la productividad.",
+      "En NEXATIXS creemos en las relaciones de largo plazo. Por ello brindamos un servicio cercano, transparente y proactivo, ofreciendo asesoría especializada, soporte continuo y acompañamiento permanente para garantizar que cada inversión tecnológica genere el máximo valor para nuestros clientes.",
+      "Más que implementar tecnología, en NEXATIXS construimos confianza, impulsamos la innovación y creamos soluciones que preparan a las organizaciones para los desafíos del futuro."
+    ]
+  },
+  "Services": {
+    "eyebrow": "Servicios",
+    "title": "Seis pilares, una sola visión tecnológica",
+    "subtitle": "Cada pilar puede contratarse por separado o integrarse en una solución completa a la medida de su organización.",
+    "ctaMore": "Ver más",
+    "backToAll": "Volver a todos los servicios",
+    "detailTitle": "Qué incluye",
+    "pillars": {
+      "desarrollo": {
+        "title": "Desarrollo",
+        "summary": "Software a medida, aplicaciones y plataformas que digitalizan sus procesos de negocio.",
+        "bullets": ["Software a medida", "Aplicaciones web y móviles", "Sistemas ERP y CRM"],
+        "items": ["Software a medida", "Aplicaciones Web", "Aplicaciones móviles", "APIs", "Sistemas ERP", "CRM"]
+      },
+      "infraestructura": {
+        "title": "Infraestructura",
+        "summary": "Servidores, redes y entornos virtualizados robustos que sostienen la operación diaria.",
+        "bullets": ["Servidores y redes", "Virtualización y Active Directory", "Monitoreo continuo"],
+        "items": ["Servidores", "Redes", "Virtualización", "Active Directory", "NAS", "Home Lab", "Monitoreo"]
+      },
+      "automatizacion": {
+        "title": "Automatización",
+        "summary": "Procesos inteligentes que eliminan tareas repetitivas y aceleran la operación.",
+        "bullets": ["Power Automate e IA", "Bots e integraciones", "Soluciones IoT"],
+        "items": ["Power Automate", "IA", "Bots", "Integraciones", "IoT"]
+      },
+      "cloud": {
+        "title": "Cloud",
+        "summary": "Migración y gestión de entornos cloud seguros, escalables y productivos.",
+        "bullets": ["Microsoft Azure y AWS", "Google Cloud", "Microsoft 365 y Google Workspace"],
+        "items": ["Microsoft Azure", "AWS", "Google Cloud", "Microsoft 365", "Google Workspace"]
+      },
+      "ciberseguridad": {
+        "title": "Ciberseguridad",
+        "summary": "Protección integral de datos, redes y continuidad operativa ante amenazas reales.",
+        "bullets": ["Firewalls y antivirus empresarial", "Auditorías y pentesting", "Backups y recuperación ante desastres"],
+        "items": ["Firewalls", "Antivirus empresarial", "Auditorías", "Pentesting", "Backups", "Recuperación ante desastres"]
+      },
+      "soporte": {
+        "title": "Soporte",
+        "summary": "Acompañamiento técnico continuo para que su operación nunca se detenga.",
+        "bullets": ["Mesa de ayuda", "Mantenimiento preventivo", "Soporte remoto y presencial"],
+        "items": ["Mesa de ayuda", "Mantenimiento preventivo", "Soporte remoto", "Soporte presencial"]
+      }
+    }
+  },
+  "Legal": {
+    "privacy": {
+      "title": "Política de Privacidad de NEXATIXS",
+      "updated": "Última actualización: {date}",
+      "sections": [
+        { "heading": "1. Datos que recopilamos", "body": "Recopilamos la información que usted nos proporciona voluntariamente, incluyendo pero no limitado a: nombre completo, nombre de empresa, correo electrónico, teléfono, y las respuestas que proporcione en nuestro Formulario de Descubrimiento Tecnológico. Si usted es cliente activo con acceso al Portal de Cliente, también procesamos datos relacionados con el uso de nuestros servicios (tickets de soporte, estado de proyectos, licencias contratadas)." },
+        { "heading": "2. Finalidad del tratamiento", "body": "Usamos sus datos para: (a) evaluar su solicitud de servicios y contactarlo para agendar una entrevista virtual, (b) generar y dar seguimiento a su identificador único de proyecto, (c) prestar soporte técnico a través de nuestro Portal de Cliente si se convierte en cliente activo, (d) comunicarnos con usted sobre actualizaciones de su proyecto o licencias, y (e) mejorar nuestros servicios." },
+        { "heading": "3. Almacenamiento y seguridad", "body": "Sus datos se almacenan en infraestructura de base de datos con controles de acceso (Supabase/PostgreSQL), aplicando políticas de seguridad a nivel de fila (Row Level Security) para que solo usted y el personal autorizado de NEXATIXS puedan acceder a su información. No vendemos ni compartimos sus datos personales con terceros con fines comerciales." },
+        { "heading": "4. Terceros involucrados en el tratamiento", "body": "Para agendar entrevistas virtuales utilizamos Calendly; para funciones de asistencia virtual dentro del Portal de Cliente utilizamos la API de Claude (Anthropic). Estos proveedores procesan datos únicamente en la medida necesaria para prestar dicha funcionalidad." },
+        { "heading": "5. Sus derechos", "body": "Usted puede solicitar en cualquier momento: acceso a los datos que tenemos sobre usted, corrección de datos inexactos, o eliminación de sus datos (salvo que exista una obligación legal o contractual de conservarlos), escribiendo a soporte@nexatixs.com." },
+        { "heading": "6. Retención de datos", "body": "Conservamos los datos de prospectos que no avanzan a un contrato por un período razonable para fines de seguimiento comercial, y los datos de clientes activos durante la vigencia del contrato y el período posterior requerido por obligaciones legales o contables." },
+        { "heading": "7. Cambios a esta política", "body": "Podemos actualizar esta política periódicamente. La fecha de la última actualización se indica al inicio del documento." },
+        { "heading": "8. Contacto", "body": "Para cualquier consulta sobre esta política, escríbanos a soporte@nexatixs.com." }
+      ],
+      "disclaimer": "Esta plantilla es un punto de partida funcional y no constituye asesoría legal definitiva. Debe ser revisada por un profesional del derecho antes de su publicación final, en especial respecto a la Ley No. 172-13 de Protección de Datos de Carácter Personal de República Dominicana."
+    },
+    "terms": {
+      "title": "Términos de Servicio de NEXATIXS",
+      "updated": "Última actualización: {date}",
+      "sections": [
+        { "heading": "1. Objeto", "body": "Este sitio ofrece información sobre los servicios tecnológicos de NEXATIXS y permite a prospectos iniciar una evaluación tecnológica, así como a clientes activos acceder a un portal de gestión de sus proyectos, licencias y soporte técnico." },
+        { "heading": "2. Uso del sitio", "body": "Usted se compromete a utilizar este sitio de forma lícita, sin intentar vulnerar su seguridad, sin extraer o reutilizar contenido con fines comerciales sin autorización, y proporcionando información veraz en el Formulario de Descubrimiento y en su cuenta del Portal de Cliente." },
+        { "heading": "3. Propiedad intelectual", "body": "Todo el contenido del sitio (textos, logotipos, diseño, código) es propiedad de NEXATIXS o de sus licenciantes, y no puede ser reproducido sin autorización escrita previa." },
+        { "heading": "4. Naturaleza del Formulario de Descubrimiento", "body": "El envío del Formulario de Descubrimiento no constituye un contrato de servicios ni una obligación de contratación para ninguna de las partes. Es una herramienta de evaluación inicial que puede o no derivar en una propuesta comercial formal." },
+        { "heading": "5. Portal de Cliente", "body": "El acceso al Portal de Cliente está reservado a personas con una cuenta activa asociada a un contrato vigente con NEXATIXS. Usted es responsable de mantener la confidencialidad de sus credenciales de acceso." },
+        { "heading": "6. Limitación de responsabilidad", "body": "NEXATIXS no garantiza que el sitio esté libre de errores o interrupciones. La prestación de servicios contratados se regirá por el contrato o cotización firmada de forma independiente entre NEXATIXS y el cliente, no por estos Términos de Servicio." },
+        { "heading": "7. Legislación aplicable", "body": "Estos términos se rigen por las leyes de la República Dominicana." },
+        { "heading": "8. Contacto", "body": "Para cualquier consulta sobre estos términos, escríbanos a soporte@nexatixs.com." }
+      ],
+      "disclaimer": "Esta plantilla es un punto de partida funcional y no constituye asesoría legal definitiva. Debe ser revisada por un profesional del derecho antes de su publicación final."
+    }
   }
 }
