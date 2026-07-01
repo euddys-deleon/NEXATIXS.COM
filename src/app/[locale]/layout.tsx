@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Alexandria, Open_Sans } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -63,10 +64,10 @@ export default async function LocaleLayout({
       suppressHydrationWarning
       className={`${alexandria.variable} ${openSans.variable}`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-      </head>
       <body className="min-h-full flex flex-col antialiased">
+        <Script id="theme-init" strategy="beforeInteractive">
+          {THEME_INIT_SCRIPT}
+        </Script>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
