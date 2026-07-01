@@ -1,4 +1,133 @@
 {
+  "Login": {
+    "eyebrow": "Client Portal",
+    "title": "Log in",
+    "subtitle": "Access your NEXATIXS account dashboard.",
+    "email": "Email address",
+    "password": "Password",
+    "submit": "Log in",
+    "submitting": "Verifying...",
+    "invalidCredentials": "Incorrect email or password.",
+    "genericError": "There was an error logging in. Please try again.",
+    "noAccount": "Not a client yet?",
+    "requestAccess": "Request an evaluation"
+  },
+  "Portal": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "projects": "Projects",
+      "licenses": "Licenses",
+      "tickets": "Tickets",
+      "services": "Services"
+    },
+    "logout": "Log out",
+    "clientId": "ID",
+    "dashboard": {
+      "greeting": "Welcome to your Control Dashboard",
+      "kpi": {
+        "activeProjects": "Active Projects",
+        "activeLicenses": "Active Licenses",
+        "openTickets": "Pending Tickets",
+        "uptime": "System Uptime"
+      },
+      "kpiHints": {
+        "licensesExpiring": "{count} expiring soon",
+        "ticketsSla": "24h resolution",
+        "uptimeWindow": "Optimal over the last 30 days"
+      },
+      "usageTitle": "Usage of contracted software and services",
+      "recentProjectsTitle": "Recent projects",
+      "quickActions": {
+        "reportIssue": "Report an issue",
+        "upsell": "Quick up-sell"
+      },
+      "noProjects": "No projects on record yet.",
+      "noLicenses": "No licenses on record yet.",
+      "progressSuffix": "{percent}% complete",
+      "supportSuffix": "Active implementation",
+      "queuedSuffix": "Starts in {days} days"
+    },
+    "analytics": {
+      "title": "Reports",
+      "subtitle": "Download an account summary or view your tickets by status.",
+      "downloadPdf": "Download PDF",
+      "downloadCsv": "Download CSV",
+      "ticketsByStatus": "Tickets by status"
+    },
+    "stubs": {
+      "ticketsTitle": "Tickets",
+      "ticketsBody": "The support ticket system ships in the next update."
+    },
+    "upsell": {
+      "title": "Up-Selling",
+      "subtitle": "Request add-ons or upgrades for your account; our commercial team will follow up.",
+      "request": "Request",
+      "requestSent": "Request sent",
+      "myRequestsTitle": "My requests",
+      "noRequests": "You haven't made any requests yet.",
+      "statusLabels": { "pendiente": "Pending", "aprobada": "Approved", "rechazada": "Rejected" }
+    },
+    "projects": {
+      "title": "Projects",
+      "subtitle": "Track your ongoing and completed projects.",
+      "empty": "No projects on record yet.",
+      "viewDetail": "View detail",
+      "backToAll": "Back to all projects",
+      "startDate": "Start date",
+      "estimatedEnd": "Estimated delivery",
+      "timelineTitle": "Timeline",
+      "noHistory": "There's no phase history for this project yet.",
+      "notFound": "Project not found."
+    },
+    "chat": {
+      "openLabel": "NEXATIXS Assistant",
+      "title": "NEXATIXS Assistant",
+      "placeholder": "Type your question...",
+      "send": "Send",
+      "greeting": "Hi! I'm the NEXATIXS virtual assistant. I can help with questions about your account, projects, licenses, or tickets.",
+      "notConfigured": "The virtual assistant isn't configured yet. Email us at soporte@nexatixs.com for immediate assistance.",
+      "genericError": "Something went wrong. Please try again or email soporte@nexatixs.com.",
+      "thinking": "Typing..."
+    },
+    "tickets": {
+      "title": "Tickets",
+      "subtitle": "Support requests with our team.",
+      "newTicket": "New ticket",
+      "empty": "You don't have any tickets yet.",
+      "columns": { "subject": "Subject", "category": "Category", "priority": "Priority", "status": "Status", "date": "Date" },
+      "form": {
+        "title": "New ticket",
+        "category": "Category",
+        "categoryPlaceholder": "Select a category",
+        "categoryOptions": ["Technical support", "Billing", "General inquiry", "Security incident", "Other"],
+        "priority": "Priority",
+        "subject": "Subject",
+        "description": "Description",
+        "submit": "Create ticket",
+        "submitting": "Creating...",
+        "cancel": "Cancel"
+      },
+      "status": { "abierto": "Open", "en_progreso": "In progress", "resuelto": "Resolved" },
+      "priorityLabels": { "baja": "Low", "media": "Medium", "alta": "High", "urgente": "Urgent" },
+      "detail": {
+        "backToAll": "Back to all tickets",
+        "messagesTitle": "Conversation",
+        "noMessages": "No messages yet.",
+        "replyPlaceholder": "Write a message...",
+        "send": "Send",
+        "notFound": "Ticket not found."
+      }
+    },
+    "licenses": {
+      "title": "License Manager",
+      "subtitle": "Status and expiration of your contracted software.",
+      "columns": { "name": "Software", "category": "Category", "status": "Status", "expires": "Expires" },
+      "renew": "Renew",
+      "renewSent": "Request sent",
+      "noExpiry": "—",
+      "empty": "No licenses on record yet."
+    }
+  },
   "Estatus": {
     "homeBar": {
       "title": "Already have an ID with us?",

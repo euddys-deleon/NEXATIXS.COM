@@ -65,8 +65,13 @@ export function ConsultaEstatusClient() {
   }
 
   useEffect(() => {
+    // Auto-runs the lookup when the page is opened with ?id=... (e.g. from
+    // the home StatusBar), so the search field prefills and fetches once.
     const initial = searchParams.get("id");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (initial) lookup(initial);
+    // Intentionally runs once on mount only — re-running on every keystroke
+    // via `lookup`/`searchParams` deps would refetch on unrelated changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

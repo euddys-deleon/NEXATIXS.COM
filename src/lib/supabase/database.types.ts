@@ -80,25 +80,34 @@ export type Database = {
       }
       licenses: {
         Row: {
+          category: string | null
           client_id: string
           created_at: string
+          expires_at: string | null
           id: string
           name: string
           status: string
+          usage_percent: number | null
         }
         Insert: {
+          category?: string | null
           client_id: string
           created_at?: string
+          expires_at?: string | null
           id?: string
           name: string
           status: string
+          usage_percent?: number | null
         }
         Update: {
+          category?: string | null
           client_id?: string
           created_at?: string
+          expires_at?: string | null
           id?: string
           name?: string
           status?: string
+          usage_percent?: number | null
         }
         Relationships: [
           {
@@ -146,22 +155,31 @@ export type Database = {
         Row: {
           client_id: string
           created_at: string
+          estimated_end_date: string | null
           id: string
           name: string
+          progress_percent: number
+          start_date: string | null
           status: string
         }
         Insert: {
           client_id: string
           created_at?: string
+          estimated_end_date?: string | null
           id?: string
           name: string
+          progress_percent?: number
+          start_date?: string | null
           status: string
         }
         Update: {
           client_id?: string
           created_at?: string
+          estimated_end_date?: string | null
           id?: string
           name?: string
+          progress_percent?: number
+          start_date?: string | null
           status?: string
         }
         Relationships: [

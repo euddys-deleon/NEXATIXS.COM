@@ -10,6 +10,9 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
+    // Reads the class set by the pre-hydration inline script (see layout.tsx)
+    // so the icon matches the real theme after mount; SSR can't know it.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
   }, []);
 
