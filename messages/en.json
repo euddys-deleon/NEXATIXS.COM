@@ -345,9 +345,21 @@
     }
   },
   "Team": [
-    { "name": "Euddys Daviel De León Feliz", "formation": "Systems and Computer Engineer, Cybersecurity Analyst" },
-    { "name": "Brayam Herrera Peralta", "formation": "Systems and Computer Engineer, Infrastructure Specialist" },
-    { "name": "Yohan Matos", "formation": "Systems and Computer Engineer, Cybersecurity Analyst" }
+    {
+      "name": "Euddys Daviel De León Feliz",
+      "role": "Co-founder / Director of Cybersecurity and Networks",
+      "formation": "Systems and Computer Engineer"
+    },
+    {
+      "name": "Brayam Herrera Peralta",
+      "role": "CTO & Director of Infrastructure and Development",
+      "formation": "Systems and Computer Engineer"
+    },
+    {
+      "name": "Yohan Matos",
+      "role": "CISO & Director of Information Security and Data Analyst",
+      "formation": "Systems and Computer Engineer"
+    }
   ],
   "ComingSoon": {
     "badge": "Coming soon",
@@ -371,7 +383,6 @@
     "phonePending": "[PHONE PENDING]",
     "socialTitle": "Follow us",
     "leadershipTitle": "Leadership",
-    "ceoTitle": "CEO",
     "legalTitle": "Legal",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
@@ -451,7 +462,6 @@
     "objectivesText": "To provide comprehensive technology solutions that allow companies and institutions to optimize their processes, improve productivity, and accelerate their digital transformation through innovative, secure, and scalable technologies.",
     "teamTitle": "Leadership team",
     "teamSubtitle": "Certified engineers leading every project.",
-    "ceoRole": "CEO",
     "whyTitle": "Why choose NEXATIXS?",
     "whyParagraphs": [
       "At NEXATIXS, we understand that technology is not an end in itself, but a tool to drive your organization's growth. We don't just implement solutions; we become a strategic ally that analyzes every need, designs tailored solutions, and supports our clients throughout the entire digital transformation process.",

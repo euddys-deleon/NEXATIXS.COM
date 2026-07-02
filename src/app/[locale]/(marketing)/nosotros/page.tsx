@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Card, CardDescription, CardTitle } from "@/components/ui/Card";
 import { leadershipTeam } from "@/lib/team";
+import { LinkedInIcon } from "@/components/icons/SocialIcons";
 
 export async function generateMetadata() {
   const t = await getTranslations("Nosotros");
@@ -13,7 +14,7 @@ export async function generateMetadata() {
 export default async function NosotrosPage() {
   const t = await getTranslations("Nosotros");
   const tRoot = await getTranslations();
-  const team = tRoot.raw("Team") as { name: string; formation: string }[];
+  const team = tRoot.raw("Team") as { name: string; role: string; formation: string }[];
   const whyParagraphs = t.raw("whyParagraphs") as string[];
 
   return (
@@ -51,7 +52,7 @@ export default async function NosotrosPage() {
             {leadershipTeam.map((member, index) => {
               const info = team[index];
               return (
-                <Card key={info.name} className="text-center">
+                <Card key={info.name} className="flex flex-col items-center text-center">
                   <span className="relative mx-auto block h-24 w-24 overflow-hidden rounded-full border border-foreground/10">
                     <Image
                       src={member.photo}
@@ -62,8 +63,20 @@ export default async function NosotrosPage() {
                     />
                   </span>
                   <CardTitle className="mt-4">{info.name}</CardTitle>
-                  <p className="mt-1 text-sm font-medium text-brand-blue">{t("ceoRole")}</p>
+                  <p className="mt-1.5 text-sm font-semibold text-sky-400">{info.role}</p>
                   <CardDescription>{info.formation}</CardDescription>
+
+                  <div className="mt-4 flex w-full justify-center border-t border-foreground/10 pt-4">
+                    <a
+                      href={member.linkedin ?? "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`LinkedIn — ${info.name}`}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 text-foreground/50 transition-colors hover:border-sky-400/40 hover:text-sky-400"
+                    >
+                      <LinkedInIcon width={16} height={16} />
+                    </a>
+                  </div>
                 </Card>
               );
             })}

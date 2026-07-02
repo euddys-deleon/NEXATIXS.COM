@@ -345,9 +345,21 @@
     }
   },
   "Team": [
-    { "name": "Euddys Daviel De León Feliz", "formation": "Ingeniero en Sistemas y Computación, Analista de Ciberseguridad" },
-    { "name": "Brayam Herrera Peralta", "formation": "Ingeniero en Sistemas y Computación, Especialista en Infraestructura" },
-    { "name": "Yohan Matos", "formation": "Ingeniero en Sistemas y Computación, Analista de Ciberseguridad" }
+    {
+      "name": "Euddys Daviel De León Feliz",
+      "role": "Co-founder / Director de Ciberseguridad y Redes",
+      "formation": "Ingeniero en Sistemas y Computación"
+    },
+    {
+      "name": "Brayam Herrera Peralta",
+      "role": "CTO & Director de Infraestructura y Desarrollo",
+      "formation": "Ingeniero en Sistemas y Computación"
+    },
+    {
+      "name": "Yohan Matos",
+      "role": "CISO & Director de Seguridad de la Información y Analista de Datos",
+      "formation": "Ingeniero en Sistemas y Computación"
+    }
   ],
   "ComingSoon": {
     "badge": "Próximamente",
@@ -371,7 +383,6 @@
     "phonePending": "[TELÉFONO PENDIENTE]",
     "socialTitle": "Síguenos",
     "leadershipTitle": "Liderazgo",
-    "ceoTitle": "CEO",
     "legalTitle": "Legal",
     "privacyPolicy": "Política de Privacidad",
     "termsOfService": "Términos de Servicio",
@@ -451,7 +462,6 @@
     "objectivesText": "Brindar soluciones tecnológicas integrales que permitan a empresas e instituciones optimizar sus procesos, mejorar su productividad y acelerar su transformación digital mediante el uso de tecnologías innovadoras, seguras y escalables.",
     "teamTitle": "Equipo directivo",
     "teamSubtitle": "Ingenieros certificados al frente de cada proyecto.",
-    "ceoRole": "CEO",
     "whyTitle": "¿Por qué elegir a NEXATIXS?",
     "whyParagraphs": [
       "En NEXATIXS entendemos que la tecnología no es un fin, sino una herramienta para impulsar el crecimiento de su organización. No nos limitamos a implementar soluciones; nos convertimos en un aliado estratégico que analiza cada necesidad, diseña soluciones a la medida y acompaña a nuestros clientes durante todo el proceso de transformación digital.",

@@ -10,7 +10,7 @@ import { InstagramIcon, LinkedInIcon } from "@/components/icons/SocialIcons";
 export function Footer() {
   const t = useTranslations("Footer");
   const tRoot = useTranslations();
-  const teamRaw = tRoot.raw("Team") as { name: string; formation: string }[];
+  const teamRaw = tRoot.raw("Team") as { name: string; role: string; formation: string }[];
 
   return (
     <footer className="border-t border-foreground/10 bg-background-subtle">
@@ -90,9 +90,7 @@ export function Footer() {
                     </span>
                     <div>
                       <p className="text-sm font-semibold text-foreground">{info.name}</p>
-                      <p className="text-xs text-foreground/60">
-                        {t("ceoTitle")} — {info.formation}
-                      </p>
+                      <p className="text-xs text-sky-400">{info.role}</p>
                     </div>
                   </li>
                 );
