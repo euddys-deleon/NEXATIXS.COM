@@ -24,7 +24,7 @@ export function PartnersMarquee() {
           <p className="mt-4 text-foreground/70">{t("subtitle")}</p>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {partners.map((cert, index) => (
             <motion.div
               key={cert.name}
@@ -51,9 +51,14 @@ export function PartnersMarquee() {
               <p className="mt-4 font-heading text-sm font-semibold text-foreground">
                 {cert.name}
               </p>
-              <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-foreground/60">
-                {cert.detail}
-              </p>
+              <ul className="mt-3 w-full space-y-1.5 text-left text-xs leading-relaxed text-foreground/60">
+                {cert.detail.map((line) => (
+                  <li key={line} className="flex items-start gap-2">
+                    <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-brand-blue" />
+                    {line}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>
