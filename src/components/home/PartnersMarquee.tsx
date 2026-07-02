@@ -35,14 +35,20 @@ export function PartnersMarquee() {
               whileHover={{ y: -3 }}
               className="flex flex-col items-center rounded-2xl border border-foreground/10 bg-background p-6 text-center transition-shadow hover:shadow-md"
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-white/95 p-2 shadow-sm">
+              <div
+                className={
+                  cert.fillTile
+                    ? "h-16 w-16 overflow-hidden rounded-xl shadow-sm"
+                    : "flex h-16 w-16 items-center justify-center rounded-xl bg-white/95 p-2 shadow-sm"
+                }
+              >
                 {cert.logoSrc ? (
                   <Image
                     src={cert.logoSrc}
                     alt={cert.name}
-                    width={48}
-                    height={48}
-                    className="h-full w-full object-contain"
+                    width={64}
+                    height={64}
+                    className={cert.fillTile ? "h-full w-full object-cover" : "h-full w-full object-contain"}
                   />
                 ) : (
                   <BadgeCheck className="text-brand-blue" size={28} strokeWidth={1.75} />
