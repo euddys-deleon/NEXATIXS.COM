@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import Anthropic from "@anthropic-ai/sdk";
+import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@/lib/supabase/server";
 
 interface ChatMessage {
@@ -24,7 +24,7 @@ function isValidMessages(value: unknown): value is ChatMessage[] {
 }
 
 export async function POST(request: NextRequest) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return NextResponse.json({ error: "not_configured" }, { status: 503 });
   }
@@ -75,19 +75,22 @@ export async function POST(request: NextRequest) {
     `Tickets: ${JSON.stringify(tickets ?? [])}`,
   ].join("\n");
 
-  const anthropic = new Anthropic({ apiKey });
+  const ai = new GoogleGenAI({ apiKey });
 
   try {
-    const response = await anthropic.messages.create({
-      model: "claude-sonnet-5",
-      max_tokens: 1024,
-      system: `Eres el asistente virtual del Portal de Cliente de NEXATIXS. Responde de forma breve, profesional, y en el mismo idioma en el que te escriba el usuario. Solo tienes el contexto de la cuenta del cliente autenticado listado abajo; no inventes datos que no estén ahí. Si preguntan algo fuera de su cuenta o de los servicios de NEXATIXS, indica amablemente que no tienes esa información y sugiere contactar a soporte@nexatixs.com.\n\nContexto de la cuenta:\n${context}`,
-      messages: body.messages,
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: (body.messages as ChatMessage[]).map((message) => ({
+        role: message.role === "assistant" ? "model" : "user",
+        parts: [{ text: message.content }],
+      })),
+      config: {
+        maxOutputTokens: 1024,
+        systemInstruction: `Eres el asistente virtual del Portal de Cliente de NEXATIXS. Responde de forma breve, profesional, y en el mismo idioma en el que te escriba el usuario. Solo tienes el contexto de la cuenta del cliente autenticado listado abajo; no inventes datos que no estén ahí. Si preguntan algo fuera de su cuenta o de los servicios de NEXATIXS, indica amablemente que no tienes esa información y sugiere contactar a soporte@nexatixs.com.\n\nContexto de la cuenta:\n${context}`,
+      },
     });
 
-    const textBlock = response.content.find((block) => block.type === "text");
-
-    return NextResponse.json({ reply: textBlock?.type === "text" ? textBlock.text : "" });
+    return NextResponse.json({ reply: response.text ?? "" });
   } catch {
     return NextResponse.json({ error: "upstream_error" }, { status: 502 });
   }
