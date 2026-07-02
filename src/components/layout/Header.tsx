@@ -16,6 +16,7 @@ const navItems = [
   { href: "/", key: "home" },
   { href: "/nosotros", key: "about" },
   { href: "/servicios", key: "services" },
+  { href: "/#mayfren", key: "products" },
   { href: "/consulta-estatus", key: "statusCheck" },
 ] as const;
 
