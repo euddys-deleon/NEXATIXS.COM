@@ -1,13 +1,15 @@
 "use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { BadgeCheck } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { partners } from "@/lib/partners";
 
 export function PartnersMarquee() {
   const t = useTranslations("Home.partners");
-  const track = [...partners, ...partners];
 
   return (
     <Section tone="subtle">
@@ -21,21 +23,41 @@ export function PartnersMarquee() {
           </h2>
           <p className="mt-4 text-foreground/70">{t("subtitle")}</p>
         </div>
-      </Container>
 
-      <div className="relative mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <div className="flex w-max animate-marquee items-center gap-16">
-          {track.map((partner, index) => (
-            <span
-              key={`${partner.name}-${index}`}
-              title={partner.detail}
-              className="font-heading text-2xl font-bold text-foreground/60 transition-colors hover:text-brand-blue"
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {partners.map((cert, index) => (
+            <motion.div
+              key={cert.name}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: index * 0.06 }}
+              whileHover={{ y: -3 }}
+              className="flex flex-col items-center rounded-2xl border border-foreground/10 bg-background p-6 text-center transition-shadow hover:shadow-md"
             >
-              {partner.name}
-            </span>
+              <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-white/95 p-2 shadow-sm">
+                {cert.logoSrc ? (
+                  <Image
+                    src={cert.logoSrc}
+                    alt={cert.name}
+                    width={48}
+                    height={48}
+                    className="h-full w-full object-contain"
+                  />
+                ) : (
+                  <BadgeCheck className="text-brand-blue" size={28} strokeWidth={1.75} />
+                )}
+              </div>
+              <p className="mt-4 font-heading text-sm font-semibold text-foreground">
+                {cert.name}
+              </p>
+              <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-foreground/60">
+                {cert.detail}
+              </p>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </Container>
     </Section>
   );
 }
