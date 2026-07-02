@@ -450,9 +450,9 @@
     "mayfren": {
       "eyebrow": "Our Own Product",
       "title": "Mayfren, the CRM we built ourselves",
-      "subtitle": "Beyond guiding other companies through digital transformation, at NEXATIXS we build our own solutions. Mayfren is our CRM for managing customers, sales, and business processes — simple and scalable.",
+      "subtitle": "Mayfren is the IT management and CRM platform built by NEXATIXS that unifies technical support (helpdesk with real-time tickets and SLAs), remote device monitoring and control, enterprise security (SIEM, password vault, two-factor authentication and SSO), and WhatsApp-based customer support in a single dashboard. Built for companies and managed service providers running multiple clients or business units, Mayfren replaces scattered tools with one scalable solution, with automatic reporting and full visibility into the business's technology operations.",
       "cta": "Discover Mayfren",
-      "previewSoon": "Preview coming soon"
+      "features": ["Helpdesk & Tickets", "Remote Monitoring", "Security (SIEM, 2FA, SSO)", "WhatsApp Support"]
     },
     "ctaFinal": {
       "title": "Ready to transform your company?",

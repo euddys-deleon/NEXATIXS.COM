@@ -2,14 +2,17 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { BarChart3, ExternalLink, LayoutDashboard, Users } from "lucide-react";
+import { ExternalLink, Headset, MessageCircle, Radar, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
+const FEATURE_ICONS = [Headset, Radar, ShieldCheck, MessageCircle];
+
 export function MayfrenSection() {
   const t = useTranslations("Home.mayfren");
+  const features = t.raw("features") as string[];
 
   return (
     <Section tone="subtle">
@@ -53,13 +56,19 @@ export function MayfrenSection() {
               <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
               <span className="ml-3 truncate text-xs text-foreground/40">mayfren.lat</span>
             </div>
-            <div className="flex aspect-[16/10] flex-col items-center justify-center gap-4 bg-gradient-to-br from-brand-blue/10 via-transparent to-brand-blue-dark/10 p-8 text-center">
-              <LayoutDashboard className="text-brand-blue" size={40} strokeWidth={1.5} />
-              <div className="flex items-center gap-6 text-foreground/40">
-                <Users size={22} strokeWidth={1.5} />
-                <BarChart3 size={22} strokeWidth={1.5} />
-              </div>
-              <p className="text-xs text-foreground/40">{t("previewSoon")}</p>
+            <div className="grid aspect-[16/10] grid-cols-2 gap-3 bg-gradient-to-br from-brand-blue/10 via-transparent to-brand-blue-dark/10 p-5">
+              {features.map((label, index) => {
+                const Icon = FEATURE_ICONS[index];
+                return (
+                  <div
+                    key={label}
+                    className="flex flex-col items-center justify-center gap-2 rounded-xl border border-foreground/10 bg-background/60 p-3 text-center backdrop-blur-sm"
+                  >
+                    <Icon className="text-brand-blue" size={22} strokeWidth={1.75} />
+                    <p className="text-xs font-medium text-foreground/70">{label}</p>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
