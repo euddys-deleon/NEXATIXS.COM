@@ -449,7 +449,7 @@
     },
     "mayfren": {
       "eyebrow": "Producto Propio",
-      "title": "Mayfren, el CRM que desarrollamos nosotros mismos",
+      "title": "Mayfren CRM",
       "subtitle": "Mayfren es la plataforma de gestión de TI y CRM desarrollada por NEXATIXS que unifica en un solo panel el soporte técnico (helpdesk con tickets y SLA en tiempo real), el monitoreo y control remoto de equipos, la seguridad empresarial (SIEM, bóveda de contraseñas, doble factor y SSO) y la atención al cliente vía WhatsApp. Pensada para empresas y proveedores de servicios gestionados que operan múltiples clientes o unidades, Mayfren reemplaza herramientas dispersas por una sola solución escalable, con reportes automáticos y visibilidad total de la operación tecnológica del negocio.",
       "cta": "Conocer Mayfren",
       "features": ["Helpdesk & Tickets", "Monitoreo Remoto", "Seguridad (SIEM, 2FA, SSO)", "Atención por WhatsApp"]
