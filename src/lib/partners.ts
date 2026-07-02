@@ -44,5 +44,6 @@ export const partners: Certification[] = [
   {
     name: "Fortinet",
     detail: ["FCF (Fundamentos Certificados de Fortinet)"],
+    logoSrc: "/assets/certifications/fortinet.png",
   },
 ];
