@@ -1,10 +1,12 @@
+export type CountryKey = "DO" | "US";
+
 export const headquarters = {
   name: "Santo Domingo Este",
   lat: 18.4877,
   lng: -69.8601,
 };
 
-export const coverageLocations = {
+export const coverageLocations: Record<CountryKey, { name: string; lat: number; lng: number }[]> = {
   DO: [
     { name: "Santiago", lat: 19.4517, lng: -70.697 },
     { name: "Santo Domingo (Distrito Nacional)", lat: 18.4861, lng: -69.9312 },

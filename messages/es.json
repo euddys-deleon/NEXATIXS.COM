@@ -419,11 +419,17 @@
       "eyebrow": "Alcance",
       "title": "Presencia en República Dominicana y Estados Unidos",
       "subtitle": "Operamos desde Santo Domingo Este con cobertura en múltiples provincias y soporte en la costa este de EE. UU.",
-      "hqLabel": "Sede Principal",
-      "hqValue": "República Dominicana — Santo Domingo Este",
       "presenceLabel": "Presencia & Cobertura",
       "countryDO": "República Dominicana",
-      "countryUS": "Estados Unidos"
+      "countryUS": "Estados Unidos",
+      "stats": {
+        "hq": "Sede Principal",
+        "provinces": "Provincias",
+        "international": "Presencia Internacional",
+        "internationalValue": "EE. UU.",
+        "support": "Soporte remoto",
+        "supportValue": "24/7"
+      }
     },
     "partners": {
       "eyebrow": "Alianzas",
