@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Mail } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
@@ -50,7 +50,12 @@ export function Footer() {
                   soporte@nexatixs.com
                 </a>
               </li>
-              <li className="text-foreground/60">{t("phonePending")}</li>
+              <li className="flex items-center gap-2">
+                <Phone size={14} className="text-brand-blue" />
+                <a href="tel:+18292680004" className="hover:text-brand-blue">
+                  (829) 268-0004
+                </a>
+              </li>
             </ul>
 
             <h3 className="mt-8 font-heading text-sm font-semibold uppercase tracking-wide text-foreground/60">
