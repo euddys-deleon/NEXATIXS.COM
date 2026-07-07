@@ -1,7 +1,22 @@
 {
   "Admin": {
-    "nav": { "dashboard": "Dashboard", "prospects": "Prospects", "clients": "Clients" },
+    "nav": {
+      "dashboard": "Dashboard",
+      "prospects": "Prospects",
+      "clients": "Clients",
+      "audit": "Audit Log"
+    },
     "logout": "Log out",
+    "audit": {
+      "title": "Audit Log",
+      "subtitle": "Record of changes made across the platform.",
+      "allTables": "All tables",
+      "filter": "Filter",
+      "empty": "No audit records yet.",
+      "unknownUser": "Unknown user",
+      "systemUser": "System",
+      "columns": { "date": "Date", "table": "Table", "action": "Action", "user": "User" }
+    },
     "dashboard": {
       "title": "Executive Dashboard",
       "subtitle": "Real-time overview of the business.",
@@ -22,6 +37,21 @@
       "columns": { "id": "ID", "name": "Name", "category": "Category", "status": "Status", "date": "Date" },
       "viewDetail": "View detail",
       "empty": "No prospects yet.",
+      "searchPlaceholder": "Search by name or ID...",
+      "allStatuses": "All statuses",
+      "allCategories": "All categories",
+      "search": "Search",
+      "statusLabels": {
+        "prospecto": "Prospect",
+        "en_evaluacion": "Under evaluation",
+        "cliente_activo": "Active client",
+        "descartado": "Discarded"
+      },
+      "categoryLabels": {
+        "empresa": "Company",
+        "organizacion": "Organization",
+        "persona_fisica": "Individual"
+      },
       "detail": {
         "backToAll": "Back to all prospects",
         "contactInfo": "Contact details",
@@ -53,6 +83,9 @@
       "subtitle": "Companies with an active contract.",
       "empty": "No active clients yet.",
       "viewDetail": "Manage",
+      "searchPlaceholder": "Search by company name...",
+      "allSizes": "All sizes",
+      "search": "Search",
       "companySize": {
         "microempresa": "Micro business",
         "pequena_empresa": "Small business",
@@ -74,6 +107,18 @@
         "companySize": "Classification (automatic)",
         "companySizeEmpty": "Not classified",
         "save": "Save changes",
+        "contactsTitle": "Company contacts",
+        "contactFullName": "Full name",
+        "contactPosition": "Position",
+        "contactDepartment": "Department",
+        "contactEmail": "Email",
+        "contactPhone": "Phone",
+        "permApproveQuotes": "Approves quotes",
+        "permReceiveInvoices": "Receives invoices",
+        "permOpenTickets": "Opens tickets",
+        "permManageLicenses": "Manages licenses",
+        "addContact": "Add contact",
+        "contactStatusLabels": { "activo": "Active", "inactivo": "Inactive" },
         "saving": "Saving...",
         "timelineTitle": "Activity history",
         "timelineEmpty": "No activity recorded yet.",

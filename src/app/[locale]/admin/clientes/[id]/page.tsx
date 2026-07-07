@@ -14,6 +14,8 @@ import { UpsellStatusSelect } from "@/components/admin/UpsellStatusSelect";
 import { AddInvoiceForm } from "@/components/admin/AddInvoiceForm";
 import { InvoiceStatusSelect } from "@/components/admin/InvoiceStatusSelect";
 import { ClientProfileForm } from "@/components/admin/ClientProfileForm";
+import { AddClientContactForm } from "@/components/admin/AddClientContactForm";
+import { ClientContactStatusSelect } from "@/components/admin/ClientContactStatusSelect";
 import { Building2, FileText, FolderKanban, KeyRound, LifeBuoy, TrendingUp } from "lucide-react";
 
 export default async function AdminClienteDetallePage({
@@ -47,6 +49,7 @@ export default async function AdminClienteDetallePage({
 
   const [
     { data: clientUsers },
+    { data: contacts },
     { data: projects },
     { data: licenses },
     { data: tickets },
@@ -54,6 +57,13 @@ export default async function AdminClienteDetallePage({
     { data: invoices },
   ] = await Promise.all([
     supabase.from("client_users").select("id, full_name, role").eq("client_id", client.id),
+    supabase
+      .from("client_contacts")
+      .select(
+        "id, full_name, position, email, phone, department, can_approve_quotes, can_receive_invoices, can_open_tickets, can_manage_licenses, status",
+      )
+      .eq("client_id", client.id)
+      .order("created_at", { ascending: false }),
     supabase
       .from("projects")
       .select("id, name, status, progress_percent, created_at")
@@ -180,6 +190,61 @@ export default async function AdminClienteDetallePage({
               </li>
             ))}
           </ul>
+        </Card>
+
+        <Card className="mt-6 bg-background">
+          <CardTitle>{t("contactsTitle")}</CardTitle>
+          <ul className="mt-4 space-y-3">
+            {(contacts ?? []).map((contact) => {
+              const perms = [
+                contact.can_approve_quotes && t("permApproveQuotes"),
+                contact.can_receive_invoices && t("permReceiveInvoices"),
+                contact.can_open_tickets && t("permOpenTickets"),
+                contact.can_manage_licenses && t("permManageLicenses"),
+              ].filter(Boolean) as string[];
+              return (
+                <li
+                  key={contact.id}
+                  className="rounded-lg border border-foreground/10 p-3 text-sm"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-medium text-foreground">
+                        {contact.full_name}
+                        {contact.position && (
+                          <span className="text-foreground/50"> — {contact.position}</span>
+                        )}
+                      </p>
+                      <p className="mt-0.5 text-xs text-foreground/50">
+                        {[contact.email, contact.phone, contact.department]
+                          .filter(Boolean)
+                          .join(" · ")}
+                      </p>
+                    </div>
+                    <ClientContactStatusSelect
+                      contactId={contact.id}
+                      initialStatus={contact.status}
+                    />
+                  </div>
+                  {perms.length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      {perms.map((perm) => (
+                        <span
+                          key={perm}
+                          className="rounded-full bg-brand-blue/10 px-2 py-0.5 text-xs text-brand-blue"
+                        >
+                          {perm}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <div className="mt-4 border-t border-foreground/10 pt-4">
+            <AddClientContactForm clientId={client.id} />
+          </div>
         </Card>
 
         <Card className="mt-6 bg-background">

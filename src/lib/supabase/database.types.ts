@@ -52,6 +52,95 @@ export type Database = {
           },
         ]
       }
+      audit_log: {
+        Row: {
+          action: string
+          changed_at: string
+          changed_by: string | null
+          id: string
+          new_data: Json | null
+          old_data: Json | null
+          record_id: string
+          table_name: string
+        }
+        Insert: {
+          action: string
+          changed_at?: string
+          changed_by?: string | null
+          id?: string
+          new_data?: Json | null
+          old_data?: Json | null
+          record_id: string
+          table_name: string
+        }
+        Update: {
+          action?: string
+          changed_at?: string
+          changed_by?: string | null
+          id?: string
+          new_data?: Json | null
+          old_data?: Json | null
+          record_id?: string
+          table_name?: string
+        }
+        Relationships: []
+      }
+      client_contacts: {
+        Row: {
+          can_approve_quotes: boolean
+          can_manage_licenses: boolean
+          can_open_tickets: boolean
+          can_receive_invoices: boolean
+          client_id: string
+          created_at: string
+          department: string | null
+          email: string | null
+          full_name: string
+          id: string
+          phone: string | null
+          position: string | null
+          status: string
+        }
+        Insert: {
+          can_approve_quotes?: boolean
+          can_manage_licenses?: boolean
+          can_open_tickets?: boolean
+          can_receive_invoices?: boolean
+          client_id: string
+          created_at?: string
+          department?: string | null
+          email?: string | null
+          full_name: string
+          id?: string
+          phone?: string | null
+          position?: string | null
+          status?: string
+        }
+        Update: {
+          can_approve_quotes?: boolean
+          can_manage_licenses?: boolean
+          can_open_tickets?: boolean
+          can_receive_invoices?: boolean
+          client_id?: string
+          created_at?: string
+          department?: string | null
+          email?: string | null
+          full_name?: string
+          id?: string
+          phone?: string | null
+          position?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_contacts_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       client_users: {
         Row: {
           client_id: string

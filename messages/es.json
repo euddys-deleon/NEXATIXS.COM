@@ -1,7 +1,22 @@
 {
   "Admin": {
-    "nav": { "dashboard": "Dashboard", "prospects": "Prospectos", "clients": "Clientes" },
+    "nav": {
+      "dashboard": "Dashboard",
+      "prospects": "Prospectos",
+      "clients": "Clientes",
+      "audit": "Auditoría"
+    },
     "logout": "Cerrar sesión",
+    "audit": {
+      "title": "Auditoría",
+      "subtitle": "Registro de cambios realizados en la plataforma.",
+      "allTables": "Todas las tablas",
+      "filter": "Filtrar",
+      "empty": "No hay registros de auditoría todavía.",
+      "unknownUser": "Usuario desconocido",
+      "systemUser": "Sistema",
+      "columns": { "date": "Fecha", "table": "Tabla", "action": "Acción", "user": "Usuario" }
+    },
     "dashboard": {
       "title": "Dashboard Ejecutivo",
       "subtitle": "Vista general del negocio en tiempo real.",
@@ -22,6 +37,21 @@
       "columns": { "id": "ID", "name": "Nombre", "category": "Categoría", "status": "Estado", "date": "Fecha" },
       "viewDetail": "Ver detalle",
       "empty": "No hay prospectos todavía.",
+      "searchPlaceholder": "Buscar por nombre o ID...",
+      "allStatuses": "Todos los estados",
+      "allCategories": "Todas las categorías",
+      "search": "Buscar",
+      "statusLabels": {
+        "prospecto": "Prospecto",
+        "en_evaluacion": "En evaluación",
+        "cliente_activo": "Cliente activo",
+        "descartado": "Descartado"
+      },
+      "categoryLabels": {
+        "empresa": "Empresa",
+        "organizacion": "Organización",
+        "persona_fisica": "Persona física"
+      },
       "detail": {
         "backToAll": "Volver a todos los prospectos",
         "contactInfo": "Datos de contacto",
@@ -53,6 +83,9 @@
       "subtitle": "Empresas con contrato activo.",
       "empty": "Aún no hay clientes activos.",
       "viewDetail": "Gestionar",
+      "searchPlaceholder": "Buscar por nombre de empresa...",
+      "allSizes": "Todos los tamaños",
+      "search": "Buscar",
       "companySize": {
         "microempresa": "Microempresa",
         "pequena_empresa": "Pequeña empresa",
@@ -74,6 +107,18 @@
         "companySize": "Clasificación (automática)",
         "companySizeEmpty": "Sin clasificar",
         "save": "Guardar cambios",
+        "contactsTitle": "Contactos de la empresa",
+        "contactFullName": "Nombre completo",
+        "contactPosition": "Cargo",
+        "contactDepartment": "Departamento",
+        "contactEmail": "Correo",
+        "contactPhone": "Teléfono",
+        "permApproveQuotes": "Aprueba cotizaciones",
+        "permReceiveInvoices": "Recibe facturas",
+        "permOpenTickets": "Abre tickets",
+        "permManageLicenses": "Administra licencias",
+        "addContact": "Agregar contacto",
+        "contactStatusLabels": { "activo": "Activo", "inactivo": "Inactivo" },
         "saving": "Guardando...",
         "timelineTitle": "Historial de actividad",
         "timelineEmpty": "Sin actividad registrada todavía.",
