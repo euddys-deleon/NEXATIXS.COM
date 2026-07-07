@@ -373,9 +373,11 @@
     "home": "Home",
     "about": "About Us",
     "services": "Services",
-    "products": "Products",
-    "statusCheck": "Check Your Status",
-    "login": "Log In",
+    "solutions": "Solutions",
+    "tools": "Tools",
+    "news": "News",
+    "support": "Support",
+    "login": "Client Portal",
     "menu": "Menu"
   },
   "Footer": {
@@ -391,10 +393,17 @@
   "Home": {
     "hero": {
       "eyebrow": "Technology • Integration • Innovation",
-      "title": "We turn technology into your company's growth engine",
-      "subtitle": "We are not a traditional provider: we are the strategic ally that designs, integrates, and supports your digital transformation from start to finish.",
-      "ctaPrimary": "Book a Meeting / Start Evaluation",
-      "ctaSecondary": "Check Your Status"
+      "title": "Technology that protects, optimizes, and grows your business.",
+      "subtitle": "Comprehensive solutions in cybersecurity, infrastructure, development, and automation for companies that demand reliability, innovation, and results.",
+      "ctaPrimary": "Explore Services",
+      "ctaSecondary": "Request a Consultation",
+      "highlights": [
+        "Advanced Security",
+        "Reliable Infrastructure",
+        "Custom Development",
+        "Smart Automation",
+        "24/7 Specialized Support"
+      ]
     },
     "metrics": {
       "clientsLabel": "Clients trust us",
@@ -477,6 +486,46 @@
       "At NEXATIXS, we believe in long-term relationships. That's why we provide close, transparent, and proactive service, offering specialized advice, continuous support, and ongoing guidance to ensure every technology investment generates maximum value for our clients.",
       "More than implementing technology, at NEXATIXS we build trust, drive innovation, and create solutions that prepare organizations for the challenges of the future."
     ]
+  },
+  "News": {
+    "eyebrow": "News",
+    "title": "Technology News",
+    "subtitle": "Cybersecurity, cloud, and development updates, sourced directly from official channels.",
+    "empty": "We couldn't load the news right now. Please try again later.",
+    "categories": {
+      "ciberseguridad": "Cybersecurity",
+      "cloud": "Cloud",
+      "desarrollo": "Development"
+    }
+  },
+  "Marketplace": {
+    "eyebrow": "Tools",
+    "title": "NEXATIXS Tools",
+    "subtitle": "Our own products and technology solutions built to power our clients' operations.",
+    "comingSoonTitle": "More tools on the way",
+    "comingSoonSubtitle": "We're expanding our own catalog across each of these technology pillars.",
+    "comingSoonCardText": "Coming soon to our catalog. Reach out if you need this solution today.",
+    "comingSoonCta": "Request information"
+  },
+  "Support": {
+    "eyebrow": "Support",
+    "title": "We're here to help",
+    "subtitle": "Talk to our team, check the progress of your request, or schedule an initial consultation.",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "hoursLabel": "Hours",
+    "hoursValue": "Monday to Friday, 8:00 a.m. – 6:00 p.m.",
+    "statusTitle": "Check Your Status",
+    "statusText": "Track the progress of your request or project with your unique ID (format NXT-2026-00042).",
+    "statusCta": "Check status",
+    "adviceTitle": "Request a Consultation",
+    "adviceText": "Schedule a free initial evaluation with our technical team.",
+    "adviceCta": "Book a meeting"
+  },
+  "Solutions": {
+    "eyebrow": "Solutions",
+    "title": "Comprehensive solutions for every stage of your digital transformation",
+    "subtitle": "Combine our technology pillars into a complete solution, tailored to your organization's size and goals."
   },
   "Services": {
     "eyebrow": "Services",

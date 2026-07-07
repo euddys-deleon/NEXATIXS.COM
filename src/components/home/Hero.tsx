@@ -2,13 +2,17 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { Cloud, Code2, Headset, Settings2, Shield } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { buttonVariants } from "@/components/ui/Button";
 import { ConstellationBackground } from "./ConstellationBackground";
 
+const HIGHLIGHT_ICONS = [Shield, Cloud, Code2, Settings2, Headset];
+
 export function Hero() {
   const t = useTranslations("Home.hero");
+  const highlights = t.raw("highlights") as string[];
 
   return (
     <section className="relative overflow-hidden bg-background">
@@ -32,16 +36,33 @@ export function Hero() {
             {t("subtitle")}
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/agendar-cita" className={buttonVariants({ variant: "primary", size: "lg" })}>
-              {t("ctaPrimary")}
+            <Link href="/servicios" className={buttonVariants({ variant: "primary", size: "lg" })}>
+              {t("ctaPrimary")} →
             </Link>
             <Link
-              href="/consulta-estatus"
+              href="/agendar-cita"
               className={buttonVariants({ variant: "outline", size: "lg" })}
             >
               {t("ctaSecondary")}
             </Link>
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-16 flex flex-wrap gap-x-8 gap-y-4"
+        >
+          {highlights.map((label, index) => {
+            const Icon = HIGHLIGHT_ICONS[index];
+            return (
+              <div key={label} className="flex items-center gap-2 text-sm text-foreground/70">
+                <Icon className="text-brand-blue" size={18} strokeWidth={1.75} />
+                {label}
+              </div>
+            );
+          })}
         </motion.div>
       </Container>
     </section>

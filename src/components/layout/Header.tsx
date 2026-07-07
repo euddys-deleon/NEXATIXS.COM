@@ -16,8 +16,10 @@ const navItems = [
   { href: "/", key: "home" },
   { href: "/nosotros", key: "about" },
   { href: "/servicios", key: "services" },
-  { href: "/#mayfren", key: "products" },
-  { href: "/consulta-estatus", key: "statusCheck" },
+  { href: "/soluciones", key: "solutions" },
+  { href: "/herramientas", key: "tools" },
+  { href: "/noticias", key: "news" },
+  { href: "/soporte", key: "support" },
 ] as const;
 
 export function Header() {
@@ -30,7 +32,7 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between">
         <Logo />
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-6">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -45,7 +47,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <LanguageSwitcher />
           <ThemeToggle />
           <Link href="/iniciar-sesion" className={buttonVariants({ variant: "outline", size: "sm" })}>
@@ -58,7 +60,7 @@ export function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-label={t("menu")}
           aria-expanded={open}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground md:hidden"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground lg:hidden"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -71,7 +73,7 @@ export function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-foreground/10 md:hidden"
+            className="overflow-hidden border-t border-foreground/10 lg:hidden"
           >
             <Container className="flex flex-col gap-4 py-6">
               {navItems.map((item) => (
