@@ -1,12 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Cloud, Code2, Headset, Settings2, Shield } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { buttonVariants } from "@/components/ui/Button";
-import { ConstellationBackground } from "./ConstellationBackground";
 
 const HIGHLIGHT_ICONS = [Shield, Cloud, Code2, Settings2, Headset];
 
@@ -16,8 +16,24 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-background">
-      <ConstellationBackground className="absolute inset-0 h-full w-full" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
+      <div className="absolute inset-0">
+        <motion.div
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.08 }}
+          transition={{ duration: 25, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src="/assets/hero/hero-bg.jpg"
+            alt=""
+            fill
+            priority
+            className="object-cover object-center blur-[1px]"
+          />
+        </motion.div>
+      </div>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/20" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
 
       <Container className="relative py-24 sm:py-32">
         <motion.div
