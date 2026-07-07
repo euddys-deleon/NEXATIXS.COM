@@ -28,12 +28,32 @@ export function Hero() {
             alt=""
             fill
             priority
-            className="object-cover object-center blur-[1px]"
+            className="object-cover object-center opacity-40 saturate-50"
           />
         </motion.div>
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/20" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/50" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
+
+      <div
+        className="pointer-events-none absolute bottom-[-4rem] left-1/2 hidden h-64 w-64 -translate-x-1/2 sm:block lg:h-80 lg:w-80"
+        style={{ perspective: "1000px" }}
+      >
+        <div className="absolute inset-0 scale-90 rounded-full bg-brand-blue/30 blur-3xl" />
+        <motion.div
+          animate={{ rotateY: 360 }}
+          transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+          className="relative h-full w-full"
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          <Image
+            src="/assets/brand/logo/mark-transparent.png"
+            alt="NEXATIXS"
+            fill
+            className="object-contain drop-shadow-[0_0_40px_rgba(14,110,255,0.5)]"
+          />
+        </motion.div>
+      </div>
 
       <Container className="relative py-24 sm:py-32">
         <motion.div
