@@ -369,6 +369,16 @@
     "loginBody": "El acceso al Portal de Cliente con autenticación segura se habilita en la Fase 5 del desarrollo.",
     "backHome": "Volver al inicio"
   },
+  "PublicChat": {
+    "openLabel": "Asistente NEXATIXS",
+    "title": "Asistente NEXATIXS",
+    "placeholder": "Escribe tu pregunta...",
+    "send": "Enviar",
+    "greeting": "¡Hola! Soy el asistente de NEXATIXS. Puedo ayudarte con dudas sobre nuestros servicios, Mayfren, o guiarte a la sección que necesites.",
+    "notConfigured": "El asistente virtual aún no está configurado. Escríbanos a soporte@nexatixs.com para asistencia inmediata.",
+    "genericError": "Ocurrió un error. Intente de nuevo o escríbanos a soporte@nexatixs.com.",
+    "thinking": "Escribiendo..."
+  },
   "Nav": {
     "home": "Inicio",
     "about": "Nosotros",

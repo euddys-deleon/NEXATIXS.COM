@@ -369,6 +369,16 @@
     "loginBody": "Secure Client Portal authentication ships in development Phase 5.",
     "backHome": "Back to home"
   },
+  "PublicChat": {
+    "openLabel": "NEXATIXS Assistant",
+    "title": "NEXATIXS Assistant",
+    "placeholder": "Type your question...",
+    "send": "Send",
+    "greeting": "Hi! I'm the NEXATIXS assistant. I can help with questions about our services, Mayfren, or guide you to the section you need.",
+    "notConfigured": "The virtual assistant isn't configured yet. Email us at soporte@nexatixs.com for immediate assistance.",
+    "genericError": "Something went wrong. Please try again or email soporte@nexatixs.com.",
+    "thinking": "Typing..."
+  },
   "Nav": {
     "home": "Home",
     "about": "About Us",
