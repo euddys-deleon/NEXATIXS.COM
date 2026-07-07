@@ -11,6 +11,8 @@ import { AddProjectPhaseForm } from "@/components/admin/AddProjectPhaseForm";
 import { AddLicenseForm } from "@/components/admin/AddLicenseForm";
 import { TicketStatusSelect } from "@/components/admin/TicketStatusSelect";
 import { UpsellStatusSelect } from "@/components/admin/UpsellStatusSelect";
+import { AddInvoiceForm } from "@/components/admin/AddInvoiceForm";
+import { InvoiceStatusSelect } from "@/components/admin/InvoiceStatusSelect";
 
 export default async function AdminClienteDetallePage({
   params,
@@ -45,6 +47,7 @@ export default async function AdminClienteDetallePage({
     { data: licenses },
     { data: tickets },
     { data: upsellRequests },
+    { data: invoices },
   ] = await Promise.all([
     supabase.from("client_users").select("id, full_name, role").eq("client_id", client.id),
     supabase
@@ -67,6 +70,11 @@ export default async function AdminClienteDetallePage({
       .select("id, item_name, status, created_at")
       .eq("client_id", client.id)
       .order("created_at", { ascending: false }),
+    supabase
+      .from("invoices")
+      .select("id, invoice_number, description, amount, currency, status, due_date")
+      .eq("client_id", client.id)
+      .order("issue_date", { ascending: false }),
   ]);
 
   return (
@@ -132,6 +140,30 @@ export default async function AdminClienteDetallePage({
           </ul>
           <div className="mt-4 border-t border-foreground/10 pt-4">
             <AddLicenseForm clientId={client.id} />
+          </div>
+        </Card>
+
+        <Card className="mt-6 bg-background">
+          <CardTitle>{t("invoicesTitle")}</CardTitle>
+          <ul className="mt-4 space-y-2">
+            {(invoices ?? []).map((invoice) => (
+              <li
+                key={invoice.id}
+                className="flex items-center justify-between gap-3 rounded-lg border border-foreground/10 px-3 py-2 text-sm"
+              >
+                <span className="text-foreground">
+                  {invoice.invoice_number} —{" "}
+                  <span className="text-foreground/60">
+                    {invoice.currency} {invoice.amount.toLocaleString(dateLocale, { minimumFractionDigits: 2 })}
+                  </span>{" "}
+                  <span className="text-foreground/50">({invoice.description})</span>
+                </span>
+                <InvoiceStatusSelect invoiceId={invoice.id} initialStatus={invoice.status} />
+              </li>
+            ))}
+          </ul>
+          <div className="mt-4 border-t border-foreground/10 pt-4">
+            <AddInvoiceForm clientId={client.id} />
           </div>
         </Card>
 

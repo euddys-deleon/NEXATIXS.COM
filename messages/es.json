@@ -55,6 +55,10 @@
         "licenseCategory": "Categoría",
         "licenseStatus": "Estado",
         "licenseExpiry": "Fecha de vencimiento",
+        "invoicesTitle": "Facturación",
+        "invoiceDescription": "Descripción",
+        "invoiceAmount": "Monto (USD)",
+        "invoiceDueDate": "Fecha de vencimiento",
         "ticketsTitle": "Tickets",
         "upsellTitle": "Solicitudes de up-selling",
         "add": "Agregar",
@@ -81,10 +85,31 @@
       "projects": "Proyectos",
       "licenses": "Licencias",
       "tickets": "Tickets",
+      "invoices": "Facturas",
       "services": "Servicios"
     },
     "logout": "Cerrar sesión",
     "clientId": "ID",
+    "invoices": {
+      "title": "Facturas",
+      "subtitle": "Historial de facturación de su cuenta.",
+      "empty": "No tiene facturas registradas todavía.",
+      "columns": {
+        "number": "Número",
+        "description": "Descripción",
+        "amount": "Monto",
+        "issueDate": "Emisión",
+        "dueDate": "Vencimiento",
+        "status": "Estado"
+      },
+      "statusLabels": {
+        "pendiente": "Pendiente",
+        "pagada": "Pagada",
+        "vencida": "Vencida",
+        "cancelada": "Cancelada"
+      },
+      "downloadPdf": "Descargar PDF"
+    },
     "dashboard": {
       "greeting": "Bienvenido(a) al Dashboard de Control",
       "kpi": {

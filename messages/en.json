@@ -55,6 +55,10 @@
         "licenseCategory": "Category",
         "licenseStatus": "Status",
         "licenseExpiry": "Expiration date",
+        "invoicesTitle": "Billing",
+        "invoiceDescription": "Description",
+        "invoiceAmount": "Amount (USD)",
+        "invoiceDueDate": "Due date",
         "ticketsTitle": "Tickets",
         "upsellTitle": "Up-sell requests",
         "add": "Add",
@@ -81,10 +85,31 @@
       "projects": "Projects",
       "licenses": "Licenses",
       "tickets": "Tickets",
+      "invoices": "Invoices",
       "services": "Services"
     },
     "logout": "Log out",
     "clientId": "ID",
+    "invoices": {
+      "title": "Invoices",
+      "subtitle": "Billing history for your account.",
+      "empty": "You don't have any invoices yet.",
+      "columns": {
+        "number": "Number",
+        "description": "Description",
+        "amount": "Amount",
+        "issueDate": "Issued",
+        "dueDate": "Due",
+        "status": "Status"
+      },
+      "statusLabels": {
+        "pendiente": "Pending",
+        "pagada": "Paid",
+        "vencida": "Overdue",
+        "cancelada": "Cancelled"
+      },
+      "downloadPdf": "Download PDF"
+    },
     "dashboard": {
       "greeting": "Welcome to your Control Dashboard",
       "kpi": {

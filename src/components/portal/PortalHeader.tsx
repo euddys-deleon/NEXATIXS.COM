@@ -13,6 +13,7 @@ const navItems = [
   { href: "/portal/proyectos", key: "projects" },
   { href: "/portal/licencias", key: "licenses" },
   { href: "/portal/tickets", key: "tickets" },
+  { href: "/portal/facturas", key: "invoices" },
   { href: "/portal/servicios", key: "services" },
 ] as const;
 
