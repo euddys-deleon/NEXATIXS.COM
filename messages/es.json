@@ -416,10 +416,10 @@
       ]
     },
     "metrics": {
-      "clientsLabel": "Clientes confían en nosotros",
-      "projectsLabel": "Proyectos Completados",
-      "engineersLabel": "Ingenieros Especializados",
-      "growthLabel": "Crecimiento Proyectado"
+      "companiesLabel": "Empresas protegidas",
+      "yearsLabel": "Año de experiencia",
+      "uptimeLabel": "Disponibilidad garantizada",
+      "commitmentLabel": "Comprometidos con tu éxito"
     },
     "reason": {
       "eyebrow": "Nuestra razón de ser",

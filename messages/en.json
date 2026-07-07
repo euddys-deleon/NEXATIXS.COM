@@ -416,10 +416,10 @@
       ]
     },
     "metrics": {
-      "clientsLabel": "Clients trust us",
-      "projectsLabel": "Completed Projects",
-      "engineersLabel": "Specialized Engineers",
-      "growthLabel": "Projected Growth"
+      "companiesLabel": "Companies protected",
+      "yearsLabel": "Year of experience",
+      "uptimeLabel": "Guaranteed uptime",
+      "commitmentLabel": "Committed to your success"
     },
     "reason": {
       "eyebrow": "Our Reason for Being",
