@@ -35,26 +35,6 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/50" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
 
-      <div
-        className="pointer-events-none absolute bottom-[-4rem] left-1/2 hidden h-64 w-64 -translate-x-1/2 sm:block lg:h-80 lg:w-80"
-        style={{ perspective: "1000px" }}
-      >
-        <div className="absolute inset-0 scale-90 rounded-full bg-brand-blue/30 blur-3xl" />
-        <motion.div
-          animate={{ rotateY: 360 }}
-          transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-          className="relative h-full w-full"
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          <Image
-            src="/assets/brand/logo/mark-transparent.png"
-            alt="NEXATIXS"
-            fill
-            className="object-contain drop-shadow-[0_0_40px_rgba(14,110,255,0.5)]"
-          />
-        </motion.div>
-      </div>
-
       <Container className="relative py-24 sm:py-32">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -101,6 +81,32 @@ export function Hero() {
           })}
         </motion.div>
       </Container>
+
+      <div
+        className="group absolute top-1/2 right-[2%] hidden h-56 w-56 -translate-y-1/2 sm:block lg:right-[6%] lg:h-72 lg:w-72"
+        style={{ perspective: "1000px" }}
+      >
+        <div className="absolute inset-0 scale-90 rounded-full bg-brand-blue/30 blur-3xl transition-all duration-500 group-hover:scale-110 group-hover:bg-brand-blue/60" />
+        <motion.div
+          animate={{ rotateY: 360 }}
+          transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+          className="relative h-full w-full"
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          <Image
+            src="/assets/brand/logo/mark-transparent.png"
+            alt="NEXATIXS"
+            fill
+            className="hidden object-contain drop-shadow-[0_0_40px_rgba(14,110,255,0.5)] transition-all duration-500 group-hover:drop-shadow-[0_0_65px_rgba(14,110,255,0.95)] dark:block"
+          />
+          <Image
+            src="/assets/brand/logo/mark-transparent-light.png"
+            alt="NEXATIXS"
+            fill
+            className="block object-contain drop-shadow-[0_0_25px_rgba(14,110,255,0.35)] transition-all duration-500 group-hover:drop-shadow-[0_0_45px_rgba(14,110,255,0.7)] dark:hidden"
+          />
+        </motion.div>
+      </div>
     </section>
   );
 }
