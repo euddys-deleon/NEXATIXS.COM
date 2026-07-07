@@ -25,23 +25,29 @@ export default function IniciarSesionPage() {
     setSubmitting(true);
     setError(null);
 
-    const { error: signInError } = await supabase.auth.signInWithPassword({
+    const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    setSubmitting(false);
-
-    if (signInError) {
+    if (signInError || !signInData.user) {
+      setSubmitting(false);
       setError(
-        signInError.message.toLowerCase().includes("invalid")
+        signInError?.message.toLowerCase().includes("invalid")
           ? t("invalidCredentials")
           : t("genericError"),
       );
       return;
     }
 
-    router.push("/portal/dashboard");
+    const { data: staffUser } = await supabase
+      .from("staff_users")
+      .select("id")
+      .eq("id", signInData.user.id)
+      .maybeSingle();
+
+    setSubmitting(false);
+    router.push(staffUser ? "/admin" : "/portal/dashboard");
     router.refresh();
   }
 

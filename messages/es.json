@@ -1,7 +1,21 @@
 {
   "Admin": {
-    "nav": { "prospects": "Prospectos", "clients": "Clientes" },
+    "nav": { "dashboard": "Dashboard", "prospects": "Prospectos", "clients": "Clientes" },
     "logout": "Cerrar sesión",
+    "dashboard": {
+      "title": "Dashboard Ejecutivo",
+      "subtitle": "Vista general del negocio en tiempo real.",
+      "kpi": {
+        "activeClients": "Clientes activos",
+        "newClients": "Nuevos clientes (mes)",
+        "activeProjects": "Proyectos activos",
+        "openTickets": "Tickets abiertos",
+        "activeProspects": "Prospectos en pipeline",
+        "revenue": "Ingresos cobrados",
+        "pendingInvoices": "Facturas pendientes",
+        "overdueInvoices": "Facturas vencidas"
+      }
+    },
     "prospects": {
       "title": "Prospectos",
       "subtitle": "Solicitudes recibidas desde el sitio público.",

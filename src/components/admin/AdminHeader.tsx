@@ -9,9 +9,14 @@ import { supabase } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
 const navItems = [
+  { href: "/admin", key: "dashboard" },
   { href: "/admin/prospectos", key: "prospects" },
   { href: "/admin/clientes", key: "clients" },
 ] as const;
+
+function isActive(pathname: string, href: string) {
+  return href === "/admin" ? pathname === "/admin" : pathname.startsWith(href);
+}
 
 export function AdminHeader({ fullName }: { fullName: string }) {
   const t = useTranslations("Admin");
@@ -35,7 +40,7 @@ export function AdminHeader({ fullName }: { fullName: string }) {
               href={item.href}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-brand-blue",
-                pathname.startsWith(item.href) ? "text-brand-blue" : "text-foreground/70",
+                isActive(pathname, item.href) ? "text-brand-blue" : "text-foreground/70",
               )}
             >
               {t(`nav.${item.key}`)}
@@ -61,7 +66,7 @@ export function AdminHeader({ fullName }: { fullName: string }) {
             href={item.href}
             className={cn(
               "whitespace-nowrap text-sm font-medium",
-              pathname.startsWith(item.href) ? "text-brand-blue" : "text-foreground/70",
+              isActive(pathname, item.href) ? "text-brand-blue" : "text-foreground/70",
             )}
           >
             {t(`nav.${item.key}`)}
