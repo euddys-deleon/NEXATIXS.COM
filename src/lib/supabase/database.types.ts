@@ -86,25 +86,52 @@ export type Database = {
       }
       clients: {
         Row: {
+          city: string | null
           company_name: string
+          company_size: string | null
           contract_start_date: string | null
+          country: string | null
           created_at: string
+          domain: string | null
+          employee_count: number | null
           id: string
           prospect_id: string | null
+          rnc: string | null
+          sector: string | null
+          support_level: string | null
+          website: string | null
         }
         Insert: {
+          city?: string | null
           company_name: string
+          company_size?: string | null
           contract_start_date?: string | null
+          country?: string | null
           created_at?: string
+          domain?: string | null
+          employee_count?: number | null
           id?: string
           prospect_id?: string | null
+          rnc?: string | null
+          sector?: string | null
+          support_level?: string | null
+          website?: string | null
         }
         Update: {
+          city?: string | null
           company_name?: string
+          company_size?: string | null
           contract_start_date?: string | null
+          country?: string | null
           created_at?: string
+          domain?: string | null
+          employee_count?: number | null
           id?: string
           prospect_id?: string | null
+          rnc?: string | null
+          sector?: string | null
+          support_level?: string | null
+          website?: string | null
         }
         Relationships: [
           {

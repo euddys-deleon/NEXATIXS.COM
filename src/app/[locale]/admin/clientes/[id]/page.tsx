@@ -13,6 +13,8 @@ import { TicketStatusSelect } from "@/components/admin/TicketStatusSelect";
 import { UpsellStatusSelect } from "@/components/admin/UpsellStatusSelect";
 import { AddInvoiceForm } from "@/components/admin/AddInvoiceForm";
 import { InvoiceStatusSelect } from "@/components/admin/InvoiceStatusSelect";
+import { ClientProfileForm } from "@/components/admin/ClientProfileForm";
+import { Building2, FileText, FolderKanban, KeyRound, LifeBuoy, TrendingUp } from "lucide-react";
 
 export default async function AdminClienteDetallePage({
   params,
@@ -35,7 +37,9 @@ export default async function AdminClienteDetallePage({
 
   const { data: client } = await supabase
     .from("clients")
-    .select("id, company_name")
+    .select(
+      "id, company_name, created_at, rnc, sector, employee_count, company_size, country, city, website, domain, support_level",
+    )
     .eq("id", id)
     .single();
 
@@ -52,12 +56,12 @@ export default async function AdminClienteDetallePage({
     supabase.from("client_users").select("id, full_name, role").eq("client_id", client.id),
     supabase
       .from("projects")
-      .select("id, name, status, progress_percent")
+      .select("id, name, status, progress_percent, created_at")
       .eq("client_id", client.id)
       .order("created_at", { ascending: false }),
     supabase
       .from("licenses")
-      .select("id, name, category, status, expires_at")
+      .select("id, name, category, status, expires_at, created_at")
       .eq("client_id", client.id)
       .order("created_at", { ascending: false }),
     supabase
@@ -72,10 +76,39 @@ export default async function AdminClienteDetallePage({
       .order("created_at", { ascending: false }),
     supabase
       .from("invoices")
-      .select("id, invoice_number, description, amount, currency, status, due_date")
+      .select("id, invoice_number, description, amount, currency, status, due_date, issue_date")
       .eq("client_id", client.id)
       .order("issue_date", { ascending: false }),
   ]);
+
+  const timelineEvents = [
+    { date: client.created_at, icon: Building2, label: t("timelineClientCreated") },
+    ...(projects ?? []).map((p) => ({
+      date: p.created_at,
+      icon: FolderKanban,
+      label: t("timelineProjectCreated", { name: p.name }),
+    })),
+    ...(licenses ?? []).map((l) => ({
+      date: l.created_at,
+      icon: KeyRound,
+      label: t("timelineLicenseCreated", { name: l.name }),
+    })),
+    ...(tickets ?? []).map((tk) => ({
+      date: tk.created_at,
+      icon: LifeBuoy,
+      label: t("timelineTicketCreated", { subject: tk.subject }),
+    })),
+    ...(invoices ?? []).map((inv) => ({
+      date: inv.issue_date,
+      icon: FileText,
+      label: t("timelineInvoiceCreated", { number: inv.invoice_number }),
+    })),
+    ...(upsellRequests ?? []).map((u) => ({
+      date: u.created_at,
+      icon: TrendingUp,
+      label: t("timelineUpsellCreated", { name: u.item_name }),
+    })),
+  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <Section>
@@ -90,6 +123,53 @@ export default async function AdminClienteDetallePage({
         <h1 className="mt-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           {client.company_name}
         </h1>
+
+        <Card className="mt-6 bg-background">
+          <CardTitle>{t("profileTitle")}</CardTitle>
+          <div className="mt-4">
+            <ClientProfileForm
+              clientId={client.id}
+              companySize={client.company_size}
+              initial={{
+                rnc: client.rnc,
+                sector: client.sector,
+                employeeCount: client.employee_count,
+                country: client.country,
+                city: client.city,
+                website: client.website,
+                domain: client.domain,
+                supportLevel: client.support_level,
+              }}
+            />
+          </div>
+        </Card>
+
+        <Card className="mt-6 bg-background">
+          <CardTitle>{t("timelineTitle")}</CardTitle>
+          {timelineEvents.length === 0 ? (
+            <p className="mt-3 text-sm text-foreground/60">{t("timelineEmpty")}</p>
+          ) : (
+            <ul className="mt-4 space-y-3">
+              {timelineEvents.map((event, index) => (
+                <li key={index} className="flex items-start gap-3 text-sm">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+                    <event.icon size={14} />
+                  </span>
+                  <div>
+                    <p className="text-foreground">{event.label}</p>
+                    <p className="text-xs text-foreground/50">
+                      {new Date(event.date).toLocaleDateString(dateLocale, {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
 
         <Card className="mt-6 bg-background">
           <CardTitle>{t("usersTitle")}</CardTitle>
