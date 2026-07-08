@@ -38,17 +38,21 @@ export function PartnersMarquee() {
               <div
                 className={
                   cert.fillTile
-                    ? "h-16 w-16 overflow-hidden rounded-xl shadow-sm"
-                    : "flex h-16 w-16 items-center justify-center rounded-xl bg-white/95 p-2 shadow-sm"
+                    ? "flex h-16 w-full items-center justify-center overflow-hidden rounded-xl shadow-sm"
+                    : "flex h-16 w-full items-center justify-center rounded-xl bg-white/95 px-5 shadow-sm"
                 }
               >
                 {cert.logoSrc ? (
                   <Image
                     src={cert.logoSrc}
                     alt={cert.name}
-                    width={64}
+                    width={160}
                     height={64}
-                    className={cert.fillTile ? "h-full w-full object-cover" : "h-full w-full object-contain"}
+                    className={
+                      cert.fillTile
+                        ? "h-full w-full object-cover"
+                        : "h-9 w-auto max-w-[130px] object-contain"
+                    }
                   />
                 ) : (
                   <BadgeCheck className="text-brand-blue" size={28} strokeWidth={1.75} />

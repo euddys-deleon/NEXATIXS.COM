@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -13,9 +14,23 @@ const HIGHLIGHT_ICONS = [Shield, Cloud, Code2, Settings2, Headset];
 export function Hero() {
   const t = useTranslations("Home.hero");
   const highlights = t.raw("highlights") as string[];
+  const sectionRef = useRef<HTMLElement>(null);
+
+  function handleMouseMove(event: React.MouseEvent<HTMLElement>) {
+    const rect = sectionRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    sectionRef.current?.style.setProperty("--spotlight-x", `${x}%`);
+    sectionRef.current?.style.setProperty("--spotlight-y", `${y}%`);
+  }
 
   return (
-    <section className="relative overflow-hidden bg-background">
+    <section
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      className="group relative overflow-hidden bg-background"
+    >
       <div className="absolute inset-0">
         <motion.div
           initial={{ scale: 1 }}
@@ -34,6 +49,13 @@ export function Hero() {
       </div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/50" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(500px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), rgba(56,150,255,0.22), transparent 65%)",
+        }}
+      />
 
       <Container className="relative py-24 sm:py-32">
         <motion.div

@@ -5,7 +5,21 @@ import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "./Logo";
 import { leadershipTeam } from "@/lib/team";
-import { InstagramIcon, LinkedInIcon } from "@/components/icons/SocialIcons";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  TikTokIcon,
+  WhatsAppIcon,
+} from "@/components/icons/SocialIcons";
+
+const SOCIAL_LINKS = [
+  { icon: LinkedInIcon, label: "LinkedIn", href: "#" },
+  { icon: InstagramIcon, label: "Instagram", href: "#" },
+  { icon: FacebookIcon, label: "Facebook", href: "#" },
+  { icon: TikTokIcon, label: "TikTok", href: "#" },
+  { icon: WhatsAppIcon, label: "WhatsApp", href: "https://wa.me/18292680004" },
+];
 
 export function Footer() {
   const t = useTranslations("Footer");
@@ -21,21 +35,19 @@ export function Footer() {
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-foreground/60">
               {t("description")}
             </p>
-            <div className="mt-6 flex items-center gap-3">
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 text-foreground/60 transition-colors hover:border-brand-blue/40 hover:text-brand-blue"
-              >
-                <LinkedInIcon width={16} height={16} />
-              </a>
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 text-foreground/60 transition-colors hover:border-brand-blue/40 hover:text-brand-blue"
-              >
-                <InstagramIcon width={16} height={16} />
-              </a>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              {SOCIAL_LINKS.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={social.label}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 text-foreground/60 transition-colors hover:border-brand-blue/40 hover:text-brand-blue"
+                >
+                  <social.icon width={16} height={16} />
+                </a>
+              ))}
             </div>
           </div>
 

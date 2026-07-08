@@ -9,21 +9,21 @@ export function Logo({ className }: { className?: string }) {
       aria-label="NEXATIXS — Inicio"
       className={cn("flex items-center gap-2.5", className)}
     >
-      <span className="relative block h-9 w-9 shrink-0 overflow-hidden rounded-lg">
+      <span className="relative block h-9 w-9 shrink-0">
         <Image
-          src="/assets/brand/logo/mark-light-bg.png"
+          src="/assets/brand/logo/mark-transparent-light.png"
           alt=""
           fill
           sizes="36px"
-          className="object-cover dark:hidden"
+          className="object-contain dark:hidden"
           priority
         />
         <Image
-          src="/assets/brand/logo/mark-dark-bg.png"
+          src="/assets/brand/logo/mark-transparent.png"
           alt=""
           fill
           sizes="36px"
-          className="hidden object-cover dark:block"
+          className="hidden object-contain dark:block"
           priority
         />
       </span>
