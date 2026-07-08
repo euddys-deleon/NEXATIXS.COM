@@ -103,6 +103,22 @@ export function Hero() {
           })}
         </motion.div>
       </Container>
+
+      <div className="pointer-events-none absolute top-1/2 right-[2%] hidden h-72 w-72 -translate-y-1/2 sm:block lg:right-[6%] lg:h-96 lg:w-96">
+        <div className="absolute inset-0 scale-90 rounded-full bg-brand-blue/25 blur-3xl" />
+        <Image
+          src="/assets/brand/logo/mark-transparent.png"
+          alt="NEXATIXS"
+          fill
+          className="hidden object-contain drop-shadow-[0_0_45px_rgba(14,110,255,0.45)] dark:block"
+        />
+        <Image
+          src="/assets/brand/logo/mark-transparent-light.png"
+          alt="NEXATIXS"
+          fill
+          className="block object-contain drop-shadow-[0_0_30px_rgba(14,110,255,0.3)] dark:hidden"
+        />
+      </div>
     </section>
   );
 }
