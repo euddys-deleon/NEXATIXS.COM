@@ -19,6 +19,7 @@ type Plan = {
   category: string;
   name: string;
   price: number | null;
+  annual_price: number | null;
   currency: string;
   billing_period: string;
   description: string | null;
@@ -35,6 +36,9 @@ export function PlanRow({ plan }: { plan: Plan }) {
   const [saving, setSaving] = useState(false);
   const [name, setName] = useState(plan.name);
   const [price, setPrice] = useState(plan.price != null ? String(plan.price) : "");
+  const [annualPrice, setAnnualPrice] = useState(
+    plan.annual_price != null ? String(plan.annual_price) : "",
+  );
   const [currency, setCurrency] = useState(plan.currency);
   const [billingPeriod, setBillingPeriod] = useState(plan.billing_period);
   const [description, setDescription] = useState(plan.description ?? "");
@@ -61,6 +65,7 @@ export function PlanRow({ plan }: { plan: Plan }) {
       .update({
         name: name.trim(),
         price: price.trim() ? Number(price) : null,
+        annual_price: annualPrice.trim() ? Number(annualPrice) : null,
         currency: currency.trim() || "USD",
         billing_period: billingPeriod,
         description: description.trim() || null,
@@ -102,6 +107,17 @@ export function PlanRow({ plan }: { plan: Plan }) {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder={t("priceHelp")}
+            />
+          </Field>
+          <Field label={t("annualPrice")} htmlFor={`annual-${plan.id}`}>
+            <Input
+              id={`annual-${plan.id}`}
+              type="number"
+              min="0"
+              step="0.01"
+              value={annualPrice}
+              onChange={(e) => setAnnualPrice(e.target.value)}
+              placeholder={t("annualPriceHelp")}
             />
           </Field>
           <Field label={t("currency")} htmlFor={`currency-${plan.id}`}>

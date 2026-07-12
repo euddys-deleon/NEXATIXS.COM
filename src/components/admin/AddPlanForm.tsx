@@ -10,15 +10,16 @@ import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 
-const CATEGORY_OPTIONS = ["web", "herramientas", "redes_sociales"];
+const CATEGORY_OPTIONS = ["mayfren", "web", "herramientas", "redes_sociales"];
 const BILLING_OPTIONS = ["mensual", "anual", "unico"];
 
 export function AddPlanForm() {
   const t = useTranslations("Admin.plans");
   const router = useRouter();
-  const [category, setCategory] = useState("web");
+  const [category, setCategory] = useState("mayfren");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [annualPrice, setAnnualPrice] = useState("");
   const [currency, setCurrency] = useState("USD");
   const [billingPeriod, setBillingPeriod] = useState("mensual");
   const [description, setDescription] = useState("");
@@ -34,6 +35,7 @@ export function AddPlanForm() {
       category,
       name: name.trim(),
       price: price.trim() ? Number(price) : null,
+      annual_price: annualPrice.trim() ? Number(annualPrice) : null,
       currency: currency.trim() || "USD",
       billing_period: billingPeriod,
       description: description.trim() || null,
@@ -46,6 +48,7 @@ export function AddPlanForm() {
     setSubmitting(false);
     setName("");
     setPrice("");
+    setAnnualPrice("");
     setDescription("");
     setFeatures("");
     setDisplayOrder("0");
@@ -80,6 +83,17 @@ export function AddPlanForm() {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             placeholder={t("priceHelp")}
+          />
+        </Field>
+        <Field label={t("annualPrice")} htmlFor="planAnnualPrice">
+          <Input
+            id="planAnnualPrice"
+            type="number"
+            min="0"
+            step="0.01"
+            value={annualPrice}
+            onChange={(e) => setAnnualPrice(e.target.value)}
+            placeholder={t("annualPriceHelp")}
           />
         </Field>
         <Field label={t("currency")} htmlFor="planCurrency">

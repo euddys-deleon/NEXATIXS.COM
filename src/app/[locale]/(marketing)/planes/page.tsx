@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { Check, Globe, Share2, Sparkles, Wrench } from "lucide-react";
+import { Check, Globe, LayoutGrid, Share2, Sparkles, Wrench } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -13,6 +13,7 @@ export async function generateMetadata() {
 }
 
 const CATEGORIES = [
+  { key: "mayfren", icon: LayoutGrid },
   { key: "web", icon: Globe },
   { key: "herramientas", icon: Wrench },
   { key: "redes_sociales", icon: Share2 },
@@ -29,7 +30,9 @@ export default async function PlanesPage({
 
   const { data: plans } = await supabase
     .from("plans")
-    .select("id, category, name, price, currency, billing_period, description, features, is_featured")
+    .select(
+      "id, category, name, price, annual_price, currency, billing_period, description, features, is_featured",
+    )
     .eq("active", true)
     .order("display_order", { ascending: true });
 
@@ -87,27 +90,41 @@ export default async function PlanesPage({
                         {plan.description && (
                           <p className="mt-1 text-sm text-foreground/60">{plan.description}</p>
                         )}
-                        <p className="mt-4">
+                        <div className="mt-4">
                           {plan.price != null ? (
                             <>
-                              <span className="font-heading text-3xl font-bold text-foreground">
-                                {plan.currency}{" "}
-                                {plan.price.toLocaleString(dateLocale, { maximumFractionDigits: 0 })}
-                              </span>
-                              <span className="ml-1 text-sm text-foreground/50">
-                                {plan.billing_period === "mensual"
-                                  ? t("perMonth")
-                                  : plan.billing_period === "anual"
-                                    ? t("perYear")
-                                    : t("oneTime")}
-                              </span>
+                              <p>
+                                <span className="font-heading text-3xl font-bold text-foreground">
+                                  {plan.currency}{" "}
+                                  {plan.price.toLocaleString(dateLocale, {
+                                    maximumFractionDigits: 2,
+                                  })}
+                                </span>
+                                <span className="ml-1 text-sm text-foreground/50">
+                                  {plan.billing_period === "mensual"
+                                    ? t("perMonth")
+                                    : plan.billing_period === "anual"
+                                      ? t("perYear")
+                                      : t("oneTime")}
+                                </span>
+                              </p>
+                              {plan.annual_price != null && (
+                                <p className="mt-1 text-xs text-brand-blue">
+                                  {t("annualPrice", {
+                                    price: `${plan.currency} ${plan.annual_price.toLocaleString(
+                                      dateLocale,
+                                      { maximumFractionDigits: 2 },
+                                    )}`,
+                                  })}
+                                </p>
+                              )}
                             </>
                           ) : (
                             <span className="font-heading text-xl font-bold text-foreground">
                               {t("contactForPrice")}
                             </span>
                           )}
-                        </p>
+                        </div>
                         <ul className="mt-5 flex-1 space-y-2 text-sm text-foreground/70">
                           {features.map((feature) => (
                             <li key={feature} className="flex items-start gap-2">
@@ -123,7 +140,7 @@ export default async function PlanesPage({
                             "mt-6 w-full",
                           )}
                         >
-                          {t("cta")}
+                          {plan.price != null ? t("cta") : t("quoteCta")}
                         </Link>
                       </div>
                     );

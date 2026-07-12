@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/Card";
 import { AddPlanForm } from "@/components/admin/AddPlanForm";
 import { PlanRow } from "@/components/admin/PlanRow";
 
-const CATEGORIES = ["web", "herramientas", "redes_sociales"];
+const CATEGORIES = ["mayfren", "web", "herramientas", "redes_sociales"];
 
 export default async function AdminPlanesPage({
   params,
@@ -27,7 +27,7 @@ export default async function AdminPlanesPage({
   const { data: plans } = await supabase
     .from("plans")
     .select(
-      "id, category, name, price, currency, billing_period, description, features, is_featured, display_order, active",
+      "id, category, name, price, annual_price, currency, billing_period, description, features, is_featured, display_order, active",
     )
     .order("category", { ascending: true })
     .order("display_order", { ascending: true });

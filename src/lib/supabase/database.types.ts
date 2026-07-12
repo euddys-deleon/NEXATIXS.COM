@@ -329,6 +329,7 @@ export type Database = {
       plans: {
         Row: {
           active: boolean
+          annual_price: number | null
           billing_period: string
           category: string
           created_at: string
@@ -344,6 +345,7 @@ export type Database = {
         }
         Insert: {
           active?: boolean
+          annual_price?: number | null
           billing_period?: string
           category: string
           created_at?: string
@@ -359,6 +361,7 @@ export type Database = {
         }
         Update: {
           active?: boolean
+          annual_price?: number | null
           billing_period?: string
           category?: string
           created_at?: string

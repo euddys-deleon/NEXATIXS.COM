@@ -158,8 +158,10 @@
       "addTitle": "Add new plan",
       "category": "Category",
       "name": "Name",
-      "price": "Price",
-      "priceHelp": "Leave empty to show \"Get a quote\"",
+      "price": "Monthly price",
+      "priceHelp": "Empty = \"Get a quote\"",
+      "annualPrice": "Annual price",
+      "annualPriceHelp": "Optional (per month)",
       "currency": "Currency",
       "billingPeriod": "Billing period",
       "billingLabels": {
@@ -180,6 +182,7 @@
       "confirmDelete": "Delete this plan? This action cannot be undone.",
       "empty": "No plans in this category yet.",
       "categories": {
+        "mayfren": "Mayfren CRM",
         "web": "Web Development",
         "herramientas": "Tools",
         "redes_sociales": "Social Media"
@@ -526,17 +529,20 @@
   "Team": [
     {
       "name": "Euddys Daviel De León Feliz",
-      "role": "Co-founder / CISO & Director of Cybersecurity and Networks",
+      "title": "Co-Founder",
+      "role": "Director of Cybersecurity & Networks (CISO)",
       "formation": "Systems and Computer Engineer"
     },
     {
       "name": "Brayam Herrera Peralta",
-      "role": "Co-founder / CTO & Director of Infrastructure and Development",
+      "title": "Co-Founder",
+      "role": "Director of Infrastructure & Development (CTO)",
       "formation": "Systems and Computer Engineer"
     },
     {
       "name": "Yohan Matos",
-      "role": "Co-founder / COO & Director of Information Security and Data Analyst",
+      "title": "Co-Founder",
+      "role": "Director of Information Security & Data (COO)",
       "formation": "Systems and Computer Engineer"
     }
   ],
@@ -575,16 +581,19 @@
     "title": "A plan for every stage of your business",
     "subtitle": "Choose the option that best fits your needs. All plans can be tailored to the scope of your project.",
     "categories": {
+      "mayfren": "Mayfren CRM",
       "web": "Web Development",
       "herramientas": "Tools",
       "redes_sociales": "Social Media"
     },
     "featured": "Most popular",
-    "perMonth": "/mo",
+    "perMonth": "/user/mo",
     "perYear": "/yr",
     "oneTime": "one-time",
-    "contactForPrice": "Get a quote",
+    "annualPrice": "or {price}/user/mo billed annually",
+    "contactForPrice": "Custom quote",
     "cta": "Request this plan",
+    "quoteCta": "Request a quote",
     "customTitle": "Need something custom?",
     "customSubtitle": "Tell us about your project and we'll put together a tailored proposal, no strings attached.",
     "customCta": "Request a custom plan"
@@ -666,11 +675,11 @@
       "subtitle": "Our team is certified by the world's leading technology brands."
     },
     "mayfren": {
-      "eyebrow": "Our Own Product",
+      "eyebrow": "Our Own Product · SaaS",
       "title": "Mayfren CRM",
-      "subtitle": "Mayfren is the IT management and CRM platform built by NEXATIXS that unifies technical support (helpdesk with real-time tickets and SLAs), remote device monitoring and control, enterprise security (SIEM, password vault, two-factor authentication and SSO), and WhatsApp-based customer support in a single dashboard. Built for companies and managed service providers running multiple clients or business units, Mayfren replaces scattered tools with one scalable solution, with automatic reporting and full visibility into the business's technology operations.",
+      "subtitle": "Mayfren is the CRM built by NEXATIXS that centralizes technical support (helpdesk with tickets, priorities and SLAs), technology inventory, real-time device monitoring (CPU, RAM, disk and installed software), staff performance evaluation, and business process automation — all in one place. Designed as a scalable SaaS platform, it replaces scattered tools with a single dashboard featuring roles, alerts, and automatic reports that give full visibility into the business operation.",
       "cta": "Discover Mayfren",
-      "features": ["Helpdesk & Tickets", "Remote Monitoring", "Security (SIEM, 2FA, SSO)", "WhatsApp Support"]
+      "features": ["Helpdesk & Tickets", "Inventory & Monitoring", "Staff Performance", "Process Automation"]
     },
     "ctaFinal": {
       "title": "Ready to transform your company?",

@@ -14,7 +14,12 @@ export async function generateMetadata() {
 export default async function NosotrosPage() {
   const t = await getTranslations("Nosotros");
   const tRoot = await getTranslations();
-  const team = tRoot.raw("Team") as { name: string; role: string; formation: string }[];
+  const team = tRoot.raw("Team") as {
+    name: string;
+    title: string;
+    role: string;
+    formation: string;
+  }[];
   const whyParagraphs = t.raw("whyParagraphs") as string[];
 
   return (
@@ -63,7 +68,8 @@ export default async function NosotrosPage() {
                     />
                   </span>
                   <CardTitle className="mt-4">{info.name}</CardTitle>
-                  <p className="mt-1.5 text-sm font-semibold text-sky-400">{info.role}</p>
+                  <p className="mt-1.5 text-sm font-semibold text-sky-400">{info.title}</p>
+                  <p className="text-sm text-foreground/70">{info.role}</p>
                   <CardDescription>{info.formation}</CardDescription>
 
                   <div className="mt-4 flex w-full justify-center border-t border-foreground/10 pt-4">

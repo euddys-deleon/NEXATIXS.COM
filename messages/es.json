@@ -158,8 +158,10 @@
       "addTitle": "Agregar nuevo plan",
       "category": "Categoría",
       "name": "Nombre",
-      "price": "Precio",
-      "priceHelp": "Dejar vacío para mostrar \"Cotizar\"",
+      "price": "Precio mensual",
+      "priceHelp": "Vacío = \"Cotizar\"",
+      "annualPrice": "Precio anual",
+      "annualPriceHelp": "Opcional (por mes)",
       "currency": "Moneda",
       "billingPeriod": "Periodicidad",
       "billingLabels": {
@@ -180,6 +182,7 @@
       "confirmDelete": "¿Eliminar este plan? Esta acción no se puede deshacer.",
       "empty": "No hay planes en esta categoría todavía.",
       "categories": {
+        "mayfren": "Mayfren CRM",
         "web": "Desarrollo Web",
         "herramientas": "Herramientas",
         "redes_sociales": "Redes Sociales"
@@ -526,17 +529,20 @@
   "Team": [
     {
       "name": "Euddys Daviel De León Feliz",
-      "role": "Co-founder / CISO & Director de Ciberseguridad y Redes",
+      "title": "Co-Founder",
+      "role": "Director de Ciberseguridad y Redes (CISO)",
       "formation": "Ingeniero en Sistemas y Computación"
     },
     {
       "name": "Brayam Herrera Peralta",
-      "role": "Co-founder / CTO & Director de Infraestructura y Desarrollo",
+      "title": "Co-Founder",
+      "role": "Director de Infraestructura y Desarrollo (CTO)",
       "formation": "Ingeniero en Sistemas y Computación"
     },
     {
       "name": "Yohan Matos",
-      "role": "Co-founder / COO & Director de Seguridad de la Información y Analista de Datos",
+      "title": "Co-Founder",
+      "role": "Director de Seguridad de la Información y Datos (COO)",
       "formation": "Ingeniero en Sistemas y Computación"
     }
   ],
@@ -575,16 +581,19 @@
     "title": "Un plan para cada etapa de tu negocio",
     "subtitle": "Elige la opción que mejor se adapte a tus necesidades. Todos los planes son personalizables según el alcance de tu proyecto.",
     "categories": {
+      "mayfren": "Mayfren CRM",
       "web": "Desarrollo Web",
       "herramientas": "Herramientas",
       "redes_sociales": "Redes Sociales"
     },
     "featured": "Más popular",
-    "perMonth": "/mes",
+    "perMonth": "/usuario/mes",
     "perYear": "/año",
     "oneTime": "pago único",
-    "contactForPrice": "Cotizar",
+    "annualPrice": "o {price}/usuario/mes con pago anual",
+    "contactForPrice": "Precio a cotizar",
     "cta": "Solicitar este plan",
+    "quoteCta": "Solicitar cotización",
     "customTitle": "¿Necesitas algo a la medida?",
     "customSubtitle": "Cuéntanos sobre tu proyecto y armamos una propuesta personalizada, sin compromiso.",
     "customCta": "Solicitar plan personalizado"
@@ -666,11 +675,11 @@
       "subtitle": "Nuestro equipo está certificado por las principales marcas de tecnología a nivel mundial."
     },
     "mayfren": {
-      "eyebrow": "Producto Propio",
+      "eyebrow": "Producto Propio · SaaS",
       "title": "Mayfren CRM",
-      "subtitle": "Mayfren es la plataforma de gestión de TI y CRM desarrollada por NEXATIXS que unifica en un solo panel el soporte técnico (helpdesk con tickets y SLA en tiempo real), el monitoreo y control remoto de equipos, la seguridad empresarial (SIEM, bóveda de contraseñas, doble factor y SSO) y la atención al cliente vía WhatsApp. Pensada para empresas y proveedores de servicios gestionados que operan múltiples clientes o unidades, Mayfren reemplaza herramientas dispersas por una sola solución escalable, con reportes automáticos y visibilidad total de la operación tecnológica del negocio.",
+      "subtitle": "Mayfren es el CRM desarrollado por NEXATIXS que centraliza en un solo lugar la gestión del soporte técnico (helpdesk con tickets, prioridades y SLA), el inventario tecnológico, el monitoreo en tiempo real de los equipos (CPU, RAM, disco y software instalado), la evaluación del desempeño del personal y la automatización de procesos empresariales. Pensado como una plataforma SaaS escalable, reemplaza herramientas dispersas por un único panel con roles, alertas y reportes automáticos que dan visibilidad total de la operación del negocio.",
       "cta": "Conocer Mayfren",
-      "features": ["Helpdesk & Tickets", "Monitoreo Remoto", "Seguridad (SIEM, 2FA, SSO)", "Atención por WhatsApp"]
+      "features": ["Helpdesk & Tickets", "Inventario y Monitoreo", "Desempeño del Personal", "Automatización de Procesos"]
     },
     "ctaFinal": {
       "title": "¿Listo para transformar su empresa?",

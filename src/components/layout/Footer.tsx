@@ -14,17 +14,30 @@ import {
 } from "@/components/icons/SocialIcons";
 
 const SOCIAL_LINKS = [
-  { icon: LinkedInIcon, label: "LinkedIn", href: "#" },
-  { icon: InstagramIcon, label: "Instagram", href: "#" },
-  { icon: FacebookIcon, label: "Facebook", href: "#" },
-  { icon: TikTokIcon, label: "TikTok", href: "#" },
+  { icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/company/nexatixs/" },
+  { icon: InstagramIcon, label: "Instagram", href: "https://www.instagram.com/nexatixs/" },
+  {
+    icon: FacebookIcon,
+    label: "Facebook",
+    href: "https://www.facebook.com/share/1NpzQ9JZWz/?mibxtid=wwXlfr",
+  },
+  {
+    icon: TikTokIcon,
+    label: "TikTok",
+    href: "https://www.tiktok.com/@nexatixs?_r=1&_t=ZS-97xWXi0l0SO",
+  },
   { icon: WhatsAppIcon, label: "WhatsApp", href: "https://wa.me/18292680004" },
 ];
 
 export function Footer() {
   const t = useTranslations("Footer");
   const tRoot = useTranslations();
-  const teamRaw = tRoot.raw("Team") as { name: string; role: string; formation: string }[];
+  const teamRaw = tRoot.raw("Team") as {
+    name: string;
+    title: string;
+    role: string;
+    formation: string;
+  }[];
 
   return (
     <footer className="border-t border-foreground/10 bg-background-subtle">
@@ -60,6 +73,12 @@ export function Footer() {
                 <Mail size={14} className="text-brand-blue" />
                 <a href="mailto:soporte@nexatixs.com" className="hover:text-brand-blue">
                   soporte@nexatixs.com
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail size={14} className="text-brand-blue" />
+                <a href="mailto:info@nexatixs.com" className="hover:text-brand-blue">
+                  info@nexatixs.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
@@ -105,10 +124,22 @@ export function Footer() {
                         className="object-cover"
                       />
                     </span>
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-sm font-semibold text-foreground">{info.name}</p>
-                      <p className="text-xs text-sky-400">{info.role}</p>
+                      <p className="text-xs font-medium text-sky-400">{info.title}</p>
+                      <p className="text-xs text-foreground/60">{info.role}</p>
                     </div>
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`LinkedIn — ${info.name}`}
+                        className="ml-auto inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-foreground/10 text-foreground/60 transition-colors hover:border-brand-blue/40 hover:text-brand-blue"
+                      >
+                        <LinkedInIcon width={14} height={14} />
+                      </a>
+                    )}
                   </li>
                 );
               })}
