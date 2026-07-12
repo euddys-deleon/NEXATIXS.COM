@@ -16,7 +16,7 @@ export function MayfrenSection() {
   const features = t.raw("features") as string[];
 
   return (
-    <Section id="mayfren" tone="subtle" className="scroll-mt-16">
+    <Section id="mayfren" tone="subtle" className="scroll-mt-20">
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <motion.div

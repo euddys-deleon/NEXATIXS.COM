@@ -39,7 +39,7 @@ export function AdminHeader({ fullName, isSuperadmin }: { fullName: string; isSu
 
   return (
     <header className="sticky top-0 z-50 border-b border-foreground/10 bg-background/80 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between gap-4">
+      <Container className="flex h-20 items-center justify-between gap-4">
         <Logo />
         <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (

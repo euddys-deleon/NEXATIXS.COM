@@ -29,7 +29,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-foreground/10 bg-background/80 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between gap-4">
+      <Container className="flex h-20 items-center justify-between gap-4">
         <Logo className="shrink-0" />
 
         <nav className="hidden min-w-0 items-center gap-4 xl:flex xl:gap-6">
