@@ -20,14 +20,14 @@ export function Logo({ className }: { className?: string }) {
       href="/"
       onClick={handleClick}
       aria-label="NEXATIXS — Inicio"
-      className={cn("flex items-center gap-3", className)}
+      className={cn("flex items-center gap-2.5", className)}
     >
-      <span className="relative block h-11 w-11 shrink-0">
+      <span className="relative block h-14 w-14 shrink-0">
         <Image
           src="/assets/brand/logo/mark-transparent-light.png"
           alt=""
           fill
-          sizes="44px"
+          sizes="56px"
           className="object-contain dark:hidden"
           priority
         />
@@ -35,12 +35,12 @@ export function Logo({ className }: { className?: string }) {
           src="/assets/brand/logo/mark-transparent.png"
           alt=""
           fill
-          sizes="44px"
+          sizes="56px"
           className="hidden object-contain dark:block"
           priority
         />
       </span>
-      <span className="font-heading text-xl font-bold tracking-tight text-foreground">
+      <span className="font-heading text-2xl font-bold leading-none tracking-tight text-foreground">
         NEXATIXS
       </span>
     </Link>

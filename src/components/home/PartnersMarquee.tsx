@@ -33,26 +33,16 @@ export function PartnersMarquee() {
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: index * 0.06 }}
               whileHover={{ y: -3 }}
-              className="flex flex-col items-center rounded-2xl border border-foreground/10 bg-background p-6 text-center transition-shadow hover:shadow-md"
+              className="group flex flex-col items-center rounded-2xl border border-foreground/10 bg-background p-6 text-center transition-colors hover:border-brand-blue/40 hover:shadow-[0_0_28px_rgba(14,110,255,0.15)]"
             >
-              <div
-                className={
-                  cert.fillTile
-                    ? "flex h-16 w-full items-center justify-center overflow-hidden rounded-xl shadow-sm"
-                    : "flex h-16 w-full items-center justify-center rounded-xl bg-white/95 px-5 shadow-sm"
-                }
-              >
+              <div className="flex h-14 w-full items-center justify-center">
                 {cert.logoSrc ? (
                   <Image
                     src={cert.logoSrc}
                     alt={cert.name}
                     width={160}
-                    height={64}
-                    className={
-                      cert.fillTile
-                        ? "h-full w-full object-cover"
-                        : "h-9 w-auto max-w-[130px] object-contain"
-                    }
+                    height={56}
+                    className="h-8 w-auto max-w-[140px] object-contain opacity-60 brightness-0 transition-opacity duration-300 group-hover:opacity-100 dark:invert"
                   />
                 ) : (
                   <BadgeCheck className="text-brand-blue" size={28} strokeWidth={1.75} />
