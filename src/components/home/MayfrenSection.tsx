@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ExternalLink, Headset, MessageCircle, Radar, ShieldCheck } from "lucide-react";
@@ -24,7 +25,16 @@ export function MayfrenSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            <span className="font-heading text-sm font-semibold uppercase tracking-widest text-brand-blue">
+            <span className="relative block h-14 w-14">
+              <Image
+                src="/assets/brand/mayfren/Logo-Mayfren.png"
+                alt="Mayfren"
+                fill
+                sizes="56px"
+                className="object-contain"
+              />
+            </span>
+            <span className="mt-4 block font-heading text-sm font-semibold uppercase tracking-widest text-brand-blue">
               {t("eyebrow")}
             </span>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
