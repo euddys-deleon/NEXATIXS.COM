@@ -7,7 +7,6 @@ import { Menu, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 import { buttonVariants } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
@@ -30,16 +29,16 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-foreground/10 bg-background/80 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between">
-        <Logo />
+      <Container className="flex h-16 items-center justify-between gap-4">
+        <Logo className="shrink-0" />
 
-        <nav className="hidden items-center gap-5 lg:flex xl:gap-6">
+        <nav className="hidden min-w-0 items-center gap-4 xl:flex xl:gap-6">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-brand-blue",
+                "whitespace-nowrap text-sm font-medium transition-colors hover:text-brand-blue",
                 pathname === item.href ? "text-brand-blue" : "text-foreground/70",
               )}
             >
@@ -48,12 +47,11 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <LanguageSwitcher />
-          <ThemeToggle />
+        <div className="hidden shrink-0 items-center gap-3 xl:flex">
           <Link href="/iniciar-sesion" className={buttonVariants({ variant: "outline", size: "sm" })}>
             {t("login")}
           </Link>
+          <ThemeToggle />
         </div>
 
         <button
@@ -61,7 +59,7 @@ export function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-label={t("menu")}
           aria-expanded={open}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground lg:hidden"
+          className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-foreground xl:hidden"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -74,7 +72,7 @@ export function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-foreground/10 lg:hidden"
+            className="overflow-hidden border-t border-foreground/10 xl:hidden"
           >
             <Container className="flex flex-col gap-4 py-6">
               {navItems.map((item) => (
@@ -97,8 +95,7 @@ export function Header() {
               >
                 {t("login")}
               </Link>
-              <div className="flex items-center gap-3 pt-2">
-                <LanguageSwitcher />
+              <div className="flex items-center justify-end pt-2">
                 <ThemeToggle />
               </div>
             </Container>
