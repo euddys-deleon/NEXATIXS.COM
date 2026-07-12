@@ -10,6 +10,7 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Field } from "@/components/ui/Field";
 import { Input } from "@/components/ui/Input";
+import { PasswordInput } from "@/components/ui/PasswordInput";
 import { Button } from "@/components/ui/Button";
 
 export default function IniciarSesionPage() {
@@ -72,9 +73,8 @@ export default function IniciarSesionPage() {
               />
             </Field>
             <Field label={t("password")} htmlFor="password">
-              <Input
+              <PasswordInput
                 id="password"
-                type="password"
                 required
                 autoComplete="current-password"
                 value={password}

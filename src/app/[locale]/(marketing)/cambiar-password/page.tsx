@@ -7,7 +7,7 @@ import { supabase } from "@/lib/supabase/client";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Field } from "@/components/ui/Field";
-import { Input } from "@/components/ui/Input";
+import { PasswordInput } from "@/components/ui/PasswordInput";
 import { Button } from "@/components/ui/Button";
 
 export default function CambiarPasswordPage() {
@@ -81,9 +81,8 @@ export default function CambiarPasswordPage() {
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <Field label={t("newPassword")} htmlFor="password">
-              <Input
+              <PasswordInput
                 id="password"
-                type="password"
                 required
                 autoComplete="new-password"
                 value={password}
@@ -91,9 +90,8 @@ export default function CambiarPasswordPage() {
               />
             </Field>
             <Field label={t("confirmPassword")} htmlFor="confirmPassword">
-              <Input
+              <PasswordInput
                 id="confirmPassword"
-                type="password"
                 required
                 autoComplete="new-password"
                 value={confirmPassword}
