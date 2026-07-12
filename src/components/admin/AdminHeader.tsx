@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { supabase } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
-const navItems = [
+const baseNavItems = [
   { href: "/admin", key: "dashboard" },
   { href: "/admin/prospectos", key: "prospects" },
   { href: "/admin/clientes", key: "clients" },
@@ -16,14 +16,20 @@ const navItems = [
   { href: "/admin/auditoria", key: "audit" },
 ] as const;
 
+const superadminNavItem = { href: "/superadmin", key: "superadmin" } as const;
+
 function isActive(pathname: string, href: string) {
-  return href === "/admin" ? pathname === "/admin" : pathname.startsWith(href);
+  if (href === "/admin") return pathname === "/admin";
+  if (href === "/superadmin") return pathname === "/superadmin";
+  return pathname.startsWith(href);
 }
 
-export function AdminHeader({ fullName }: { fullName: string }) {
+export function AdminHeader({ fullName, isSuperadmin }: { fullName: string; isSuperadmin?: boolean }) {
   const t = useTranslations("Admin");
   const pathname = usePathname();
   const router = useRouter();
+
+  const navItems = isSuperadmin ? [superadminNavItem, ...baseNavItems] : baseNavItems;
 
   async function handleLogout() {
     await supabase.auth.signOut();

@@ -147,6 +147,7 @@ export type Database = {
           created_at: string
           full_name: string
           id: string
+          must_change_password: boolean
           role: string
         }
         Insert: {
@@ -154,6 +155,7 @@ export type Database = {
           created_at?: string
           full_name: string
           id: string
+          must_change_password?: boolean
           role?: string
         }
         Update: {
@@ -161,6 +163,7 @@ export type Database = {
           created_at?: string
           full_name?: string
           id?: string
+          must_change_password?: boolean
           role?: string
         }
         Relationships: [
@@ -696,6 +699,7 @@ export type Database = {
         Args: { p_entity_id: string; p_entity_type: string }
         Returns: boolean
       }
+      clear_must_change_password: { Args: never; Returns: undefined }
       create_prospect: {
         Args: {
           p_category: string

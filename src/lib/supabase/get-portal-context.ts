@@ -14,7 +14,7 @@ export const getPortalContext = cache(async () => {
 
   const { data: clientUser } = await supabase
     .from("client_users")
-    .select("full_name, client_id, role")
+    .select("full_name, client_id, role, must_change_password")
     .eq("id", user.id)
     .single();
 

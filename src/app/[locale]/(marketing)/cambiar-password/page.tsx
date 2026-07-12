@@ -59,10 +59,7 @@ export default function CambiarPasswordPage() {
       return;
     }
 
-    await supabase
-      .from("staff_users")
-      .update({ must_change_password: false })
-      .eq("id", userData.user.id);
+    await supabase.rpc("clear_must_change_password");
 
     router.push("/configurar-2fa");
     router.refresh();

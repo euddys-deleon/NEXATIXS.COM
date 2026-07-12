@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { supabase } from "@/lib/supabase/client";
+import { resolveHomePath } from "@/lib/auth/resolve-home";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Field } from "@/components/ui/Field";
@@ -59,7 +60,7 @@ export default function Verificar2faPage() {
       return;
     }
 
-    router.push("/admin");
+    router.push(await resolveHomePath());
     router.refresh();
   }
 

@@ -3,7 +3,7 @@ import { getStaffContext } from "@/lib/supabase/get-staff-context";
 import { getSecurityGateRedirect } from "@/lib/auth/security-gate";
 import { AdminHeader } from "@/components/admin/AdminHeader";
 
-export default async function AdminLayout({
+export default async function SuperadminLayout({
   children,
   params,
 }: {
@@ -18,6 +18,12 @@ export default async function AdminLayout({
     return null;
   }
 
+  // Only staff with the "admin" role may enter the superadmin area.
+  if (staffUser.role !== "admin") {
+    redirect({ href: "/admin", locale });
+    return null;
+  }
+
   const gate = await getSecurityGateRedirect(supabase, staffUser.must_change_password);
   if (gate) {
     redirect({ href: gate, locale });
@@ -26,7 +32,7 @@ export default async function AdminLayout({
 
   return (
     <div className="flex flex-1 flex-col">
-      <AdminHeader fullName={staffUser.full_name} />
+      <AdminHeader fullName={staffUser.full_name} isSuperadmin />
       <main className="flex flex-1 flex-col bg-background-subtle">{children}</main>
     </div>
   );

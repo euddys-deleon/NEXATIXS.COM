@@ -1,5 +1,6 @@
 import { redirect } from "@/i18n/navigation";
 import { getPortalContext } from "@/lib/supabase/get-portal-context";
+import { getSecurityGateRedirect } from "@/lib/auth/security-gate";
 import { PortalHeader } from "@/components/portal/PortalHeader";
 import { ChatWidget } from "@/components/portal/ChatWidget";
 
@@ -15,6 +16,12 @@ export default async function PortalLayout({
 
   if (!user || !clientUser) {
     redirect({ href: "/iniciar-sesion", locale });
+    return null;
+  }
+
+  const gate = await getSecurityGateRedirect(supabase, clientUser.must_change_password);
+  if (gate) {
+    redirect({ href: gate, locale });
     return null;
   }
 

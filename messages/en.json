@@ -1,6 +1,7 @@
 {
   "Admin": {
     "nav": {
+      "superadmin": "Executive Panel",
       "dashboard": "Dashboard",
       "prospects": "Prospects",
       "clients": "Clients",
@@ -235,6 +236,29 @@
       "submit": "Verify",
       "submitting": "Verifying..."
     }
+  },
+  "Superadmin": {
+    "eyebrow": "Executive Panel",
+    "title": "Welcome, {name}",
+    "subtitle": "Business overview and full access to NEXATIXS management.",
+    "kpi": {
+      "revenue": "Collected revenue",
+      "activeClients": "Active clients",
+      "newClients": "New clients (month)",
+      "activeProspects": "Prospects in pipeline",
+      "activeProjects": "Active projects",
+      "openTickets": "Open tickets",
+      "pendingInvoices": "Pending invoices",
+      "overdueInvoices": "Overdue invoices"
+    },
+    "manageTitle": "Management",
+    "sections": {
+      "clients": { "title": "Clients", "description": "Manage companies, contacts, projects and billing." },
+      "prospects": { "title": "Prospects", "description": "Incoming requests and conversion to clients." },
+      "plans": { "title": "Plans", "description": "Edit the plans and pricing published on the site." },
+      "audit": { "title": "Audit Log", "description": "Record of changes made across the platform." }
+    },
+    "footnote": "Exclusive access for NEXATIXS leadership."
   },
   "Portal": {
     "nav": {

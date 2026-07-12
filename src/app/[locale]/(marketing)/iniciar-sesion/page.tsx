@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
 import { supabase } from "@/lib/supabase/client";
+import { resolveHomePath } from "@/lib/auth/resolve-home";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Field } from "@/components/ui/Field";
@@ -40,14 +41,10 @@ export default function IniciarSesionPage() {
       return;
     }
 
-    const { data: staffUser } = await supabase
-      .from("staff_users")
-      .select("id")
-      .eq("id", signInData.user.id)
-      .maybeSingle();
+    const destination = await resolveHomePath();
 
     setSubmitting(false);
-    router.push(staffUser ? "/admin" : "/portal/dashboard");
+    router.push(destination);
     router.refresh();
   }
 
