@@ -4,6 +4,7 @@
       "dashboard": "Dashboard",
       "prospects": "Prospects",
       "clients": "Clients",
+      "plans": "Plans",
       "audit": "Audit Log"
     },
     "logout": "Log out",
@@ -150,6 +151,39 @@
         "add": "Add",
         "updateStatus": "Update status"
       }
+    },
+    "plans": {
+      "title": "Plans",
+      "subtitle": "Manage the plans published on the public Plans section.",
+      "addTitle": "Add new plan",
+      "category": "Category",
+      "name": "Name",
+      "price": "Price",
+      "priceHelp": "Leave empty to show \"Get a quote\"",
+      "currency": "Currency",
+      "billingPeriod": "Billing period",
+      "billingLabels": {
+        "mensual": "Monthly",
+        "anual": "Yearly",
+        "unico": "One-time"
+      },
+      "description": "Description",
+      "features": "Features (one per line)",
+      "displayOrder": "Display order",
+      "featured": "Featured",
+      "active": "Active (visible on the site)",
+      "add": "Add plan",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "confirmDelete": "Delete this plan? This action cannot be undone.",
+      "empty": "No plans in this category yet.",
+      "categories": {
+        "web": "Web Development",
+        "herramientas": "Tools",
+        "redes_sociales": "Social Media"
+      }
     }
   },
   "Login": {
@@ -164,6 +198,40 @@
     "genericError": "There was an error logging in. Please try again.",
     "noAccount": "Not a client yet?",
     "requestAccess": "Request an evaluation"
+  },
+  "Auth": {
+    "changePassword": {
+      "eyebrow": "Account security",
+      "title": "Create a new password",
+      "subtitle": "For security, you must set your own password before continuing.",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "tooShort": "Password must be at least 8 characters.",
+      "mismatch": "Passwords don't match.",
+      "genericError": "There was an error updating the password. Please try again.",
+      "submit": "Save and continue",
+      "submitting": "Saving..."
+    },
+    "setup2fa": {
+      "eyebrow": "Account security",
+      "title": "Set up two-factor authentication",
+      "subtitle": "Scan this code with Google Authenticator, Authy, or a similar app, then confirm with the 6-digit code.",
+      "manualEntry": "Or enter this code manually",
+      "codeLabel": "Verification code",
+      "invalidCode": "Incorrect code. Please try again.",
+      "genericError": "There was an error setting up authentication. Please try again.",
+      "submit": "Verify and enable",
+      "submitting": "Verifying..."
+    },
+    "verify2fa": {
+      "eyebrow": "Account security",
+      "title": "Two-factor verification",
+      "subtitle": "Enter the 6-digit code from your authenticator app.",
+      "codeLabel": "Verification code",
+      "invalidCode": "Incorrect code. Please try again.",
+      "submit": "Verify",
+      "submitting": "Verifying..."
+    }
   },
   "Portal": {
     "nav": {
@@ -496,10 +564,30 @@
     "services": "Services",
     "solutions": "Solutions",
     "tools": "Tools",
+    "plans": "Plans",
     "news": "News",
     "support": "Support",
     "login": "Client Portal",
     "menu": "Menu"
+  },
+  "Plans": {
+    "eyebrow": "Plans & Pricing",
+    "title": "A plan for every stage of your business",
+    "subtitle": "Choose the option that best fits your needs. All plans can be tailored to the scope of your project.",
+    "categories": {
+      "web": "Web Development",
+      "herramientas": "Tools",
+      "redes_sociales": "Social Media"
+    },
+    "featured": "Most popular",
+    "perMonth": "/mo",
+    "perYear": "/yr",
+    "oneTime": "one-time",
+    "contactForPrice": "Get a quote",
+    "cta": "Request this plan",
+    "customTitle": "Need something custom?",
+    "customSubtitle": "Tell us about your project and we'll put together a tailored proposal, no strings attached.",
+    "customCta": "Request a custom plan"
   },
   "Footer": {
     "description": "A strategic ally in digital transformation: development, infrastructure, automation, cloud, cybersecurity and support.",

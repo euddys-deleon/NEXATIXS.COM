@@ -11,11 +11,14 @@
   "dependencies": {
     "@google/genai": "^2.10.0",
     "@hookform/resolvers": "^5.4.0",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.110.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.42.0",
+    "gsap": "^3.15.0",
     "jspdf": "^4.2.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.22.0",
@@ -27,7 +30,9 @@
     "react-leaflet": "^5.0.0",
     "recharts": "^3.9.1",
     "rss-parser": "^3.13.0",
+    "simplex-noise": "^4.0.3",
     "tailwind-merge": "^3.6.0",
+    "three": "^0.185.1",
     "zod": "^4.4.3"
   },
   "devDependencies": {
@@ -36,6 +41,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.185.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "sharp": "^0.35.2",

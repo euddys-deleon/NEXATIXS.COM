@@ -4,6 +4,7 @@
       "dashboard": "Dashboard",
       "prospects": "Prospectos",
       "clients": "Clientes",
+      "plans": "Planes",
       "audit": "Auditoría"
     },
     "logout": "Cerrar sesión",
@@ -150,6 +151,39 @@
         "add": "Agregar",
         "updateStatus": "Actualizar estado"
       }
+    },
+    "plans": {
+      "title": "Planes",
+      "subtitle": "Gestiona los planes publicados en la sección pública de Planes.",
+      "addTitle": "Agregar nuevo plan",
+      "category": "Categoría",
+      "name": "Nombre",
+      "price": "Precio",
+      "priceHelp": "Dejar vacío para mostrar \"Cotizar\"",
+      "currency": "Moneda",
+      "billingPeriod": "Periodicidad",
+      "billingLabels": {
+        "mensual": "Mensual",
+        "anual": "Anual",
+        "unico": "Pago único"
+      },
+      "description": "Descripción",
+      "features": "Características (una por línea)",
+      "displayOrder": "Orden de aparición",
+      "featured": "Destacado",
+      "active": "Activo (visible en el sitio)",
+      "add": "Agregar plan",
+      "edit": "Editar",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "delete": "Eliminar",
+      "confirmDelete": "¿Eliminar este plan? Esta acción no se puede deshacer.",
+      "empty": "No hay planes en esta categoría todavía.",
+      "categories": {
+        "web": "Desarrollo Web",
+        "herramientas": "Herramientas",
+        "redes_sociales": "Redes Sociales"
+      }
     }
   },
   "Login": {
@@ -164,6 +198,40 @@
     "genericError": "Ocurrió un error al iniciar sesión. Intente de nuevo.",
     "noAccount": "¿Aún no es cliente?",
     "requestAccess": "Solicite una evaluación"
+  },
+  "Auth": {
+    "changePassword": {
+      "eyebrow": "Seguridad de la cuenta",
+      "title": "Crea una nueva contraseña",
+      "subtitle": "Por seguridad, debes establecer una contraseña propia antes de continuar.",
+      "newPassword": "Nueva contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "tooShort": "La contraseña debe tener al menos 8 caracteres.",
+      "mismatch": "Las contraseñas no coinciden.",
+      "genericError": "Ocurrió un error al actualizar la contraseña. Intente de nuevo.",
+      "submit": "Guardar y continuar",
+      "submitting": "Guardando..."
+    },
+    "setup2fa": {
+      "eyebrow": "Seguridad de la cuenta",
+      "title": "Configura la autenticación en dos pasos",
+      "subtitle": "Escanea este código con Google Authenticator, Authy u otra app similar, y confirma con el código de 6 dígitos.",
+      "manualEntry": "O ingresa este código manualmente",
+      "codeLabel": "Código de verificación",
+      "invalidCode": "Código incorrecto. Intente de nuevo.",
+      "genericError": "Ocurrió un error al configurar la autenticación. Intente de nuevo.",
+      "submit": "Verificar y activar",
+      "submitting": "Verificando..."
+    },
+    "verify2fa": {
+      "eyebrow": "Seguridad de la cuenta",
+      "title": "Verificación en dos pasos",
+      "subtitle": "Ingresa el código de 6 dígitos de tu aplicación de autenticación.",
+      "codeLabel": "Código de verificación",
+      "invalidCode": "Código incorrecto. Intente de nuevo.",
+      "submit": "Verificar",
+      "submitting": "Verificando..."
+    }
   },
   "Portal": {
     "nav": {
@@ -496,10 +564,30 @@
     "services": "Servicios",
     "solutions": "Soluciones",
     "tools": "Herramientas",
+    "plans": "Planes",
     "news": "Noticias",
     "support": "Soporte",
     "login": "Portal Clientes",
     "menu": "Menú"
+  },
+  "Plans": {
+    "eyebrow": "Planes y Precios",
+    "title": "Un plan para cada etapa de tu negocio",
+    "subtitle": "Elige la opción que mejor se adapte a tus necesidades. Todos los planes son personalizables según el alcance de tu proyecto.",
+    "categories": {
+      "web": "Desarrollo Web",
+      "herramientas": "Herramientas",
+      "redes_sociales": "Redes Sociales"
+    },
+    "featured": "Más popular",
+    "perMonth": "/mes",
+    "perYear": "/año",
+    "oneTime": "pago único",
+    "contactForPrice": "Cotizar",
+    "cta": "Solicitar este plan",
+    "customTitle": "¿Necesitas algo a la medida?",
+    "customSubtitle": "Cuéntanos sobre tu proyecto y armamos una propuesta personalizada, sin compromiso.",
+    "customCta": "Solicitar plan personalizado"
   },
   "Footer": {
     "description": "Aliado estratégico en transformación digital: desarrollo, infraestructura, automatización, cloud, ciberseguridad y soporte.",

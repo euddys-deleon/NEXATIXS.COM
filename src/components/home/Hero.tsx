@@ -1,13 +1,13 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Cloud, Code2, Headset, Settings2, Shield } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { buttonVariants } from "@/components/ui/Button";
+import { HeroParticles } from "./HeroParticles";
 
 const HIGHLIGHT_ICONS = [Shield, Cloud, Code2, Settings2, Headset];
 
@@ -29,26 +29,11 @@ export function Hero() {
     <section
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="group relative overflow-hidden bg-background"
+      className="dark group relative overflow-hidden bg-[#050505]"
     >
-      <div className="absolute inset-0">
-        <motion.div
-          initial={{ scale: 1 }}
-          animate={{ scale: 1.08 }}
-          transition={{ duration: 25, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-          className="absolute inset-0"
-        >
-          <Image
-            src="/assets/hero/hero-bg.jpg"
-            alt=""
-            fill
-            priority
-            className="object-cover object-center opacity-40 saturate-50"
-          />
-        </motion.div>
-      </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/50" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
+      <HeroParticles />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/60 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050505]" />
       <div
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
@@ -103,22 +88,6 @@ export function Hero() {
           })}
         </motion.div>
       </Container>
-
-      <div className="pointer-events-none absolute top-1/2 right-[2%] hidden h-72 w-72 -translate-y-1/2 sm:block lg:right-[6%] lg:h-96 lg:w-96">
-        <div className="absolute inset-0 scale-90 rounded-full bg-brand-blue/25 blur-3xl" />
-        <Image
-          src="/assets/brand/logo/mark-transparent.png"
-          alt="NEXATIXS"
-          fill
-          className="hidden object-contain drop-shadow-[0_0_45px_rgba(14,110,255,0.45)] dark:block"
-        />
-        <Image
-          src="/assets/brand/logo/mark-transparent-light.png"
-          alt="NEXATIXS"
-          fill
-          className="block object-contain drop-shadow-[0_0_30px_rgba(14,110,255,0.3)] dark:hidden"
-        />
-      </div>
     </section>
   );
 }

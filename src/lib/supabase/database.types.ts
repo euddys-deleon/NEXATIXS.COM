@@ -326,6 +326,54 @@ export type Database = {
           },
         ]
       }
+      plans: {
+        Row: {
+          active: boolean
+          billing_period: string
+          category: string
+          created_at: string
+          currency: string
+          description: string | null
+          display_order: number
+          features: Json
+          id: string
+          is_featured: boolean
+          name: string
+          price: number | null
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          billing_period?: string
+          category: string
+          created_at?: string
+          currency?: string
+          description?: string | null
+          display_order?: number
+          features?: Json
+          id?: string
+          is_featured?: boolean
+          name: string
+          price?: number | null
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          billing_period?: string
+          category?: string
+          created_at?: string
+          currency?: string
+          description?: string | null
+          display_order?: number
+          features?: Json
+          id?: string
+          is_featured?: boolean
+          name?: string
+          price?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       project_status_history: {
         Row: {
           changed_at: string
@@ -470,18 +518,21 @@ export type Database = {
           created_at: string
           full_name: string
           id: string
+          must_change_password: boolean
           role: string
         }
         Insert: {
           created_at?: string
           full_name: string
           id: string
+          must_change_password?: boolean
           role?: string
         }
         Update: {
           created_at?: string
           full_name?: string
           id?: string
+          must_change_password?: boolean
           role?: string
         }
         Relationships: []

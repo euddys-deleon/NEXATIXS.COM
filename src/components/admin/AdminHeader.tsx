@@ -12,6 +12,7 @@ const navItems = [
   { href: "/admin", key: "dashboard" },
   { href: "/admin/prospectos", key: "prospects" },
   { href: "/admin/clientes", key: "clients" },
+  { href: "/admin/planes", key: "plans" },
   { href: "/admin/auditoria", key: "audit" },
 ] as const;
 

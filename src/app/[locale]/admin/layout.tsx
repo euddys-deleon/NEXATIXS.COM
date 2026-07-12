@@ -10,10 +10,25 @@ export default async function AdminLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const { user, staffUser } = await getStaffContext();
+  const { user, staffUser, supabase } = await getStaffContext();
 
   if (!user || !staffUser) {
     redirect({ href: "/iniciar-sesion", locale });
+    return null;
+  }
+
+  if (staffUser.must_change_password) {
+    redirect({ href: "/cambiar-password", locale });
+    return null;
+  }
+
+  const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+  if (aal?.nextLevel === "aal1") {
+    redirect({ href: "/configurar-2fa", locale });
+    return null;
+  }
+  if (aal && aal.currentLevel !== "aal2") {
+    redirect({ href: "/verificar-2fa", locale });
     return null;
   }
 
