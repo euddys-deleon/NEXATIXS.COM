@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 
 const metrics = [
-  { value: 10, suffix: "+", decimals: 0, labelKey: "companiesLabel" },
-  { value: 1, suffix: "", decimals: 0, labelKey: "yearsLabel" },
+  { value: 25, suffix: "+", decimals: 0, labelKey: "clientsLabel" },
+  { value: 2, suffix: "", decimals: 0, labelKey: "branchesLabel" },
   { value: 99.9, suffix: "%", decimals: 1, labelKey: "uptimeLabel" },
   { value: 100, suffix: "%", decimals: 0, labelKey: "commitmentLabel" },
 ] as const;

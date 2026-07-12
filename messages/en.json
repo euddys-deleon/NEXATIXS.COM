@@ -624,8 +624,8 @@
       ]
     },
     "metrics": {
-      "companiesLabel": "Companies protected",
-      "yearsLabel": "Year of experience",
+      "clientsLabel": "Clients served",
+      "branchesLabel": "Branches",
       "uptimeLabel": "Guaranteed uptime",
       "commitmentLabel": "Committed to your success"
     },

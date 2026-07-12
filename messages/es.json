@@ -624,8 +624,8 @@
       ]
     },
     "metrics": {
-      "companiesLabel": "Empresas protegidas",
-      "yearsLabel": "Año de experiencia",
+      "clientsLabel": "Clientes atendidos",
+      "branchesLabel": "Sucursales",
       "uptimeLabel": "Disponibilidad garantizada",
       "commitmentLabel": "Comprometidos con tu éxito"
     },
