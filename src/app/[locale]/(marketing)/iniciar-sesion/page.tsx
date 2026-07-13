@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
-import { useRouter } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { supabase } from "@/lib/supabase/client";
-import { resolveHomePath } from "@/lib/auth/resolve-home";
+import { hardNavigateTo, resolveHomePath } from "@/lib/auth/resolve-home";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Field } from "@/components/ui/Field";
@@ -15,7 +14,7 @@ import { Button } from "@/components/ui/Button";
 
 export default function IniciarSesionPage() {
   const t = useTranslations("Login");
-  const router = useRouter();
+  const locale = useLocale();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,8 +44,7 @@ export default function IniciarSesionPage() {
     const destination = await resolveHomePath();
 
     setSubmitting(false);
-    router.push(destination);
-    router.refresh();
+    hardNavigateTo(locale, destination);
   }
 
   return (

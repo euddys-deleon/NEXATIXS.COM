@@ -1,19 +1,44 @@
 "use client";
 
-import { CheckCircle2, Download } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { CalendarCheck2, CheckCircle2, Download, MessageCircle, Video } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
+import { AppointmentBooking, type BookedAppointment } from "./AppointmentBooking";
+import { generateAppointmentPdf } from "@/lib/pdf/generate-appointment-pdf";
 
 export function SuccessStep({
   displayId,
+  contactName,
+  contactEmail,
+  contactPhone,
   onDownloadPdf,
 }: {
   displayId: string;
+  contactName: string;
+  contactEmail: string;
+  contactPhone: string;
   onDownloadPdf: () => void;
 }) {
   const t = useTranslations("Captacion.success");
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
+  const tBooking = useTranslations("Captacion.booking");
+  const locale = useLocale();
+  const [appointment, setAppointment] = useState<BookedAppointment | null>(null);
+
+  const dateLocale = locale === "en" ? "en-US" : "es-DO";
+
+  async function handleDownloadAppointmentPdf() {
+    if (!appointment) return;
+    await generateAppointmentPdf({
+      displayId,
+      contactName,
+      executiveName: appointment.executiveName,
+      scheduledAt: appointment.scheduledAt,
+      channel: appointment.channel,
+      locale,
+    });
+  }
 
   return (
     <div className="text-center">
@@ -48,15 +73,53 @@ export function SuccessStep({
         </h3>
         <p className="mt-2 text-sm text-foreground/60">{t("scheduleSubtitle")}</p>
 
-        {calendlyUrl ? (
-          <div className="mt-6 overflow-hidden rounded-xl border border-foreground/10">
-            <iframe src={calendlyUrl} className="h-[600px] w-full" title="Calendly" />
-          </div>
-        ) : (
-          <p className="mt-6 rounded-xl border border-dashed border-foreground/20 p-4 text-sm text-foreground/60">
-            {t("calendlyPending")}
-          </p>
-        )}
+        <div className="mt-6">
+          {appointment ? (
+            <div className="rounded-xl border border-green-500/30 bg-green-500/5 p-6 text-center">
+              <CalendarCheck2 className="mx-auto text-green-600" size={28} />
+              <p className="mt-3 font-heading text-lg font-semibold text-foreground">
+                {tBooking("confirmedTitle")}
+              </p>
+              <p className="mt-2 text-sm text-foreground/70">
+                {tBooking("confirmedWith", { name: appointment.executiveName })}
+              </p>
+              <p className="mt-1 text-sm font-medium text-foreground">
+                {new Date(appointment.scheduledAt).toLocaleString(dateLocale, {
+                  dateStyle: "full",
+                  timeStyle: "short",
+                  timeZone: "America/Santo_Domingo",
+                })}
+              </p>
+              <p className="mt-1 flex items-center justify-center gap-1.5 text-sm text-foreground/70">
+                {appointment.channel === "meet" ? (
+                  <Video size={15} strokeWidth={1.75} />
+                ) : (
+                  <MessageCircle size={15} strokeWidth={1.75} />
+                )}
+                {appointment.channel === "meet"
+                  ? tBooking("channelMeet")
+                  : tBooking("channelWhatsapp")}
+              </p>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                className="mt-4"
+                onClick={handleDownloadAppointmentPdf}
+              >
+                <Download size={15} />
+                {tBooking("downloadReceipt")}
+              </Button>
+            </div>
+          ) : (
+            <AppointmentBooking
+              contactName={contactName}
+              contactEmail={contactEmail}
+              contactPhone={contactPhone}
+              onBooked={setAppointment}
+            />
+          )}
+        </div>
       </div>
 
       <Link

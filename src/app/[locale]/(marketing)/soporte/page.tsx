@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Card, CardDescription, CardTitle } from "@/components/ui/Card";
 import { Link } from "@/i18n/navigation";
+import { SupportForm } from "@/components/support/SupportForm";
 
 export async function generateMetadata() {
   const t = await getTranslations("Support");
@@ -75,6 +76,10 @@ export default async function SoportePage() {
                 {t("adviceCta")} →
               </Link>
             </Card>
+          </div>
+
+          <div className="mt-8 mx-auto max-w-xl">
+            <SupportForm />
           </div>
         </Container>
       </Section>

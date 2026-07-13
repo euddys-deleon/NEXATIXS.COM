@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { supabase } from "@/lib/supabase/client";
-import { resolveHomePath } from "@/lib/auth/resolve-home";
+import { hardNavigateTo, resolveHomePath } from "@/lib/auth/resolve-home";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Field } from "@/components/ui/Field";
@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/Button";
 
 export default function Configurar2faPage() {
   const t = useTranslations("Auth.setup2fa");
+  const locale = useLocale();
   const router = useRouter();
 
   const [loading, setLoading] = useState(true);
@@ -74,8 +75,7 @@ export default function Configurar2faPage() {
       return;
     }
 
-    router.push(await resolveHomePath());
-    router.refresh();
+    hardNavigateTo(locale, await resolveHomePath());
   }
 
   if (loading) return null;
@@ -93,8 +93,11 @@ export default function Configurar2faPage() {
           <p className="mt-2 text-foreground/60">{t("subtitle")}</p>
 
           {qrCode && (
-            <div className="mt-6 flex justify-center rounded-2xl border border-foreground/10 bg-white p-4">
-              <div className="h-48 w-48" dangerouslySetInnerHTML={{ __html: qrCode }} />
+            <div className="mt-6 flex items-center justify-center overflow-hidden rounded-2xl border border-foreground/10 bg-white p-4">
+              <div
+                className="flex h-48 w-48 items-center justify-center [&>svg]:block [&>svg]:h-full [&>svg]:w-full"
+                dangerouslySetInnerHTML={{ __html: qrCode }}
+              />
             </div>
           )}
 

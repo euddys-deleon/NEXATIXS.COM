@@ -30,6 +30,9 @@ type SubmitResult = {
   fields: PdfField[];
   formTypeLabel: string;
   categoryLabel: string;
+  contactName: string;
+  contactEmail: string;
+  contactPhone: string;
 };
 
 export function AgendarCitaWizard() {
@@ -135,6 +138,9 @@ export function AgendarCitaWizard() {
       fields,
       formTypeLabel,
       categoryLabel: catLabel,
+      contactName: contact.name,
+      contactEmail: contact.email,
+      contactPhone: contact.phone,
     });
     setStep("success");
   }
@@ -256,7 +262,13 @@ export function AgendarCitaWizard() {
               <FormF3 onBack={handleBackFromForm} onSubmit={handleSubmitF3} submitting={submitting} />
             )}
             {step === "success" && result && (
-              <SuccessStep displayId={result.displayId} onDownloadPdf={handleDownloadPdf} />
+              <SuccessStep
+                displayId={result.displayId}
+                contactName={result.contactName}
+                contactEmail={result.contactEmail}
+                contactPhone={result.contactPhone}
+                onDownloadPdf={handleDownloadPdf}
+              />
             )}
           </motion.div>
         </AnimatePresence>

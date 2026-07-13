@@ -14,6 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
+      _internal_config: {
+        Row: {
+          key: string
+          value: string
+        }
+        Insert: {
+          key: string
+          value: string
+        }
+        Update: {
+          key?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      appointments: {
+        Row: {
+          channel: string
+          contact_email: string
+          contact_name: string
+          contact_phone: string | null
+          created_at: string
+          duration_minutes: number
+          executive_id: string
+          id: string
+          notes: string | null
+          prospect_id: string | null
+          scheduled_at: string
+          status: string
+          time_range: unknown
+        }
+        Insert: {
+          channel: string
+          contact_email: string
+          contact_name: string
+          contact_phone?: string | null
+          created_at?: string
+          duration_minutes?: number
+          executive_id: string
+          id?: string
+          notes?: string | null
+          prospect_id?: string | null
+          scheduled_at: string
+          status?: string
+          time_range: unknown
+        }
+        Update: {
+          channel?: string
+          contact_email?: string
+          contact_name?: string
+          contact_phone?: string | null
+          created_at?: string
+          duration_minutes?: number
+          executive_id?: string
+          id?: string
+          notes?: string | null
+          prospect_id?: string | null
+          scheduled_at?: string
+          status?: string
+          time_range?: unknown
+        }
+        Relationships: [
+          {
+            foreignKeyName: "appointments_executive_id_fkey"
+            columns: ["executive_id"]
+            isOneToOne: false
+            referencedRelation: "staff_users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "appointments_prospect_id_fkey"
+            columns: ["prospect_id"]
+            isOneToOne: false
+            referencedRelation: "prospects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       attachments: {
         Row: {
           created_at: string
@@ -176,6 +254,30 @@ export type Database = {
           },
         ]
       }
+      cliente: {
+        Row: {
+          clienteId: number
+          email: string
+          fechaCreacion: string | null
+          nombre: string
+          telefono: string | null
+        }
+        Insert: {
+          clienteId?: number
+          email: string
+          fechaCreacion?: string | null
+          nombre: string
+          telefono?: string | null
+        }
+        Update: {
+          clienteId?: number
+          email?: string
+          fechaCreacion?: string | null
+          nombre?: string
+          telefono?: string | null
+        }
+        Relationships: []
+      }
       clients: {
         Row: {
           city: string | null
@@ -234,6 +336,102 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      concentracion: {
+        Row: {
+          abreviatura: string
+          concentracionId: number
+          nombre: string
+        }
+        Insert: {
+          abreviatura: string
+          concentracionId?: number
+          nombre: string
+        }
+        Update: {
+          abreviatura?: string
+          concentracionId?: number
+          nombre?: string
+        }
+        Relationships: []
+      }
+      detallePedido: {
+        Row: {
+          cantidad: number
+          detalleId: number
+          pedidoId: number
+          precioUnitario: number
+          subtotal: number
+          varianteId: number
+        }
+        Insert: {
+          cantidad: number
+          detalleId?: number
+          pedidoId: number
+          precioUnitario: number
+          subtotal: number
+          varianteId: number
+        }
+        Update: {
+          cantidad?: number
+          detalleId?: number
+          pedidoId?: number
+          precioUnitario?: number
+          subtotal?: number
+          varianteId?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "detallePedido_pedidoId_fkey"
+            columns: ["pedidoId"]
+            isOneToOne: false
+            referencedRelation: "pedido"
+            referencedColumns: ["pedidoId"]
+          },
+          {
+            foreignKeyName: "detallePedido_varianteId_fkey"
+            columns: ["varianteId"]
+            isOneToOne: false
+            referencedRelation: "variantePrecio"
+            referencedColumns: ["varianteId"]
+          },
+        ]
+      }
+      familiaOlfativa: {
+        Row: {
+          familiaId: number
+          nombre: string
+          slug: string
+        }
+        Insert: {
+          familiaId?: number
+          nombre: string
+          slug: string
+        }
+        Update: {
+          familiaId?: number
+          nombre?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      genero: {
+        Row: {
+          generoId: number
+          nombre: string
+          slug: string
+        }
+        Insert: {
+          generoId?: number
+          nombre: string
+          slug: string
+        }
+        Update: {
+          generoId?: number
+          nombre?: string
+          slug?: string
+        }
+        Relationships: []
       }
       invoices: {
         Row: {
@@ -329,6 +527,104 @@ export type Database = {
           },
         ]
       }
+      marca: {
+        Row: {
+          activo: boolean | null
+          logoUrl: string | null
+          marcaId: number
+          nombre: string
+          slug: string
+        }
+        Insert: {
+          activo?: boolean | null
+          logoUrl?: string | null
+          marcaId?: number
+          nombre: string
+          slug: string
+        }
+        Update: {
+          activo?: boolean | null
+          logoUrl?: string | null
+          marcaId?: number
+          nombre?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      notaOlfativa: {
+        Row: {
+          iconoUrl: string | null
+          nombre: string
+          notaId: number
+        }
+        Insert: {
+          iconoUrl?: string | null
+          nombre: string
+          notaId?: number
+        }
+        Update: {
+          iconoUrl?: string | null
+          nombre?: string
+          notaId?: number
+        }
+        Relationships: []
+      }
+      ocasion: {
+        Row: {
+          nombre: string
+          ocasionId: number
+          slug: string
+        }
+        Insert: {
+          nombre: string
+          ocasionId?: number
+          slug: string
+        }
+        Update: {
+          nombre?: string
+          ocasionId?: number
+          slug?: string
+        }
+        Relationships: []
+      }
+      pedido: {
+        Row: {
+          clienteId: number | null
+          direccionEnvio: string | null
+          estado: string | null
+          fechaCreacion: string | null
+          metodoPago: string | null
+          pedidoId: number
+          total: number | null
+        }
+        Insert: {
+          clienteId?: number | null
+          direccionEnvio?: string | null
+          estado?: string | null
+          fechaCreacion?: string | null
+          metodoPago?: string | null
+          pedidoId?: number
+          total?: number | null
+        }
+        Update: {
+          clienteId?: number | null
+          direccionEnvio?: string | null
+          estado?: string | null
+          fechaCreacion?: string | null
+          metodoPago?: string | null
+          pedidoId?: number
+          total?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pedido_clienteId_fkey"
+            columns: ["clienteId"]
+            isOneToOne: false
+            referencedRelation: "cliente"
+            referencedColumns: ["clienteId"]
+          },
+        ]
+      }
       plans: {
         Row: {
           active: boolean
@@ -379,6 +675,240 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      producto: {
+        Row: {
+          activo: boolean | null
+          concentracionId: number | null
+          contenidoMlOriginal: number | null
+          descripcionCorta: string | null
+          descripcionLarga: string | null
+          destacado: boolean | null
+          fechaActualizacion: string | null
+          fechaCreacion: string | null
+          generoId: number
+          marcaId: number
+          nombre: string
+          productoId: number
+          sku: string | null
+          slug: string
+        }
+        Insert: {
+          activo?: boolean | null
+          concentracionId?: number | null
+          contenidoMlOriginal?: number | null
+          descripcionCorta?: string | null
+          descripcionLarga?: string | null
+          destacado?: boolean | null
+          fechaActualizacion?: string | null
+          fechaCreacion?: string | null
+          generoId: number
+          marcaId: number
+          nombre: string
+          productoId?: number
+          sku?: string | null
+          slug: string
+        }
+        Update: {
+          activo?: boolean | null
+          concentracionId?: number | null
+          contenidoMlOriginal?: number | null
+          descripcionCorta?: string | null
+          descripcionLarga?: string | null
+          destacado?: boolean | null
+          fechaActualizacion?: string | null
+          fechaCreacion?: string | null
+          generoId?: number
+          marcaId?: number
+          nombre?: string
+          productoId?: number
+          sku?: string | null
+          slug?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "producto_concentracionId_fkey"
+            columns: ["concentracionId"]
+            isOneToOne: false
+            referencedRelation: "concentracion"
+            referencedColumns: ["concentracionId"]
+          },
+          {
+            foreignKeyName: "producto_generoId_fkey"
+            columns: ["generoId"]
+            isOneToOne: false
+            referencedRelation: "genero"
+            referencedColumns: ["generoId"]
+          },
+          {
+            foreignKeyName: "producto_marcaId_fkey"
+            columns: ["marcaId"]
+            isOneToOne: false
+            referencedRelation: "marca"
+            referencedColumns: ["marcaId"]
+          },
+        ]
+      }
+      productoFamiliaOlfativa: {
+        Row: {
+          familiaId: number
+          productoId: number
+        }
+        Insert: {
+          familiaId: number
+          productoId: number
+        }
+        Update: {
+          familiaId?: number
+          productoId?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "productoFamiliaOlfativa_familiaId_fkey"
+            columns: ["familiaId"]
+            isOneToOne: false
+            referencedRelation: "familiaOlfativa"
+            referencedColumns: ["familiaId"]
+          },
+          {
+            foreignKeyName: "productoFamiliaOlfativa_productoId_fkey"
+            columns: ["productoId"]
+            isOneToOne: false
+            referencedRelation: "producto"
+            referencedColumns: ["productoId"]
+          },
+        ]
+      }
+      productoImagen: {
+        Row: {
+          esPrincipal: boolean | null
+          imagenId: number
+          orden: number | null
+          productoId: number
+          textoAlternativo: string | null
+          urlWebp: string
+        }
+        Insert: {
+          esPrincipal?: boolean | null
+          imagenId?: number
+          orden?: number | null
+          productoId: number
+          textoAlternativo?: string | null
+          urlWebp: string
+        }
+        Update: {
+          esPrincipal?: boolean | null
+          imagenId?: number
+          orden?: number | null
+          productoId?: number
+          textoAlternativo?: string | null
+          urlWebp?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "productoImagen_productoId_fkey"
+            columns: ["productoId"]
+            isOneToOne: false
+            referencedRelation: "producto"
+            referencedColumns: ["productoId"]
+          },
+        ]
+      }
+      productoNota: {
+        Row: {
+          notaId: number
+          orden: number | null
+          posicion: string
+          productoId: number
+        }
+        Insert: {
+          notaId: number
+          orden?: number | null
+          posicion: string
+          productoId: number
+        }
+        Update: {
+          notaId?: number
+          orden?: number | null
+          posicion?: string
+          productoId?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "productoNota_notaId_fkey"
+            columns: ["notaId"]
+            isOneToOne: false
+            referencedRelation: "notaOlfativa"
+            referencedColumns: ["notaId"]
+          },
+          {
+            foreignKeyName: "productoNota_productoId_fkey"
+            columns: ["productoId"]
+            isOneToOne: false
+            referencedRelation: "producto"
+            referencedColumns: ["productoId"]
+          },
+        ]
+      }
+      productoOcasion: {
+        Row: {
+          ocasionId: number
+          productoId: number
+        }
+        Insert: {
+          ocasionId: number
+          productoId: number
+        }
+        Update: {
+          ocasionId?: number
+          productoId?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "productoOcasion_ocasionId_fkey"
+            columns: ["ocasionId"]
+            isOneToOne: false
+            referencedRelation: "ocasion"
+            referencedColumns: ["ocasionId"]
+          },
+          {
+            foreignKeyName: "productoOcasion_productoId_fkey"
+            columns: ["productoId"]
+            isOneToOne: false
+            referencedRelation: "producto"
+            referencedColumns: ["productoId"]
+          },
+        ]
+      }
+      productoTemporada: {
+        Row: {
+          productoId: number
+          temporadaId: number
+        }
+        Insert: {
+          productoId: number
+          temporadaId: number
+        }
+        Update: {
+          productoId?: number
+          temporadaId?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "productoTemporada_productoId_fkey"
+            columns: ["productoId"]
+            isOneToOne: false
+            referencedRelation: "producto"
+            referencedColumns: ["productoId"]
+          },
+          {
+            foreignKeyName: "productoTemporada_temporadaId_fkey"
+            columns: ["temporadaId"]
+            isOneToOne: false
+            referencedRelation: "temporada"
+            referencedColumns: ["temporadaId"]
+          },
+        ]
       }
       project_status_history: {
         Row: {
@@ -543,6 +1073,60 @@ export type Database = {
         }
         Relationships: []
       }
+      support_tickets: {
+        Row: {
+          contact_email: string
+          contact_name: string
+          contact_phone: string | null
+          created_at: string
+          display_id: string
+          id: string
+          message: string
+          status: string
+          subject: string
+        }
+        Insert: {
+          contact_email: string
+          contact_name: string
+          contact_phone?: string | null
+          created_at?: string
+          display_id: string
+          id?: string
+          message: string
+          status?: string
+          subject: string
+        }
+        Update: {
+          contact_email?: string
+          contact_name?: string
+          contact_phone?: string | null
+          created_at?: string
+          display_id?: string
+          id?: string
+          message?: string
+          status?: string
+          subject?: string
+        }
+        Relationships: []
+      }
+      temporada: {
+        Row: {
+          nombre: string
+          slug: string
+          temporadaId: number
+        }
+        Insert: {
+          nombre: string
+          slug: string
+          temporadaId?: number
+        }
+        Update: {
+          nombre?: string
+          slug?: string
+          temporadaId?: number
+        }
+        Relationships: []
+      }
       ticket_messages: {
         Row: {
           author_id: string | null
@@ -636,6 +1220,27 @@ export type Database = {
           },
         ]
       }
+      tipoVariante: {
+        Row: {
+          mlEquivalente: number | null
+          nombre: string
+          orden: number | null
+          tipoVarianteId: number
+        }
+        Insert: {
+          mlEquivalente?: number | null
+          nombre: string
+          orden?: number | null
+          tipoVarianteId?: number
+        }
+        Update: {
+          mlEquivalente?: number | null
+          nombre?: string
+          orden?: number | null
+          tipoVarianteId?: number
+        }
+        Relationships: []
+      }
       upsell_requests: {
         Row: {
           client_id: string
@@ -681,11 +1286,96 @@ export type Database = {
           },
         ]
       }
+      usuario: {
+        Row: {
+          activo: boolean | null
+          email: string
+          fechaCreacion: string | null
+          nombre: string
+          passwordHash: string
+          rol: string | null
+          ultimoAcceso: string | null
+          usuarioId: number
+        }
+        Insert: {
+          activo?: boolean | null
+          email: string
+          fechaCreacion?: string | null
+          nombre: string
+          passwordHash: string
+          rol?: string | null
+          ultimoAcceso?: string | null
+          usuarioId?: number
+        }
+        Update: {
+          activo?: boolean | null
+          email?: string
+          fechaCreacion?: string | null
+          nombre?: string
+          passwordHash?: string
+          rol?: string | null
+          ultimoAcceso?: string | null
+          usuarioId?: number
+        }
+        Relationships: []
+      }
+      variantePrecio: {
+        Row: {
+          activo: boolean | null
+          precio: number
+          precioComparacion: number | null
+          productoId: number
+          sku: string | null
+          stock: number | null
+          tipoVarianteId: number
+          varianteId: number
+        }
+        Insert: {
+          activo?: boolean | null
+          precio: number
+          precioComparacion?: number | null
+          productoId: number
+          sku?: string | null
+          stock?: number | null
+          tipoVarianteId: number
+          varianteId?: number
+        }
+        Update: {
+          activo?: boolean | null
+          precio?: number
+          precioComparacion?: number | null
+          productoId?: number
+          sku?: string | null
+          stock?: number | null
+          tipoVarianteId?: number
+          varianteId?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "variantePrecio_productoId_fkey"
+            columns: ["productoId"]
+            isOneToOne: false
+            referencedRelation: "producto"
+            referencedColumns: ["productoId"]
+          },
+          {
+            foreignKeyName: "variantePrecio_tipoVarianteId_fkey"
+            columns: ["tipoVarianteId"]
+            isOneToOne: false
+            referencedRelation: "tipoVariante"
+            referencedColumns: ["tipoVarianteId"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      _notify_email: {
+        Args: { p_id: string; p_type: string }
+        Returns: undefined
+      }
       admin_activate_client: {
         Args: {
           p_auth_email: string
@@ -694,6 +1384,18 @@ export type Database = {
           p_prospect_id: string
         }
         Returns: string
+      }
+      book_appointment: {
+        Args: {
+          p_channel: string
+          p_contact_email: string
+          p_contact_name: string
+          p_contact_phone: string
+          p_duration_minutes?: number
+          p_prospect_id: string
+          p_scheduled_at: string
+        }
+        Returns: Json
       }
       can_access_attachment: {
         Args: { p_entity_id: string; p_entity_type: string }
@@ -708,6 +1410,16 @@ export type Database = {
           p_contact_phone: string
           p_form_type: string
           p_payload: Json
+        }
+        Returns: string
+      }
+      create_support_ticket: {
+        Args: {
+          p_contact_email: string
+          p_contact_name: string
+          p_contact_phone: string
+          p_message: string
+          p_subject: string
         }
         Returns: string
       }

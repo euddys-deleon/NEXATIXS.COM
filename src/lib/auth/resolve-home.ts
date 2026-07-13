@@ -23,3 +23,15 @@ export async function resolveHomePath(): Promise<string> {
 
   return "/portal/dashboard";
 }
+
+/**
+ * Full-page (non-SPA) navigation into a server-gated area (/admin, /superadmin,
+ * /portal). A soft `router.push` can outrace the Supabase auth cookie write
+ * that follows an auth mutation (password change, MFA verification), so the
+ * gated layout's server-side session/AAL read sees stale data and bounces the
+ * user back — producing a redirect loop. A hard navigation forces a brand-new
+ * request that always carries whatever cookies are current at click time.
+ */
+export function hardNavigateTo(locale: string, path: string) {
+  window.location.href = `/${locale}${path}`;
+}

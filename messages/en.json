@@ -548,6 +548,24 @@
       "scheduleSubtitle": "Pick an available date and time with our team.",
       "calendlyPending": "Online scheduling will be enabled very soon. In the meantime, our team will reach out directly using the details you provided.",
       "backHome": "Back to home"
+    },
+    "booking": {
+      "dateLabel": "Date",
+      "timeLabel": "Time",
+      "businessHoursHint": "Available hours: Monday to Friday, 8:00 AM – 6:00 PM (Dominican Republic time).",
+      "channelLabel": "Meeting channel",
+      "channelMeet": "Google Meet",
+      "channelWhatsapp": "WhatsApp",
+      "submit": "Confirm appointment",
+      "submitting": "Booking...",
+      "errorMissingDate": "Select a date.",
+      "errorSlotUnavailable": "That time slot is no longer available. Please choose another.",
+      "errorOutsideHours": "Select a time within business hours (Monday to Friday, 8:00 AM – 6:00 PM).",
+      "errorPastTime": "Select a future date and time.",
+      "errorGeneric": "There was an error booking the appointment. Please try again.",
+      "confirmedTitle": "Appointment confirmed!",
+      "confirmedWith": "Your meeting was assigned to {name}.",
+      "downloadReceipt": "Download appointment receipt"
     }
   },
   "Team": [
@@ -762,7 +780,21 @@
     "statusCta": "Check status",
     "adviceTitle": "Request a Consultation",
     "adviceText": "Schedule a free initial evaluation with our technical team.",
-    "adviceCta": "Book a meeting"
+    "adviceCta": "Book a meeting",
+    "form": {
+      "title": "Send us your case",
+      "subtitle": "Describe your situation and a specialist will contact you shortly.",
+      "nameLabel": "Full name",
+      "emailLabel": "Email address",
+      "phoneLabel": "Phone (optional)",
+      "subjectLabel": "Subject",
+      "messageLabel": "Message",
+      "submit": "Send request",
+      "submitting": "Sending…",
+      "errorGeneric": "We couldn't send your request. Please try again in a few minutes.",
+      "successTitle": "We received your request!",
+      "successText": "Our support team was notified and will contact you soon. Save your ticket number:"
+    }
   },
   "Solutions": {
     "eyebrow": "Solutions",

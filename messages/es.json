@@ -548,6 +548,24 @@
       "scheduleSubtitle": "Seleccione una fecha y hora disponible con nuestro equipo.",
       "calendlyPending": "El calendario de citas en línea se activará muy pronto. Mientras tanto, nuestro equipo se pondrá en contacto directamente usando los datos suministrados.",
       "backHome": "Volver al inicio"
+    },
+    "booking": {
+      "dateLabel": "Fecha",
+      "timeLabel": "Hora",
+      "businessHoursHint": "Horario disponible: lunes a viernes, 8:00 a.m. – 6:00 p.m. (hora de Rep. Dominicana).",
+      "channelLabel": "Canal de la reunión",
+      "channelMeet": "Google Meet",
+      "channelWhatsapp": "WhatsApp",
+      "submit": "Confirmar cita",
+      "submitting": "Agendando...",
+      "errorMissingDate": "Selecciona una fecha.",
+      "errorSlotUnavailable": "Ese horario ya no está disponible. Por favor elige otro.",
+      "errorOutsideHours": "Selecciona un horario dentro de nuestro horario laboral (lunes a viernes, 8:00 a.m. – 6:00 p.m.).",
+      "errorPastTime": "Selecciona una fecha y hora futuras.",
+      "errorGeneric": "Ocurrió un error al agendar la cita. Intente de nuevo.",
+      "confirmedTitle": "¡Cita confirmada!",
+      "confirmedWith": "Su reunión fue asignada a {name}.",
+      "downloadReceipt": "Descargar comprobante de cita"
     }
   },
   "Team": [
@@ -762,7 +780,21 @@
     "statusCta": "Consultar estatus",
     "adviceTitle": "Solicitar Asesoría",
     "adviceText": "Agenda una evaluación inicial gratuita con nuestro equipo técnico.",
-    "adviceCta": "Agendar cita"
+    "adviceCta": "Agendar cita",
+    "form": {
+      "title": "Envíanos tu caso",
+      "subtitle": "Describe tu situación y un especialista te contactará a la brevedad.",
+      "nameLabel": "Nombre completo",
+      "emailLabel": "Correo electrónico",
+      "phoneLabel": "Teléfono (opcional)",
+      "subjectLabel": "Asunto",
+      "messageLabel": "Mensaje",
+      "submit": "Enviar solicitud",
+      "submitting": "Enviando…",
+      "errorGeneric": "No pudimos enviar tu solicitud. Intenta de nuevo en unos minutos.",
+      "successTitle": "¡Recibimos tu solicitud!",
+      "successText": "Nuestro equipo de soporte fue notificado y te contactará pronto. Guarda tu número de ticket:"
+    }
   },
   "Solutions": {
     "eyebrow": "Soluciones",
