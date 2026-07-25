@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { supabase } from "@/lib/supabase/client";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Input } from "@/components/ui/Input";
@@ -32,6 +31,8 @@ type StatusResult =
       licenses: { name: string; status: string }[];
     };
 
+type Step = "identify" | "otp" | "result";
+
 export function ConsultaEstatusClient() {
   const searchParams = useSearchParams();
   const locale = useLocale();
@@ -39,45 +40,88 @@ export function ConsultaEstatusClient() {
   const tProjectStatus = useTranslations("Estatus.projectStatus");
   const tLicenseStatus = useTranslations("Estatus.licenseStatus");
 
+  const [step, setStep] = useState<Step>("identify");
   const [id, setId] = useState(searchParams.get("id") ?? "");
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<StatusResult | null>(null);
 
-  async function lookup(displayId: string) {
-    if (!displayId.trim()) return;
+  async function handleRequestOtp(event: React.FormEvent) {
+    event.preventDefault();
+    if (!id.trim() || !email.trim()) return;
+
     setLoading(true);
     setError(null);
-    setResult(null);
 
-    const { data, error: rpcError } = await supabase.rpc("get_prospect_status", {
-      p_display_id: displayId.trim().toUpperCase(),
-    });
+    try {
+      const response = await fetch("/api/estatus/request-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ displayId: id, email }),
+      });
+      const data = (await response.json()) as { ok: boolean; rateLimited?: boolean };
 
-    setLoading(false);
+      if (!response.ok || !data.ok) {
+        setError(t("errorGeneric"));
+        return;
+      }
 
-    if (rpcError) {
+      if (data.rateLimited) {
+        setError(t("rateLimited"));
+        return;
+      }
+
+      // Siempre avanzamos al paso del código, exista o no la solicitud/correo:
+      // que el formulario "sepa" cuál de los dos falló sería la misma fuga de
+      // información que este flujo existe para cerrar.
+      setStep("otp");
+    } catch {
       setError(t("errorGeneric"));
-      return;
+    } finally {
+      setLoading(false);
     }
-
-    setResult(data as StatusResult);
   }
 
-  useEffect(() => {
-    // Auto-runs the lookup when the page is opened with ?id=... (e.g. from
-    // the home StatusBar), so the search field prefills and fetches once.
-    const initial = searchParams.get("id");
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (initial) lookup(initial);
-    // Intentionally runs once on mount only — re-running on every keystroke
-    // via `lookup`/`searchParams` deps would refetch on unrelated changes.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  function handleSubmit(event: React.FormEvent) {
+  async function handleVerifyOtp(event: React.FormEvent) {
     event.preventDefault();
-    lookup(id);
+    if (!/^\d{6}$/.test(otp.trim())) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const verifyResponse = await fetch("/api/estatus/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ displayId: id, otp }),
+      });
+      const verifyData = (await verifyResponse.json()) as {
+        ok: boolean;
+        locked?: boolean;
+        token?: string;
+      };
+
+      if (!verifyResponse.ok || !verifyData.ok || !verifyData.token) {
+        setError(verifyData.locked ? t("otpLocked") : t("otpInvalid"));
+        return;
+      }
+
+      const statusResponse = await fetch("/api/estatus/status", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ displayId: id, token: verifyData.token }),
+      });
+      const statusData = (await statusResponse.json()) as StatusResult | { found: false; expired?: boolean };
+
+      setResult(statusData as StatusResult);
+      setStep("result");
+    } catch {
+      setError(t("errorGeneric"));
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -92,17 +136,56 @@ export function ConsultaEstatusClient() {
           </h1>
           <p className="mt-3 text-foreground/70">{t("subtitle")}</p>
 
-          <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Input
-              value={id}
-              onChange={(event) => setId(event.target.value)}
-              placeholder={t("placeholder")}
-              aria-label={t("title")}
-            />
-            <Button type="submit" disabled={loading}>
-              {loading ? t("searching") : t("cta")}
-            </Button>
-          </form>
+          {step === "identify" && (
+            <form onSubmit={handleRequestOtp} className="mt-8 flex flex-col gap-3">
+              <Input
+                value={id}
+                onChange={(event) => setId(event.target.value)}
+                placeholder={t("placeholder")}
+                aria-label={t("title")}
+              />
+              <Input
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder={t("emailPlaceholder")}
+                aria-label={t("emailPlaceholder")}
+              />
+              <Button type="submit" disabled={loading}>
+                {loading ? t("searching") : t("verifyCta")}
+              </Button>
+            </form>
+          )}
+
+          {step === "otp" && (
+            <form onSubmit={handleVerifyOtp} className="mt-8 flex flex-col gap-3">
+              <p className="text-sm text-foreground/70">{t("otpSentHelp")}</p>
+              <Input
+                value={otp}
+                onChange={(event) => setOtp(event.target.value.replace(/\D/g, "").slice(0, 6))}
+                placeholder={t("otpPlaceholder")}
+                aria-label={t("otpPlaceholder")}
+                inputMode="numeric"
+                autoComplete="one-time-code"
+              />
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button type="submit" disabled={loading}>
+                  {loading ? t("searching") : t("otpCta")}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    setStep("identify");
+                    setOtp("");
+                    setError(null);
+                  }}
+                >
+                  {t("backCta")}
+                </Button>
+              </div>
+            </form>
+          )}
 
           {error && (
             <p className="mt-6 rounded-lg border border-red-300 bg-red-50 p-3 text-sm text-red-600">
@@ -110,13 +193,13 @@ export function ConsultaEstatusClient() {
             </p>
           )}
 
-          {result && !result.found && (
+          {step === "result" && result && !result.found && (
             <p className="mt-8 rounded-xl border border-dashed border-foreground/20 p-6 text-center text-sm text-foreground/60">
               {t("notFound")}
             </p>
           )}
 
-          {result && result.found && !result.isClient && (
+          {step === "result" && result && result.found && !result.isClient && (
             <div className="mt-10">
               <h2 className="text-xl font-semibold text-foreground">{t("prospectTitle")}</h2>
               <p className="mt-1 text-sm text-foreground/60">
@@ -143,7 +226,7 @@ export function ConsultaEstatusClient() {
             </div>
           )}
 
-          {result && result.found && result.isClient && (
+          {step === "result" && result && result.found && result.isClient && (
             <div className="mt-10">
               <h2 className="text-xl font-semibold text-foreground">
                 {t("clientTitle", { company: result.companyName })}

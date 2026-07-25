@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { supabase } from "@/lib/supabase/client";
-import { hardNavigateTo, resolveHomePath } from "@/lib/auth/resolve-home";
+import { hardNavigateTo } from "@/lib/auth/resolve-home";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Field } from "@/components/ui/Field";
@@ -50,18 +50,20 @@ export default function Verificar2faPage() {
     setSubmitting(true);
     setError(null);
 
-    const { error: verifyError } = await supabase.auth.mfa.challengeAndVerify({
-      factorId,
-      code,
+    const response = await fetch("/api/auth/verify-2fa", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ factorId, code }),
     });
+    const result = (await response.json()) as { ok: boolean; error?: string; destination?: string };
 
-    if (verifyError) {
+    if (!result.ok || !result.destination) {
       setSubmitting(false);
-      setError(t("invalidCode"));
+      setError(result.error === "rate_limited" ? t("rateLimited") : t("invalidCode"));
       return;
     }
 
-    hardNavigateTo(locale, await resolveHomePath());
+    hardNavigateTo(locale, result.destination);
   }
 
   if (loading) return null;

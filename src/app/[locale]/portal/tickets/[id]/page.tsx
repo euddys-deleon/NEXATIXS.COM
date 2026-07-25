@@ -13,8 +13,12 @@ import { cn } from "@/lib/utils";
 
 const statusStyles: Record<string, string> = {
   abierto: "bg-blue-500/10 text-blue-600",
+  en_revision: "bg-violet-500/10 text-violet-600",
+  asignado: "bg-cyan-500/10 text-cyan-600",
   en_progreso: "bg-amber-500/10 text-amber-600",
+  pendiente_cliente: "bg-orange-500/10 text-orange-600",
   resuelto: "bg-emerald-500/10 text-emerald-600",
+  cerrado: "bg-foreground/10 text-foreground/60",
 };
 
 export default async function PortalTicketDetallePage({
@@ -49,6 +53,7 @@ export default async function PortalTicketDetallePage({
     .from("ticket_messages")
     .select("id, message, author_id, created_at")
     .eq("ticket_id", ticket.id)
+    .eq("is_internal", false)
     .order("created_at", { ascending: true });
 
   const allMessages = messages ?? [];

@@ -488,36 +488,49 @@ export type Database = {
       }
       licenses: {
         Row: {
+          assigned_to: string | null
           category: string | null
           client_id: string
           created_at: string
           expires_at: string | null
           id: string
           name: string
+          seats: number
           status: string
           usage_percent: number | null
         }
         Insert: {
+          assigned_to?: string | null
           category?: string | null
           client_id: string
           created_at?: string
           expires_at?: string | null
           id?: string
           name: string
+          seats?: number
           status: string
           usage_percent?: number | null
         }
         Update: {
+          assigned_to?: string | null
           category?: string | null
           client_id?: string
           created_at?: string
           expires_at?: string | null
           id?: string
           name?: string
+          seats?: number
           status?: string
           usage_percent?: number | null
         }
         Relationships: [
+          {
+            foreignKeyName: "licenses_assigned_to_fkey"
+            columns: ["assigned_to"]
+            isOneToOne: false
+            referencedRelation: "client_users"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "licenses_client_id_fkey"
             columns: ["client_id"]
@@ -1132,21 +1145,27 @@ export type Database = {
           author_id: string | null
           created_at: string
           id: string
+          is_internal: boolean
           message: string
+          staff_author_id: string | null
           ticket_id: string
         }
         Insert: {
           author_id?: string | null
           created_at?: string
           id?: string
+          is_internal?: boolean
           message: string
+          staff_author_id?: string | null
           ticket_id: string
         }
         Update: {
           author_id?: string | null
           created_at?: string
           id?: string
+          is_internal?: boolean
           message?: string
+          staff_author_id?: string | null
           ticket_id?: string
         }
         Relationships: [
@@ -1155,6 +1174,13 @@ export type Database = {
             columns: ["author_id"]
             isOneToOne: false
             referencedRelation: "client_users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ticket_messages_staff_author_id_fkey"
+            columns: ["staff_author_id"]
+            isOneToOne: false
+            referencedRelation: "staff_users"
             referencedColumns: ["id"]
           },
           {
@@ -1168,42 +1194,64 @@ export type Database = {
       }
       tickets: {
         Row: {
+          assigned_to: string | null
           category: string
           client_id: string
           created_at: string
           created_by: string | null
           description: string
+          escalated: boolean
+          escalated_at: string | null
+          first_response_at: string | null
           id: string
           priority: string
+          sla_due_at: string | null
           status: string
           subject: string
           updated_at: string
         }
         Insert: {
+          assigned_to?: string | null
           category: string
           client_id: string
           created_at?: string
           created_by?: string | null
           description: string
+          escalated?: boolean
+          escalated_at?: string | null
+          first_response_at?: string | null
           id?: string
           priority?: string
+          sla_due_at?: string | null
           status?: string
           subject: string
           updated_at?: string
         }
         Update: {
+          assigned_to?: string | null
           category?: string
           client_id?: string
           created_at?: string
           created_by?: string | null
           description?: string
+          escalated?: boolean
+          escalated_at?: string | null
+          first_response_at?: string | null
           id?: string
           priority?: string
+          sla_due_at?: string | null
           status?: string
           subject?: string
           updated_at?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "tickets_assigned_to_fkey"
+            columns: ["assigned_to"]
+            isOneToOne: false
+            referencedRelation: "staff_users"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "tickets_client_id_fkey"
             columns: ["client_id"]

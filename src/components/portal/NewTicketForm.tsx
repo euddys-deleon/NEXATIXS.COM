@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/Button";
 
 const ticketSchema = z.object({
   category: z.string().min(1, "required"),
-  priority: z.enum(["baja", "media", "alta", "urgente"]),
+  priority: z.enum(["baja", "media", "alta", "critica"]),
   subject: z.string().min(1, "required"),
   description: z.string().min(1, "required"),
 });
@@ -88,7 +88,7 @@ export function NewTicketForm({
             <option value="baja">Baja</option>
             <option value="media">Media</option>
             <option value="alta">Alta</option>
-            <option value="urgente">Urgente</option>
+            <option value="critica">Crítica</option>
           </Select>
         </Field>
       </div>

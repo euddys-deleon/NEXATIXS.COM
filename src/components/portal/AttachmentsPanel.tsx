@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Download, Paperclip, Trash2 } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { supabase } from "@/lib/supabase/client";
+import { ALLOWED_MIME_TYPES, MAX_FILE_SIZE_BYTES, sanitizeFileName } from "@/lib/attachments/allowed-file-types";
 
 export interface AttachmentItem {
   id: string;
@@ -32,10 +33,22 @@ export function AttachmentsPanel({
   async function handleUpload(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
+
+    if (!ALLOWED_MIME_TYPES.includes(file.type)) {
+      setError(t("invalidType"));
+      event.target.value = "";
+      return;
+    }
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      setError(t("tooLarge"));
+      event.target.value = "";
+      return;
+    }
+
     setUploading(true);
     setError(null);
 
-    const path = `${entityType}/${entityId}/${Date.now()}-${file.name}`;
+    const path = `${entityType}/${entityId}/${Date.now()}-${sanitizeFileName(file.name)}`;
     const { error: uploadError } = await supabase.storage.from("attachments").upload(path, file);
 
     if (uploadError) {

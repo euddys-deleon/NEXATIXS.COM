@@ -26,7 +26,7 @@ export default async function AdminLayout({
 
   return (
     <div className="flex flex-1 flex-col">
-      <AdminHeader fullName={staffUser.full_name} />
+      <AdminHeader fullName={staffUser.full_name} role={staffUser.role} />
       <main className="flex flex-1 flex-col bg-background-subtle">{children}</main>
     </div>
   );

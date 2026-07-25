@@ -120,13 +120,45 @@ async function handleAppointment(id: string) {
   return { internalResult, clientResult };
 }
 
+async function handleStatusOtp(payload: { to?: string; code?: string; displayId?: string }) {
+  const { to, code, displayId } = payload;
+
+  if (!to || !code || !displayId) {
+    return { sent: false, reason: "invalid_payload" };
+  }
+
+  const html = `
+    <h2>Código de verificación — NEXATIXS</h2>
+    <p>Recibimos una solicitud para consultar el estatus de <strong>${displayId}</strong>.</p>
+    <p>Su código de verificación es:</p>
+    <p style="font-size:28px;font-weight:700;letter-spacing:4px;">${code}</p>
+    <p>Este código vence en 5 minutos y solo puede usarse una vez. Si usted no solicitó esta consulta, ignore este correo.</p>
+    <p>— Equipo NEXATIXS</p>
+  `;
+
+  return sendEmail(to, `Su código de verificación: ${code}`, html);
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
   }
 
   try {
-    const { type, id } = await req.json();
+    const body = await req.json();
+    const { type, id } = body;
+
+    if (type === "status_otp") {
+      // A diferencia de support_ticket/appointment, aqui no hay una fila que
+      // releer: el codigo lo genera Postgres una sola vez (request_status_otp)
+      // y solo persiste su hash — el valor en claro solo existe en este
+      // request, para poder enviarlo por correo.
+      const result = await handleStatusOtp(body);
+      return new Response(JSON.stringify(result), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
 
     if (!id || (type !== "support_ticket" && type !== "appointment")) {
       return new Response(JSON.stringify({ error: "invalid_payload" }), {

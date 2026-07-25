@@ -39,6 +39,10 @@ export const metadata: Metadata = {
     siteName: "NEXATIXS",
     type: "website",
   },
+  // favicon.ico / icon.png / apple-icon.png are picked up automatically via the
+  // src/app file convention — only the PWA manifest (for android-chrome icons)
+  // needs to be declared explicitly here, to avoid duplicate <link rel="icon"> tags.
+  manifest: "/site.webmanifest",
 };
 
 export function generateStaticParams() {

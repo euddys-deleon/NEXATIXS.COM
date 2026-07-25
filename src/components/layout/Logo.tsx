@@ -36,24 +36,28 @@ export function Logo({ className }: { className?: string }) {
       aria-label="NEXATIXS — Inicio"
       className={cn("flex items-center gap-2.5", className)}
     >
-      <span className="relative block h-16 w-16 shrink-0">
+      <span className="relative block h-[60px] w-[60px] shrink-0">
         {/* Inline `style` opacity is used deliberately (not Tailwind opacity-* utilities):
             it always wins the cascade, avoiding a layer/specificity conflict we hit
-            with the utility classes where the visible logo did not track theme state. */}
+            with the utility classes where the visible logo did not track theme state.
+            Source images are pre-trimmed to their visible bounding box (see
+            scripts/gen_favicons.py) — the originals had ~65% baked-in transparent
+            padding, which made the mark look tiny next to the wordmark regardless
+            of container size. */}
         <Image
-          src="/assets/brand/logo/mark-transparent-light.png"
+          src="/assets/brand/logo/mark-transparent-light-trimmed.png"
           alt=""
           fill
-          sizes="64px"
+          sizes="60px"
           className="object-contain"
           style={{ opacity: isDark ? 0 : 1, transition: "opacity 300ms ease-in-out" }}
           priority
         />
         <Image
-          src="/assets/brand/logo/mark-transparent.png"
+          src="/assets/brand/logo/mark-transparent-trimmed.png"
           alt=""
           fill
-          sizes="64px"
+          sizes="60px"
           className="object-contain"
           style={{ opacity: isDark ? 1 : 0, transition: "opacity 300ms ease-in-out" }}
           priority

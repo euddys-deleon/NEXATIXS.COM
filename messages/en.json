@@ -5,10 +5,71 @@
       "dashboard": "Dashboard",
       "prospects": "Prospects",
       "clients": "Clients",
+      "tickets": "Tickets",
+      "services": "Services",
       "plans": "Plans",
       "audit": "Audit Log"
     },
     "logout": "Log out",
+    "roles": {
+      "super_admin": "Super Admin",
+      "admin_operativo": "Operations Admin",
+      "soporte": "Support"
+    },
+    "tickets": {
+      "title": "Ticket Center",
+      "subtitle": "All customer support requests.",
+      "allStatuses": "All statuses",
+      "allPriorities": "All priorities",
+      "filter": "Filter",
+      "empty": "No tickets yet.",
+      "unassigned": "Unassigned",
+      "escalate": "Escalate",
+      "escalated": "Escalated",
+      "backToAll": "Back to all tickets",
+      "slaBreached": "SLA breached",
+      "columns": {
+        "subject": "Subject",
+        "client": "Client",
+        "priority": "Priority",
+        "status": "Status",
+        "assigned": "Assigned to",
+        "sla": "SLA due"
+      },
+      "detail": {
+        "messagesTitle": "Conversation",
+        "noMessages": "No messages yet.",
+        "internalLabel": "Internal note",
+        "internalToggle": "Internal note (not visible to client)",
+        "internalPlaceholder": "Write an internal note...",
+        "replyPlaceholder": "Reply to client...",
+        "addNote": "Add note",
+        "send": "Send"
+      }
+    },
+    "services": {
+      "title": "Services Catalog",
+      "subtitle": "Services NEXATIXS offers, organized by pillar. Used for upsell suggestions to clients.",
+      "addTitle": "Add service",
+      "name": "Service name",
+      "pillar": "Pillar",
+      "add": "Add",
+      "save": "Save",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirmDelete": "Delete this service from the catalog? This action cannot be undone.",
+      "empty": "No services in this pillar yet.",
+      "upsellEligible": "Eligible for upselling",
+      "pillars": {
+        "desarrollo": "Development",
+        "infraestructura": "Infrastructure",
+        "automatizacion": "Automation",
+        "cloud": "Cloud",
+        "ciberseguridad": "Cybersecurity",
+        "soporte": "Support"
+      }
+    },
     "audit": {
       "title": "Audit Log",
       "subtitle": "Record of changes made across the platform.",
@@ -143,6 +204,11 @@
         "licenseCategory": "Category",
         "licenseStatus": "Status",
         "licenseExpiry": "Expiration date",
+        "seats": "Seats",
+        "renew": "Renew",
+        "delete": "Delete",
+        "unassigned": "Unassigned",
+        "servicesLink": "Go to services catalog",
         "invoicesTitle": "Billing",
         "invoiceDescription": "Description",
         "invoiceAmount": "Amount (USD)",
@@ -199,6 +265,7 @@
     "submit": "Log in",
     "submitting": "Verifying...",
     "invalidCredentials": "Incorrect email or password.",
+    "rateLimited": "Too many attempts. Please try again in 15 minutes.",
     "genericError": "There was an error logging in. Please try again.",
     "noAccount": "Not a client yet?",
     "requestAccess": "Request an evaluation"
@@ -233,8 +300,13 @@
       "subtitle": "Enter the 6-digit code from your authenticator app.",
       "codeLabel": "Verification code",
       "invalidCode": "Incorrect code. Please try again.",
+      "rateLimited": "Too many attempts. Please try again in 30 minutes.",
       "submit": "Verify",
       "submitting": "Verifying..."
+    },
+    "revokeSessions": {
+      "action": "Sign out everywhere",
+      "confirm": "This will sign you out on every device, including this one. Continue?"
     }
   },
   "Superadmin": {
@@ -249,12 +321,23 @@
       "activeProjects": "Active projects",
       "openTickets": "Open tickets",
       "pendingInvoices": "Pending invoices",
-      "overdueInvoices": "Overdue invoices"
+      "overdueInvoices": "Overdue invoices",
+      "ticketsInProgress": "Tickets in progress",
+      "ticketsResolved": "Resolved tickets",
+      "ticketsCritical": "Critical tickets",
+      "licensesActive": "Active licenses",
+      "licensesExpiringSoon": "Licenses expiring soon",
+      "licensesExpiringSoonHint": "{active} active · {expired} expired",
+      "staffUsers": "Internal (staff) users",
+      "clientUsers": "Client users"
     },
+    "operationalTitle": "Operational status",
     "manageTitle": "Management",
     "sections": {
       "clients": { "title": "Clients", "description": "Manage companies, contacts, projects and billing." },
       "prospects": { "title": "Prospects", "description": "Incoming requests and conversion to clients." },
+      "tickets": { "title": "Tickets", "description": "Ticket center: statuses, priorities, SLA and escalation." },
+      "services": { "title": "Services", "description": "Catalog of offered services, organized by pillar." },
       "plans": { "title": "Plans", "description": "Edit the plans and pricing published on the site." },
       "audit": { "title": "Audit Log", "description": "Record of changes made across the platform." }
     },
@@ -376,8 +459,16 @@
         "submitting": "Creating...",
         "cancel": "Cancel"
       },
-      "status": { "abierto": "Open", "en_progreso": "In progress", "resuelto": "Resolved" },
-      "priorityLabels": { "baja": "Low", "media": "Medium", "alta": "High", "urgente": "Urgent" },
+      "status": {
+        "abierto": "Open",
+        "en_revision": "In review",
+        "asignado": "Assigned",
+        "en_progreso": "In progress",
+        "pendiente_cliente": "Pending client",
+        "resuelto": "Resolved",
+        "cerrado": "Closed"
+      },
+      "priorityLabels": { "baja": "Low", "media": "Medium", "alta": "High", "critica": "Critical" },
       "detail": {
         "backToAll": "Back to all tickets",
         "messagesTitle": "Conversation",
@@ -392,6 +483,8 @@
       "upload": "Upload file",
       "uploading": "Uploading...",
       "uploadError": "Couldn't upload the file. Please try again.",
+      "invalidType": "File type not allowed. Use images, PDF, Office documents, or plain text.",
+      "tooLarge": "The file exceeds the maximum allowed size (15 MB).",
       "empty": "No attachments.",
       "delete": "Delete"
     },
@@ -418,6 +511,15 @@
       "subtitle": "Enter the unique ID you received when you completed the evaluation form.",
       "placeholder": "e.g. NXT-2026-00042",
       "cta": "Check status",
+      "emailPlaceholder": "Registered email",
+      "verifyCta": "Verify identity",
+      "otpSentHelp": "If the ID and email match a request on file, we've sent a 6-digit verification code to that email. Enter it below to continue.",
+      "otpPlaceholder": "6-digit code",
+      "otpCta": "Verify",
+      "backCta": "Back",
+      "otpInvalid": "We couldn't validate the information provided.",
+      "otpLocked": "Too many attempts. Please try again in 30 minutes.",
+      "rateLimited": "Too many requests from this connection. Please try again later.",
       "searching": "Searching...",
       "notFound": "We couldn't find any request with that ID. Please check that it's typed correctly.",
       "errorGeneric": "There was an error checking your status. Please try again.",

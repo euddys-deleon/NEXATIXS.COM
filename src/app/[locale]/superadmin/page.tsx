@@ -3,16 +3,23 @@ import { getTranslations } from "next-intl/server";
 import {
   AlertTriangle,
   Building2,
+  CheckCircle2,
   ClipboardList,
   DollarSign,
   FileClock,
   FolderKanban,
+  KeyRound,
   LayoutGrid,
   LifeBuoy,
+  Loader,
   ScrollText,
+  ShieldAlert,
+  Siren,
   Target,
+  UserCog,
   UserPlus,
   Users,
+  Wrench,
 } from "lucide-react";
 import { getStaffContext } from "@/lib/supabase/get-staff-context";
 import { Container } from "@/components/ui/Container";
@@ -47,6 +54,11 @@ export default async function SuperadminDashboardPage({
     { count: openTickets },
     { count: activeProspects },
     { data: invoices },
+    { data: portalTickets },
+    { data: supportTickets },
+    { data: licenses },
+    { count: staffUserCount },
+    { count: clientUserCount },
   ] = await Promise.all([
     supabase.from("clients").select("*", { count: "exact", head: true }),
     supabase
@@ -66,6 +78,11 @@ export default async function SuperadminDashboardPage({
       .select("*", { count: "exact", head: true })
       .in("status", ["prospecto", "en_evaluacion"]),
     supabase.from("invoices").select("amount, currency, status"),
+    supabase.from("tickets").select("status, priority"),
+    supabase.from("support_tickets").select("status"),
+    supabase.from("licenses").select("status"),
+    supabase.from("staff_users").select("*", { count: "exact", head: true }),
+    supabase.from("client_users").select("*", { count: "exact", head: true }),
   ]);
 
   const allInvoices = invoices ?? [];
@@ -76,9 +93,29 @@ export default async function SuperadminDashboardPage({
   const overdueInvoices = allInvoices.filter((invoice) => invoice.status === "vencida").length;
   const currency = allInvoices[0]?.currency ?? "USD";
 
+  // Estado operativo: solo se muestra lo que hoy tiene una fuente de datos real
+  // (tickets, licencias, cuentas de usuario). El PDF de mejoras también pide
+  // métricas de IA (conversaciones/precisión) y monitoreo de plataforma
+  // (uptime, errores 500) — no existe todavía ninguna tabla ni integración que
+  // las respalde, así que no se inventan números aquí; quedan pendientes de
+  // una fase aparte que primero construya esa instrumentación.
+  const allTickets = [...(portalTickets ?? []), ...(supportTickets ?? [])];
+  const ticketsInProgress = allTickets.filter((t) => t.status === "en_progreso").length;
+  const ticketsResolved = allTickets.filter(
+    (t) => t.status === "resuelto" || t.status === "cerrado",
+  ).length;
+  const ticketsCritical = (portalTickets ?? []).filter((t) => t.priority === "critica").length;
+
+  const allLicenses = licenses ?? [];
+  const licensesActive = allLicenses.filter((l) => l.status === "activa").length;
+  const licensesExpiringSoon = allLicenses.filter((l) => l.status === "por_vencer").length;
+  const licensesExpired = allLicenses.filter((l) => l.status === "expirada").length;
+
   const sections = [
     { href: "/admin/clientes", icon: Users, key: "clients" },
     { href: "/admin/prospectos", icon: Target, key: "prospects" },
+    { href: "/admin/tickets", icon: LifeBuoy, key: "tickets" },
+    { href: "/admin/servicios", icon: Wrench, key: "services" },
     { href: "/admin/planes", icon: LayoutGrid, key: "plans" },
     { href: "/admin/auditoria", icon: ScrollText, key: "audit" },
   ] as const;
@@ -145,6 +182,40 @@ export default async function SuperadminDashboardPage({
             icon={AlertTriangle}
             label={t("kpi.overdueInvoices")}
             value={String(overdueInvoices)}
+          />
+        </div>
+
+        <h2 className="mt-12 font-heading text-sm font-semibold uppercase tracking-wide text-foreground/60">
+          {t("operationalTitle")}
+        </h2>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <KpiCard index={0} icon={Loader} label={t("kpi.ticketsInProgress")} value={String(ticketsInProgress)} />
+          <KpiCard
+            index={1}
+            icon={CheckCircle2}
+            label={t("kpi.ticketsResolved")}
+            value={String(ticketsResolved)}
+          />
+          <KpiCard index={2} icon={Siren} label={t("kpi.ticketsCritical")} value={String(ticketsCritical)} />
+          <KpiCard
+            index={3}
+            icon={ShieldAlert}
+            label={t("kpi.licensesExpiringSoon")}
+            value={String(licensesExpiringSoon)}
+            hint={t("kpi.licensesExpiringSoonHint", { active: licensesActive, expired: licensesExpired })}
+          />
+          <KpiCard index={4} icon={KeyRound} label={t("kpi.licensesActive")} value={String(licensesActive)} />
+          <KpiCard
+            index={5}
+            icon={UserCog}
+            label={t("kpi.staffUsers")}
+            value={String(staffUserCount ?? 0)}
+          />
+          <KpiCard
+            index={6}
+            icon={Users}
+            label={t("kpi.clientUsers")}
+            value={String(clientUserCount ?? 0)}
           />
         </div>
 

@@ -1,0 +1,35 @@
+# Firebase App Hosting — configuracion de runtime para NEXATIXS (Next.js 16)
+# Variables publicas (seguras de exponer, se embeben en el bundle del cliente).
+# Los secretos (SUPABASE_SERVICE_ROLE_KEY, GEMINI_API_KEY, CALENDLY_API_KEY) NO
+# se configuran aqui: deben agregarse como Secrets en la consola de Firebase
+# (App Hosting > Backend > Secrets) o via `firebase apphosting:secrets:set`.
+env:
+  - variable: NEXT_PUBLIC_SUPABASE_URL
+    value: https://dlpntybmkzerlaxvcekr.supabase.co
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: NEXT_PUBLIC_SUPABASE_ANON_KEY
+    value: sb_publishable_dkYMqFGoskCkxVUIJmpxrQ_8OfRk1_O
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: NEXT_PUBLIC_SITE_URL
+    value: https://nexatixs.com
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: NEXT_PUBLIC_CONTACT_EMAIL
+    value: soporte@nexatixs.com
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: NEXT_PUBLIC_CALENDLY_URL
+    value: https://calendly.com/brayanherreraperalta/30min
+    availability:
+      - BUILD
+      - RUNTIME

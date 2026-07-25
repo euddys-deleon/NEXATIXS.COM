@@ -18,8 +18,8 @@ export default async function SuperadminLayout({
     return null;
   }
 
-  // Only staff with the "admin" role may enter the superadmin area.
-  if (staffUser.role !== "admin") {
+  // Only staff with the "super_admin" role may enter the superadmin area.
+  if (staffUser.role !== "super_admin") {
     redirect({ href: "/admin", locale });
     return null;
   }
@@ -32,7 +32,7 @@ export default async function SuperadminLayout({
 
   return (
     <div className="flex flex-1 flex-col">
-      <AdminHeader fullName={staffUser.full_name} isSuperadmin />
+      <AdminHeader fullName={staffUser.full_name} role={staffUser.role} isSuperadmin />
       <main className="flex flex-1 flex-col bg-background-subtle">{children}</main>
     </div>
   );

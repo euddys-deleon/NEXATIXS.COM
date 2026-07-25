@@ -9,6 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { AddProjectForm } from "@/components/admin/AddProjectForm";
 import { AddProjectPhaseForm } from "@/components/admin/AddProjectPhaseForm";
 import { AddLicenseForm } from "@/components/admin/AddLicenseForm";
+import { AdminLicenseRow } from "@/components/admin/AdminLicenseRow";
 import { TicketStatusSelect } from "@/components/admin/TicketStatusSelect";
 import { UpsellStatusSelect } from "@/components/admin/UpsellStatusSelect";
 import { AddInvoiceForm } from "@/components/admin/AddInvoiceForm";
@@ -33,7 +34,6 @@ export default async function AdminClienteDetallePage({
 
   const t = await getTranslations("Admin.clients.detail");
   const tProjectStatus = await getTranslations("Estatus.projectStatus");
-  const tLicenseStatus = await getTranslations("Estatus.licenseStatus");
   const tTicketPriority = await getTranslations("Portal.tickets.priorityLabels");
   const dateLocale = locale === "en" ? "en-US" : "es-DO";
 
@@ -71,7 +71,7 @@ export default async function AdminClienteDetallePage({
       .order("created_at", { ascending: false }),
     supabase
       .from("licenses")
-      .select("id, name, category, status, expires_at, created_at")
+      .select("id, name, category, status, expires_at, created_at, seats, assigned_to")
       .eq("client_id", client.id)
       .order("created_at", { ascending: false }),
     supabase
@@ -271,16 +271,7 @@ export default async function AdminClienteDetallePage({
           <CardTitle>{t("licensesTitle")}</CardTitle>
           <ul className="mt-4 space-y-2 text-sm text-foreground/70">
             {(licenses ?? []).map((license) => (
-              <li key={license.id} className="flex items-center justify-between rounded-lg border border-foreground/10 px-3 py-2">
-                <span>
-                  {license.name} {license.category && `— ${license.category}`}
-                </span>
-                <span className="text-xs font-medium text-brand-blue">
-                  {tLicenseStatus(license.status)}
-                  {license.expires_at &&
-                    ` · ${new Date(license.expires_at).toLocaleDateString(dateLocale)}`}
-                </span>
-              </li>
+              <AdminLicenseRow key={license.id} license={license} clientUsers={clientUsers ?? []} />
             ))}
           </ul>
           <div className="mt-4 border-t border-foreground/10 pt-4">

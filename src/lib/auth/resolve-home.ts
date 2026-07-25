@@ -2,10 +2,10 @@ import { supabase } from "@/lib/supabase/client";
 
 /**
  * Resolves the correct landing route for the currently authenticated user:
- *   - staff with role "admin"  -> /superadmin
- *   - staff with role "staff"  -> /admin
- *   - client user              -> /portal/dashboard
- *   - unauthenticated          -> /iniciar-sesion
+ *   - staff with role "super_admin"                    -> /superadmin
+ *   - staff with role "admin_operativo" or "soporte"    -> /admin
+ *   - client user                                       -> /portal/dashboard
+ *   - unauthenticated                                   -> /iniciar-sesion
  */
 export async function resolveHomePath(): Promise<string> {
   const {
@@ -19,7 +19,7 @@ export async function resolveHomePath(): Promise<string> {
     .eq("id", user.id)
     .maybeSingle();
 
-  if (staffUser) return staffUser.role === "admin" ? "/superadmin" : "/admin";
+  if (staffUser) return staffUser.role === "super_admin" ? "/superadmin" : "/admin";
 
   return "/portal/dashboard";
 }

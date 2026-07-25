@@ -5,10 +5,71 @@
       "dashboard": "Dashboard",
       "prospects": "Prospectos",
       "clients": "Clientes",
+      "tickets": "Tickets",
+      "services": "Servicios",
       "plans": "Planes",
       "audit": "Auditoría"
     },
     "logout": "Cerrar sesión",
+    "roles": {
+      "super_admin": "Super Admin",
+      "admin_operativo": "Admin Operativo",
+      "soporte": "Soporte"
+    },
+    "tickets": {
+      "title": "Centro de Tickets",
+      "subtitle": "Todas las solicitudes de soporte de nuestros clientes.",
+      "allStatuses": "Todos los estados",
+      "allPriorities": "Todas las prioridades",
+      "filter": "Filtrar",
+      "empty": "No hay tickets todavía.",
+      "unassigned": "Sin asignar",
+      "escalate": "Escalar",
+      "escalated": "Escalado",
+      "backToAll": "Volver a todos los tickets",
+      "slaBreached": "SLA vencido",
+      "columns": {
+        "subject": "Asunto",
+        "client": "Cliente",
+        "priority": "Prioridad",
+        "status": "Estado",
+        "assigned": "Asignado a",
+        "sla": "Vence SLA"
+      },
+      "detail": {
+        "messagesTitle": "Conversación",
+        "noMessages": "Aún no hay mensajes.",
+        "internalLabel": "Nota interna",
+        "internalToggle": "Nota interna (no visible para el cliente)",
+        "internalPlaceholder": "Escriba una nota interna...",
+        "replyPlaceholder": "Responder al cliente...",
+        "addNote": "Agregar nota",
+        "send": "Enviar"
+      }
+    },
+    "services": {
+      "title": "Catálogo de Servicios",
+      "subtitle": "Servicios que NEXATIXS ofrece, organizados por pilar. Se usan para sugerencias de up-selling a clientes.",
+      "addTitle": "Agregar servicio",
+      "name": "Nombre del servicio",
+      "pillar": "Pilar",
+      "add": "Agregar",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "confirmDelete": "¿Eliminar este servicio del catálogo? Esta acción no se puede deshacer.",
+      "empty": "No hay servicios en este pilar todavía.",
+      "upsellEligible": "Elegible para up-selling",
+      "pillars": {
+        "desarrollo": "Desarrollo",
+        "infraestructura": "Infraestructura",
+        "automatizacion": "Automatización",
+        "cloud": "Cloud",
+        "ciberseguridad": "Ciberseguridad",
+        "soporte": "Soporte"
+      }
+    },
     "audit": {
       "title": "Auditoría",
       "subtitle": "Registro de cambios realizados en la plataforma.",
@@ -143,6 +204,11 @@
         "licenseCategory": "Categoría",
         "licenseStatus": "Estado",
         "licenseExpiry": "Fecha de vencimiento",
+        "seats": "Asientos",
+        "renew": "Renovar",
+        "delete": "Eliminar",
+        "unassigned": "Sin asignar",
+        "servicesLink": "Ir al catálogo de servicios",
         "invoicesTitle": "Facturación",
         "invoiceDescription": "Descripción",
         "invoiceAmount": "Monto (USD)",
@@ -199,6 +265,7 @@
     "submit": "Iniciar sesión",
     "submitting": "Verificando...",
     "invalidCredentials": "Correo o contraseña incorrectos.",
+    "rateLimited": "Demasiados intentos. Intente nuevamente en 15 minutos.",
     "genericError": "Ocurrió un error al iniciar sesión. Intente de nuevo.",
     "noAccount": "¿Aún no es cliente?",
     "requestAccess": "Solicite una evaluación"
@@ -233,8 +300,13 @@
       "subtitle": "Ingresa el código de 6 dígitos de tu aplicación de autenticación.",
       "codeLabel": "Código de verificación",
       "invalidCode": "Código incorrecto. Intente de nuevo.",
+      "rateLimited": "Demasiados intentos. Intente nuevamente en 30 minutos.",
       "submit": "Verificar",
       "submitting": "Verificando..."
+    },
+    "revokeSessions": {
+      "action": "Cerrar todas las sesiones",
+      "confirm": "Esto cerrará su sesión en todos los dispositivos, incluido este. ¿Continuar?"
     }
   },
   "Superadmin": {
@@ -249,12 +321,23 @@
       "activeProjects": "Proyectos activos",
       "openTickets": "Tickets abiertos",
       "pendingInvoices": "Facturas pendientes",
-      "overdueInvoices": "Facturas vencidas"
+      "overdueInvoices": "Facturas vencidas",
+      "ticketsInProgress": "Tickets en progreso",
+      "ticketsResolved": "Tickets resueltos",
+      "ticketsCritical": "Tickets críticos",
+      "licensesActive": "Licencias activas",
+      "licensesExpiringSoon": "Licencias por vencer",
+      "licensesExpiringSoonHint": "{active} activas · {expired} expiradas",
+      "staffUsers": "Usuarios internos (staff)",
+      "clientUsers": "Usuarios de clientes"
     },
+    "operationalTitle": "Estado operativo",
     "manageTitle": "Gestión",
     "sections": {
       "clients": { "title": "Clientes", "description": "Gestiona empresas, contactos, proyectos y facturación." },
       "prospects": { "title": "Prospectos", "description": "Solicitudes recibidas y conversión a clientes." },
+      "tickets": { "title": "Tickets", "description": "Centro de tickets: estados, prioridades, SLA y escalamiento." },
+      "services": { "title": "Servicios", "description": "Catálogo de servicios ofrecidos, organizado por pilar." },
       "plans": { "title": "Planes", "description": "Edita los planes y precios publicados en el sitio." },
       "audit": { "title": "Auditoría", "description": "Registro de cambios realizados en la plataforma." }
     },
@@ -376,8 +459,16 @@
         "submitting": "Creando...",
         "cancel": "Cancelar"
       },
-      "status": { "abierto": "Abierto", "en_progreso": "En progreso", "resuelto": "Resuelto" },
-      "priorityLabels": { "baja": "Baja", "media": "Media", "alta": "Alta", "urgente": "Urgente" },
+      "status": {
+        "abierto": "Abierto",
+        "en_revision": "En revisión",
+        "asignado": "Asignado",
+        "en_progreso": "En progreso",
+        "pendiente_cliente": "Pendiente cliente",
+        "resuelto": "Resuelto",
+        "cerrado": "Cerrado"
+      },
+      "priorityLabels": { "baja": "Baja", "media": "Media", "alta": "Alta", "critica": "Crítica" },
       "detail": {
         "backToAll": "Volver a todos los tickets",
         "messagesTitle": "Conversación",
@@ -392,6 +483,8 @@
       "upload": "Subir archivo",
       "uploading": "Subiendo...",
       "uploadError": "No se pudo subir el archivo. Intente de nuevo.",
+      "invalidType": "Tipo de archivo no permitido. Use imágenes, PDF, documentos de Office o texto plano.",
+      "tooLarge": "El archivo supera el tamaño máximo permitido (15 MB).",
       "empty": "Sin archivos adjuntos.",
       "delete": "Eliminar"
     },
@@ -418,6 +511,15 @@
       "subtitle": "Ingrese el identificador único que recibió al completar el formulario de evaluación.",
       "placeholder": "Ej. NXT-2026-00042",
       "cta": "Consultar",
+      "emailPlaceholder": "Correo electrónico registrado",
+      "verifyCta": "Verificar identidad",
+      "otpSentHelp": "Si el ID y el correo coinciden con una solicitud registrada, enviamos un código de 6 dígitos a ese correo. Ingréselo para continuar.",
+      "otpPlaceholder": "Código de 6 dígitos",
+      "otpCta": "Validar",
+      "backCta": "Volver",
+      "otpInvalid": "No fue posible validar la información suministrada.",
+      "otpLocked": "Demasiados intentos. Intente nuevamente en 30 minutos.",
+      "rateLimited": "Demasiadas solicitudes desde esta conexión. Intente nuevamente más tarde.",
       "searching": "Buscando...",
       "notFound": "No encontramos ninguna solicitud con ese identificador. Verifique que esté escrito correctamente.",
       "errorGeneric": "Ocurrió un error al consultar. Intente nuevamente.",

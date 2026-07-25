@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { Logo } from "@/components/layout/Logo";
 import { Container } from "@/components/ui/Container";
+import { RevokeSessionsButton } from "@/components/auth/RevokeSessionsButton";
 import { supabase } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
@@ -12,6 +13,8 @@ const baseNavItems = [
   { href: "/admin", key: "dashboard" },
   { href: "/admin/prospectos", key: "prospects" },
   { href: "/admin/clientes", key: "clients" },
+  { href: "/admin/tickets", key: "tickets" },
+  { href: "/admin/servicios", key: "services" },
   { href: "/admin/planes", key: "plans" },
   { href: "/admin/auditoria", key: "audit" },
 ] as const;
@@ -24,7 +27,15 @@ function isActive(pathname: string, href: string) {
   return pathname.startsWith(href);
 }
 
-export function AdminHeader({ fullName, isSuperadmin }: { fullName: string; isSuperadmin?: boolean }) {
+export function AdminHeader({
+  fullName,
+  role,
+  isSuperadmin,
+}: {
+  fullName: string;
+  role?: string;
+  isSuperadmin?: boolean;
+}) {
   const t = useTranslations("Admin");
   const pathname = usePathname();
   const router = useRouter();
@@ -56,7 +67,15 @@ export function AdminHeader({ fullName, isSuperadmin }: { fullName: string; isSu
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <span className="hidden text-sm text-foreground/60 sm:inline">{fullName}</span>
+          <span className="hidden items-center gap-2 text-sm text-foreground/60 sm:inline-flex">
+            {fullName}
+            {role && (
+              <span className="rounded-full bg-brand-blue/10 px-2 py-0.5 text-xs font-medium text-brand-blue">
+                {t(`roles.${role}`)}
+              </span>
+            )}
+          </span>
+          <RevokeSessionsButton />
           <button
             type="button"
             onClick={handleLogout}

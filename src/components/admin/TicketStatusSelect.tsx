@@ -5,7 +5,15 @@ import { useRouter } from "@/i18n/navigation";
 import { supabase } from "@/lib/supabase/client";
 import { Select } from "@/components/ui/Select";
 
-const STATUS_OPTIONS = ["abierto", "en_progreso", "resuelto"];
+const STATUS_OPTIONS = [
+  "abierto",
+  "en_revision",
+  "asignado",
+  "en_progreso",
+  "pendiente_cliente",
+  "resuelto",
+  "cerrado",
+];
 
 export function TicketStatusSelect({
   ticketId,
