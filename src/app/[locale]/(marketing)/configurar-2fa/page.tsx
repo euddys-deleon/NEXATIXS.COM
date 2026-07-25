@@ -11,16 +11,16 @@ import { Field } from "@/components/ui/Field";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 
-// El SVG del QR que devuelve Supabase trae width/height pero no viewBox. Sin
-// viewBox, forzar el SVG a un tamano distinto via CSS no reescala su sistema
-// de coordenadas interno: el navegador simplemente recorta lo que sobra del
-// tamano original, dejando el QR incompleto. Le inyectamos un viewBox que
-// coincida con su propio width/height para que se reescale correctamente.
-function addSvgViewBox(svg: string): string {
-  const match = svg.match(/<svg[^>]*\swidth="(\d+)"[^>]*\sheight="(\d+)"/);
-  if (!match || /viewBox/i.test(svg)) return svg;
-  const [, width, height] = match;
-  return svg.replace("<svg ", `<svg viewBox="0 0 ${width} ${height}" `);
+// enrollData.totp.qr_code puede llegar como data URI (`data:image/svg+xml;...`)
+// o como marcado SVG crudo segun la version del SDK. Insertarlo con
+// dangerouslySetInnerHTML es fragil en ambos casos (en el segundo, ademas,
+// el SVG trae width/height sin viewBox, asi que forzar su tamano por CSS solo
+// lo recorta en vez de reescalarlo). Normalizamos siempre a una data URI y lo
+// renderizamos con <img>, que si escala su contenido para caber en la caja
+// sin recortar, tenga o no viewBox el SVG original.
+function toImageSrc(qrCode: string): string {
+  if (qrCode.startsWith("data:")) return qrCode;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(qrCode)}`;
 }
 
 export default function Configurar2faPage() {
@@ -79,7 +79,7 @@ export default function Configurar2faPage() {
       }
 
       setFactorId(enrollData.id);
-      setQrCode(addSvgViewBox(enrollData.totp.qr_code));
+      setQrCode(enrollData.totp.qr_code);
       setSecret(enrollData.totp.secret);
       setLoading(false);
     }
@@ -121,11 +121,8 @@ export default function Configurar2faPage() {
           <p className="mt-2 text-foreground/60">{t("subtitle")}</p>
 
           {qrCode && (
-            <div className="mt-6 flex items-center justify-center overflow-hidden rounded-2xl border border-foreground/10 bg-white p-4">
-              <div
-                className="flex h-48 w-48 items-center justify-center [&>svg]:block [&>svg]:h-full [&>svg]:w-full"
-                dangerouslySetInnerHTML={{ __html: qrCode }}
-              />
+            <div className="mt-6 flex items-center justify-center rounded-2xl border border-foreground/10 bg-white p-4">
+              <img src={toImageSrc(qrCode)} alt={t("qrAlt")} className="h-48 w-48" />
             </div>
           )}
 

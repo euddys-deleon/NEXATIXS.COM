@@ -287,6 +287,7 @@
       "eyebrow": "Account security",
       "title": "Set up two-factor authentication",
       "subtitle": "Scan this code with Google Authenticator, Authy, or a similar app, then confirm with the 6-digit code.",
+      "qrAlt": "QR code to set up two-factor authentication",
       "manualEntry": "Or enter this code manually",
       "codeLabel": "Verification code",
       "invalidCode": "Incorrect code. Please try again.",
