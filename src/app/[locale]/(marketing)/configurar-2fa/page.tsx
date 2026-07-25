@@ -57,7 +57,12 @@ export default function Configurar2faPage() {
       // contrario el usuario puede terminar escaneando/copiando un secreto
       // que ya no es el que se le va a pedir verificar, y ningun codigo de
       // su autenticador funcionara nunca para ese secreto huerfano.
-      const staleFactors = factorsData?.totp?.filter((f) => f.status === "unverified") ?? [];
+      // factorsData.totp esta tipado (y filtrado por el SDK) para incluir
+      // solo factores verificados; los no verificados solo aparecen en
+      // .all, junto con factores de otros tipos, de ahi el filtro por
+      // factor_type.
+      const staleFactors =
+        factorsData?.all?.filter((f) => f.factor_type === "totp" && f.status === "unverified") ?? [];
       for (const stale of staleFactors) {
         await supabase.auth.mfa.unenroll({ factorId: stale.id });
       }
