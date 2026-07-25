@@ -303,11 +303,33 @@
       "invalidCode": "Incorrect code. Please try again.",
       "rateLimited": "Too many attempts. Please try again in 30 minutes.",
       "submit": "Verify",
-      "submitting": "Verifying..."
+      "submitting": "Verifying...",
+      "lostAuthenticator": "Lost access to your authenticator?",
+      "useRecoveryCode": "Use a recovery code",
+      "backToCode": "Back to authenticator code",
+      "recoveryCodeLabel": "Recovery code",
+      "recoveryCodePlaceholder": "XXXXX-XXXXX",
+      "recoveryInvalidCode": "Invalid or already-used recovery code.",
+      "recoveryRateLimited": "Too many attempts. Please try again in 30 minutes.",
+      "recoverySubmit": "Redeem code",
+      "recoverySubmitting": "Verifying...",
+      "recoveryNote": "Redeeming a recovery code removes your current authenticator and you'll need to set up a new one."
     },
     "revokeSessions": {
       "action": "Sign out everywhere",
       "confirm": "This will sign you out on every device, including this one. Continue?"
+    },
+    "recoveryCodes": {
+      "title": "Recovery codes",
+      "subtitle": "Save these 8 codes somewhere safe. Each one works once to recover access if you lose your authenticator device.",
+      "warning": "They won't be shown again. If you lose them, you can generate new ones from your account (this invalidates the old ones).",
+      "copyButton": "Copy codes",
+      "copied": "Copied",
+      "continueButton": "I saved them, continue",
+      "regenerateButton": "Regenerate recovery codes",
+      "regenerateConfirm": "This will invalidate your current recovery codes. Continue?",
+      "regenerateError": "Could not generate codes. Please try again.",
+      "regenerateSuccess": "New codes generated. Save them now."
     }
   },
   "Superadmin": {

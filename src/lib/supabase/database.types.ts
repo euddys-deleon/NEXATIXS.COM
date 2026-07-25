@@ -1450,6 +1450,11 @@ export type Database = {
         Returns: boolean
       }
       clear_must_change_password: { Args: never; Returns: undefined }
+      generate_recovery_codes: { Args: never; Returns: string[] }
+      redeem_recovery_code: {
+        Args: { p_code: string; p_ip: string; p_user_agent: string }
+        Returns: Json
+      }
       create_prospect: {
         Args: {
           p_category: string

@@ -6,6 +6,7 @@ import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { Logo } from "@/components/layout/Logo";
 import { Container } from "@/components/ui/Container";
 import { RevokeSessionsButton } from "@/components/auth/RevokeSessionsButton";
+import { RegenerateRecoveryCodesButton } from "@/components/auth/RegenerateRecoveryCodesButton";
 import { supabase } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
@@ -69,6 +70,7 @@ export function PortalHeader({
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-blue text-sm font-semibold text-white">
             {initials}
           </span>
+          <RegenerateRecoveryCodesButton />
           <RevokeSessionsButton />
           <button
             type="button"

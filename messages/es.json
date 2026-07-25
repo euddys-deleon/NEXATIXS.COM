@@ -303,11 +303,33 @@
       "invalidCode": "Código incorrecto. Intente de nuevo.",
       "rateLimited": "Demasiados intentos. Intente nuevamente en 30 minutos.",
       "submit": "Verificar",
-      "submitting": "Verificando..."
+      "submitting": "Verificando...",
+      "lostAuthenticator": "¿Perdiste el acceso a tu autenticador?",
+      "useRecoveryCode": "Usar un código de recuperación",
+      "backToCode": "Volver a ingresar el código del autenticador",
+      "recoveryCodeLabel": "Código de recuperación",
+      "recoveryCodePlaceholder": "XXXXX-XXXXX",
+      "recoveryInvalidCode": "Código de recuperación inválido o ya usado.",
+      "recoveryRateLimited": "Demasiados intentos. Intente nuevamente en 30 minutos.",
+      "recoverySubmit": "Canjear código",
+      "recoverySubmitting": "Verificando...",
+      "recoveryNote": "Al canjear un código de recuperación se eliminará tu autenticador actual y deberás registrar uno nuevo."
     },
     "revokeSessions": {
       "action": "Cerrar todas las sesiones",
       "confirm": "Esto cerrará su sesión en todos los dispositivos, incluido este. ¿Continuar?"
+    },
+    "recoveryCodes": {
+      "title": "Códigos de recuperación",
+      "subtitle": "Guarda estos 8 códigos en un lugar seguro. Cada uno funciona una sola vez para recuperar el acceso si pierdes tu dispositivo autenticador.",
+      "warning": "No se volverán a mostrar. Si los pierdes, puedes generar unos nuevos desde tu cuenta (esto invalida los anteriores).",
+      "copyButton": "Copiar códigos",
+      "copied": "Copiado",
+      "continueButton": "Ya los guardé, continuar",
+      "regenerateButton": "Regenerar códigos de recuperación",
+      "regenerateConfirm": "Esto invalidará tus códigos de recuperación actuales. ¿Continuar?",
+      "regenerateError": "No se pudieron generar los códigos. Intenta de nuevo.",
+      "regenerateSuccess": "Nuevos códigos generados. Guárdalos ahora."
     }
   },
   "Superadmin": {

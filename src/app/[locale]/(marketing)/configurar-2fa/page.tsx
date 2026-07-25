@@ -10,6 +10,7 @@ import { Section } from "@/components/ui/Section";
 import { Field } from "@/components/ui/Field";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
+import { RecoveryCodesModal } from "@/components/auth/RecoveryCodesModal";
 
 // enrollData.totp.qr_code puede llegar como data URI (`data:image/svg+xml;...`)
 // o como marcado SVG crudo segun la version del SDK. Insertarlo con
@@ -72,6 +73,7 @@ export default function Configurar2faPage() {
   const [code, setCode] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [recoveryCodes, setRecoveryCodes] = useState<string[] | null>(null);
 
   useEffect(() => {
     async function init() {
@@ -162,6 +164,22 @@ export default function Configurar2faPage() {
     }
 
     clearPendingEnrollment();
+
+    // Los codigos de recuperacion se generan una sola vez, justo despues de
+    // la primera verificacion exitosa, y se muestran de inmediato — es la
+    // unica oportunidad que tiene el usuario de verlos en claro.
+    const { data: codes } = await supabase.rpc("generate_recovery_codes");
+    setSubmitting(false);
+
+    if (codes && codes.length > 0) {
+      setRecoveryCodes(codes);
+      return;
+    }
+
+    hardNavigateTo(locale, await resolveHomePath());
+  }
+
+  async function handleRecoveryCodesContinue() {
     hardNavigateTo(locale, await resolveHomePath());
   }
 
@@ -212,6 +230,10 @@ export default function Configurar2faPage() {
           </form>
         </Container>
       </Section>
+
+      {recoveryCodes && (
+        <RecoveryCodesModal codes={recoveryCodes} onClose={handleRecoveryCodesContinue} />
+      )}
     </main>
   );
 }
