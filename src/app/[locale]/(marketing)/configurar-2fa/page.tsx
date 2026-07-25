@@ -23,6 +23,43 @@ function toImageSrc(qrCode: string): string {
   return `data:image/svg+xml;utf8,${encodeURIComponent(qrCode)}`;
 }
 
+// El QR/secreto de un enrollment solo se puede leer una vez, en la respuesta
+// de enroll() — Supabase no los vuelve a exponer despues por seguridad. Si el
+// componente se vuelve a montar (recarga, refresh de Next, doble tab) despues
+// de que el usuario ya escaneo el QR pero antes de verificar, sessionStorage
+// deja reutilizar ese mismo enrollment pendiente en vez de crear uno nuevo —
+// que invalidaria justo el codigo que el usuario ya tiene guardado en su
+// autenticador.
+const PENDING_ENROLLMENT_KEY = "nexatixs_pending_totp_factor";
+
+type PendingEnrollment = { factorId: string; qrCode: string; secret: string };
+
+function readPendingEnrollment(): PendingEnrollment | null {
+  try {
+    const raw = sessionStorage.getItem(PENDING_ENROLLMENT_KEY);
+    return raw ? (JSON.parse(raw) as PendingEnrollment) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writePendingEnrollment(value: PendingEnrollment) {
+  try {
+    sessionStorage.setItem(PENDING_ENROLLMENT_KEY, JSON.stringify(value));
+  } catch {
+    // Almacenamiento no disponible (modo privado, etc.) — el flujo sigue
+    // funcionando, solo se pierde la resiliencia a un remount.
+  }
+}
+
+function clearPendingEnrollment() {
+  try {
+    sessionStorage.removeItem(PENDING_ENROLLMENT_KEY);
+  } catch {
+    // no-op
+  }
+}
+
 export default function Configurar2faPage() {
   const t = useTranslations("Auth.setup2fa");
   const locale = useLocale();
@@ -47,23 +84,39 @@ export default function Configurar2faPage() {
       const { data: factorsData } = await supabase.auth.mfa.listFactors();
       const verifiedFactor = factorsData?.totp?.find((f) => f.status === "verified");
       if (verifiedFactor) {
+        clearPendingEnrollment();
         router.push("/verificar-2fa");
         return;
       }
 
-      // Cada llamada a enroll() genera un secreto TOTP nuevo. Si queda un
-      // factor sin verificar de un intento anterior (recarga de pagina,
-      // navegacion hacia atras, etc.) hay que eliminarlo primero — de lo
-      // contrario el usuario puede terminar escaneando/copiando un secreto
-      // que ya no es el que se le va a pedir verificar, y ningun codigo de
-      // su autenticador funcionara nunca para ese secreto huerfano.
       // factorsData.totp esta tipado (y filtrado por el SDK) para incluir
-      // solo factores verificados; los no verificados solo aparecen en
-      // .all, junto con factores de otros tipos, de ahi el filtro por
-      // factor_type.
-      const staleFactors =
+      // solo factores verificados; los no verificados solo aparecen en .all,
+      // junto con factores de otros tipos, de ahi el filtro por factor_type.
+      const unverifiedFactors =
         factorsData?.all?.filter((f) => f.factor_type === "totp" && f.status === "unverified") ?? [];
-      for (const stale of staleFactors) {
+
+      // Si el usuario ya escaneo un QR en esta misma sesion de navegador
+      // (guardado en sessionStorage) y ese factor sigue pendiente en el
+      // servidor, lo reutilizamos tal cual en vez de generar uno nuevo — de
+      // lo contrario un simple remount del componente (recarga, Fast
+      // Refresh, volver atras) invalidaria el codigo que el usuario ya tiene
+      // en su autenticador, aunque nunca haya fallado nada.
+      const pending = readPendingEnrollment();
+      if (pending && unverifiedFactors.some((f) => f.id === pending.factorId)) {
+        setFactorId(pending.factorId);
+        setQrCode(pending.qrCode);
+        setSecret(pending.secret);
+        setLoading(false);
+        return;
+      }
+
+      // No hay un enrollment pendiente reutilizable: cualquier factor sin
+      // verificar que quede (de un intento anterior en otra pestaña/sesion,
+      // o uno que ya no coincide con lo guardado localmente) hay que
+      // eliminarlo antes de crear uno nuevo — Supabase no vuelve a exponer
+      // el secreto/QR de un factor ya creado, asi que no hay forma de
+      // "recuperar" uno huerfano, solo reemplazarlo.
+      for (const stale of unverifiedFactors) {
         await supabase.auth.mfa.unenroll({ factorId: stale.id });
       }
 
@@ -81,6 +134,11 @@ export default function Configurar2faPage() {
       setFactorId(enrollData.id);
       setQrCode(enrollData.totp.qr_code);
       setSecret(enrollData.totp.secret);
+      writePendingEnrollment({
+        factorId: enrollData.id,
+        qrCode: enrollData.totp.qr_code,
+        secret: enrollData.totp.secret,
+      });
       setLoading(false);
     }
     init();
@@ -103,6 +161,7 @@ export default function Configurar2faPage() {
       return;
     }
 
+    clearPendingEnrollment();
     hardNavigateTo(locale, await resolveHomePath());
   }
 
