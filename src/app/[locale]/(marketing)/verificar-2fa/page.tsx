@@ -75,35 +75,32 @@ export default function Verificar2faPage() {
   // recuperacion NO eleva la sesion a aal2 por si mismo (eso solo lo hace el
   // propio challengeAndVerify() de Supabase contra un factor real). Lo que
   // hace es autorizar desenrolar el autenticador actual y mandar al usuario
-  // a registrar uno nuevo desde cero — la rate limit real vive dentro de la
-  // funcion SECURITY DEFINER, asi que sigue protegida aunque se llame directo
-  // con la anon key.
+  // a registrar uno nuevo desde cero.
+  //
+  // Esto tiene que pasar por una ruta de servidor (no un supabase.rpc()
+  // directo + mfa.unenroll() del lado del cliente): Supabase exige sesion
+  // aal2 para desenrolar un factor TOTP ya *verificado* ("insufficient_aal"),
+  // confirmado contra la API real — y un usuario que perdio su autenticador
+  // esta atascado en aal1 por definicion. Solo la API de administrador
+  // (service role, sin ese requisito) puede desenrolarlo en su nombre.
   async function handleRecoverySubmit(event: React.FormEvent) {
     event.preventDefault();
     setRecoverySubmitting(true);
     setRecoveryError(null);
 
-    const { data, error: rpcError } = await supabase.rpc("redeem_recovery_code", {
-      p_code: recoveryCode,
-      p_ip: "browser",
-      p_user_agent: typeof navigator !== "undefined" ? navigator.userAgent : "unknown",
+    const response = await fetch("/api/auth/recovery-code", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code: recoveryCode }),
     });
+    const result = (await response.json()) as { ok: boolean; error?: string };
 
-    const result = data as { ok: boolean; error?: string } | null;
-
-    if (rpcError || !result?.ok) {
+    if (!result.ok) {
       setRecoverySubmitting(false);
       setRecoveryError(
-        result?.error === "rate_limited" ? t("recoveryRateLimited") : t("recoveryInvalidCode"),
+        result.error === "rate_limited" ? t("recoveryRateLimited") : t("recoveryInvalidCode"),
       );
       return;
-    }
-
-    const { data: factorsData } = await supabase.auth.mfa.listFactors();
-    for (const factor of factorsData?.all ?? []) {
-      if (factor.factor_type === "totp") {
-        await supabase.auth.mfa.unenroll({ factorId: factor.id });
-      }
     }
 
     router.push("/configurar-2fa");
