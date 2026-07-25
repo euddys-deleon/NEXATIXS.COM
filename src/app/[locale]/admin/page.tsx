@@ -78,25 +78,25 @@ export default async function AdminDashboardPage({
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <KpiCard
             index={0}
-            icon={DollarSign}
+            icon={<DollarSign size={18} />}
             label={t("kpi.revenue")}
             value={`${currency} ${revenue.toLocaleString(locale === "en" ? "en-US" : "es-DO", { minimumFractionDigits: 2 })}`}
           />
-          <KpiCard index={1} icon={Building2} label={t("kpi.activeClients")} value={String(activeClients ?? 0)} />
-          <KpiCard index={2} icon={UserPlus} label={t("kpi.newClients")} value={String(newClients ?? 0)} />
-          <KpiCard index={3} icon={Target} label={t("kpi.activeProspects")} value={String(activeProspects ?? 0)} />
-          <KpiCard index={4} icon={FolderKanban} label={t("kpi.activeProjects")} value={String(activeProjects ?? 0)} />
-          <KpiCard index={5} icon={LifeBuoy} label={t("kpi.openTickets")} value={String(openTickets ?? 0)} />
+          <KpiCard index={1} icon={<Building2 size={18} />} label={t("kpi.activeClients")} value={String(activeClients ?? 0)} />
+          <KpiCard index={2} icon={<UserPlus size={18} />} label={t("kpi.newClients")} value={String(newClients ?? 0)} />
+          <KpiCard index={3} icon={<Target size={18} />} label={t("kpi.activeProspects")} value={String(activeProspects ?? 0)} />
+          <KpiCard index={4} icon={<FolderKanban size={18} />} label={t("kpi.activeProjects")} value={String(activeProjects ?? 0)} />
+          <KpiCard index={5} icon={<LifeBuoy size={18} />} label={t("kpi.openTickets")} value={String(openTickets ?? 0)} />
           <KpiCard
             index={6}
-            icon={FileClock}
+            icon={<FileClock size={18} />}
             label={t("kpi.pendingInvoices")}
             value={String(pendingInvoices.length)}
             hint={`${currency} ${pendingInvoices.reduce((sum, invoice) => sum + invoice.amount, 0).toLocaleString(locale === "en" ? "en-US" : "es-DO", { minimumFractionDigits: 2 })}`}
           />
           <KpiCard
             index={7}
-            icon={AlertTriangle}
+            icon={<AlertTriangle size={18} />}
             label={t("kpi.overdueInvoices")}
             value={String(overdueInvoices)}
           />

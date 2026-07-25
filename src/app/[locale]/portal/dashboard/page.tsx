@@ -87,14 +87,14 @@ export default async function PortalDashboardPage({
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <KpiCard
             index={0}
-            icon={FolderKanban}
+            icon={<FolderKanban size={18} />}
             label={t("kpi.activeProjects")}
             value={String(allProjects.length)}
             hint={newProjectsThisMonth > 0 ? `+${newProjectsThisMonth} este mes` : undefined}
           />
           <KpiCard
             index={1}
-            icon={KeyRound}
+            icon={<KeyRound size={18} />}
             label={t("kpi.activeLicenses")}
             value={String(allLicenses.length)}
             hint={
@@ -105,14 +105,14 @@ export default async function PortalDashboardPage({
           />
           <KpiCard
             index={2}
-            icon={LifeBuoy}
+            icon={<LifeBuoy size={18} />}
             label={t("kpi.openTickets")}
             value={String(openTickets)}
             hint={t("kpiHints.ticketsSla")}
           />
           <KpiCard
             index={3}
-            icon={Activity}
+            icon={<Activity size={18} />}
             label={t("kpi.uptime")}
             value="99.9%"
             hint={t("kpiHints.uptimeWindow")}
@@ -126,15 +126,18 @@ export default async function PortalDashboardPage({
               {allLicenses.length === 0 && (
                 <p className="text-sm text-foreground/60">{t("noLicenses")}</p>
               )}
-              {allLicenses.map((license) => (
-                <UsageBar
-                  key={license.id}
-                  icon={getCategoryIcon(license.category)}
-                  name={license.name}
-                  category={license.category}
-                  percent={license.usage_percent ?? 0}
-                />
-              ))}
+              {allLicenses.map((license) => {
+                const CategoryIcon = getCategoryIcon(license.category);
+                return (
+                  <UsageBar
+                    key={license.id}
+                    icon={<CategoryIcon size={16} className="text-brand-blue" />}
+                    name={license.name}
+                    category={license.category}
+                    percent={license.usage_percent ?? 0}
+                  />
+                );
+              })}
             </div>
           </Card>
 

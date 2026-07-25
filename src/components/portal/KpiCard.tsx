@@ -1,17 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
 import { Card } from "@/components/ui/Card";
 
 export function KpiCard({
-  icon: Icon,
+  icon,
   label,
   value,
   hint,
   index = 0,
 }: {
-  icon: LucideIcon;
+  icon: ReactNode;
   label: string;
   value: string;
   hint?: string;
@@ -27,7 +27,7 @@ export function KpiCard({
         <div className="flex items-center justify-between">
           <span className="text-sm font-medium text-foreground/60">{label}</span>
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
-            <Icon size={18} />
+            {icon}
           </span>
         </div>
         <p className="mt-3 font-heading text-3xl font-bold text-foreground">{value}</p>

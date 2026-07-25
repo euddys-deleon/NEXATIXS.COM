@@ -134,43 +134,43 @@ export default async function SuperadminDashboardPage({
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <KpiCard
             index={0}
-            icon={DollarSign}
+            icon={<DollarSign size={18} />}
             label={t("kpi.revenue")}
             value={`${currency} ${revenue.toLocaleString(numberLocale, { minimumFractionDigits: 2 })}`}
           />
           <KpiCard
             index={1}
-            icon={Building2}
+            icon={<Building2 size={18} />}
             label={t("kpi.activeClients")}
             value={String(activeClients ?? 0)}
           />
           <KpiCard
             index={2}
-            icon={UserPlus}
+            icon={<UserPlus size={18} />}
             label={t("kpi.newClients")}
             value={String(newClients ?? 0)}
           />
           <KpiCard
             index={3}
-            icon={Target}
+            icon={<Target size={18} />}
             label={t("kpi.activeProspects")}
             value={String(activeProspects ?? 0)}
           />
           <KpiCard
             index={4}
-            icon={FolderKanban}
+            icon={<FolderKanban size={18} />}
             label={t("kpi.activeProjects")}
             value={String(activeProjects ?? 0)}
           />
           <KpiCard
             index={5}
-            icon={LifeBuoy}
+            icon={<LifeBuoy size={18} />}
             label={t("kpi.openTickets")}
             value={String(openTickets ?? 0)}
           />
           <KpiCard
             index={6}
-            icon={FileClock}
+            icon={<FileClock size={18} />}
             label={t("kpi.pendingInvoices")}
             value={String(pendingInvoices.length)}
             hint={`${currency} ${pendingInvoices
@@ -179,7 +179,7 @@ export default async function SuperadminDashboardPage({
           />
           <KpiCard
             index={7}
-            icon={AlertTriangle}
+            icon={<AlertTriangle size={18} />}
             label={t("kpi.overdueInvoices")}
             value={String(overdueInvoices)}
           />
@@ -189,31 +189,31 @@ export default async function SuperadminDashboardPage({
           {t("operationalTitle")}
         </h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <KpiCard index={0} icon={Loader} label={t("kpi.ticketsInProgress")} value={String(ticketsInProgress)} />
+          <KpiCard index={0} icon={<Loader size={18} />} label={t("kpi.ticketsInProgress")} value={String(ticketsInProgress)} />
           <KpiCard
             index={1}
-            icon={CheckCircle2}
+            icon={<CheckCircle2 size={18} />}
             label={t("kpi.ticketsResolved")}
             value={String(ticketsResolved)}
           />
-          <KpiCard index={2} icon={Siren} label={t("kpi.ticketsCritical")} value={String(ticketsCritical)} />
+          <KpiCard index={2} icon={<Siren size={18} />} label={t("kpi.ticketsCritical")} value={String(ticketsCritical)} />
           <KpiCard
             index={3}
-            icon={ShieldAlert}
+            icon={<ShieldAlert size={18} />}
             label={t("kpi.licensesExpiringSoon")}
             value={String(licensesExpiringSoon)}
             hint={t("kpi.licensesExpiringSoonHint", { active: licensesActive, expired: licensesExpired })}
           />
-          <KpiCard index={4} icon={KeyRound} label={t("kpi.licensesActive")} value={String(licensesActive)} />
+          <KpiCard index={4} icon={<KeyRound size={18} />} label={t("kpi.licensesActive")} value={String(licensesActive)} />
           <KpiCard
             index={5}
-            icon={UserCog}
+            icon={<UserCog size={18} />}
             label={t("kpi.staffUsers")}
             value={String(staffUserCount ?? 0)}
           />
           <KpiCard
             index={6}
-            icon={Users}
+            icon={<Users size={18} />}
             label={t("kpi.clientUsers")}
             value={String(clientUserCount ?? 0)}
           />

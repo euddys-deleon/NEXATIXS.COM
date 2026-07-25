@@ -1,15 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
 
 export function UsageBar({
-  icon: Icon,
+  icon,
   name,
   category,
   percent,
 }: {
-  icon: LucideIcon;
+  icon: ReactNode;
   name: string;
   category?: string | null;
   percent: number;
@@ -18,7 +18,7 @@ export function UsageBar({
     <div>
       <div className="flex items-center justify-between text-sm">
         <span className="flex items-center gap-2 font-medium text-foreground">
-          <Icon size={16} className="text-brand-blue" />
+          {icon}
           {name}
           {category && <span className="text-foreground/60">— {category}</span>}
         </span>
