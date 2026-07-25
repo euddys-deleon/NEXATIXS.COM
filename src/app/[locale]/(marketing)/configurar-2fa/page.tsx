@@ -11,6 +11,18 @@ import { Field } from "@/components/ui/Field";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 
+// El SVG del QR que devuelve Supabase trae width/height pero no viewBox. Sin
+// viewBox, forzar el SVG a un tamano distinto via CSS no reescala su sistema
+// de coordenadas interno: el navegador simplemente recorta lo que sobra del
+// tamano original, dejando el QR incompleto. Le inyectamos un viewBox que
+// coincida con su propio width/height para que se reescale correctamente.
+function addSvgViewBox(svg: string): string {
+  const match = svg.match(/<svg[^>]*\swidth="(\d+)"[^>]*\sheight="(\d+)"/);
+  if (!match || /viewBox/i.test(svg)) return svg;
+  const [, width, height] = match;
+  return svg.replace("<svg ", `<svg viewBox="0 0 ${width} ${height}" `);
+}
+
 export default function Configurar2faPage() {
   const t = useTranslations("Auth.setup2fa");
   const locale = useLocale();
@@ -39,6 +51,17 @@ export default function Configurar2faPage() {
         return;
       }
 
+      // Cada llamada a enroll() genera un secreto TOTP nuevo. Si queda un
+      // factor sin verificar de un intento anterior (recarga de pagina,
+      // navegacion hacia atras, etc.) hay que eliminarlo primero — de lo
+      // contrario el usuario puede terminar escaneando/copiando un secreto
+      // que ya no es el que se le va a pedir verificar, y ningun codigo de
+      // su autenticador funcionara nunca para ese secreto huerfano.
+      const staleFactors = factorsData?.totp?.filter((f) => f.status === "unverified") ?? [];
+      for (const stale of staleFactors) {
+        await supabase.auth.mfa.unenroll({ factorId: stale.id });
+      }
+
       const { data: enrollData, error: enrollError } = await supabase.auth.mfa.enroll({
         factorType: "totp",
         friendlyName: "NEXATIXS Admin",
@@ -51,7 +74,7 @@ export default function Configurar2faPage() {
       }
 
       setFactorId(enrollData.id);
-      setQrCode(enrollData.totp.qr_code);
+      setQrCode(addSvgViewBox(enrollData.totp.qr_code));
       setSecret(enrollData.totp.secret);
       setLoading(false);
     }
