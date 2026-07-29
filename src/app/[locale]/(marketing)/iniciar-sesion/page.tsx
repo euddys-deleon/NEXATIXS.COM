@@ -15,7 +15,7 @@ export default function IniciarSesionPage() {
   const t = useTranslations("Login");
   const locale = useLocale();
 
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -28,7 +28,7 @@ export default function IniciarSesionPage() {
     const response = await fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ identifier, password }),
     });
     const result = (await response.json()) as { ok: boolean; error?: string; destination?: string };
 
@@ -61,14 +61,14 @@ export default function IniciarSesionPage() {
           <p className="mt-2 text-foreground/60">{t("subtitle")}</p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-            <Field label={t("email")} htmlFor="email">
+            <Field label={t("email")} htmlFor="identifier">
               <Input
-                id="email"
-                type="email"
+                id="identifier"
+                type="text"
                 required
-                autoComplete="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                autoComplete="username"
+                value={identifier}
+                onChange={(event) => setIdentifier(event.target.value)}
               />
             </Field>
             <Field label={t("password")} htmlFor="password">

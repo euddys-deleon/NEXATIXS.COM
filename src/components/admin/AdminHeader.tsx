@@ -16,6 +16,7 @@ const baseNavItems = [
   { href: "/admin/clientes", key: "clients" },
   { href: "/admin/tickets", key: "tickets" },
   { href: "/admin/servicios", key: "services" },
+  { href: "/admin/herramientas", key: "tools" },
   { href: "/admin/planes", key: "plans" },
   { href: "/admin/auditoria", key: "audit" },
 ] as const;

@@ -7,6 +7,7 @@
       "clients": "Clientes",
       "tickets": "Tickets",
       "services": "Servicios",
+      "tools": "Herramientas",
       "plans": "Planes",
       "audit": "Auditoría"
     },
@@ -69,6 +70,23 @@
         "ciberseguridad": "Ciberseguridad",
         "soporte": "Soporte"
       }
+    },
+    "tools": {
+      "title": "Catálogo de Herramientas",
+      "subtitle": "Sistemas reales que NEXATIXS opera para sus clientes (Portal, NAH, SOC, etc.). Se asignan por cliente desde su ficha.",
+      "addTitle": "Registrar herramienta",
+      "code": "Código",
+      "name": "Nombre",
+      "url": "URL",
+      "version": "Versión",
+      "status": "Estado",
+      "add": "Agregar",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "confirmDelete": "¿Eliminar esta herramienta del catálogo? También se quitará de los clientes que la tengan asignada.",
+      "empty": "No hay herramientas registradas todavía."
     },
     "audit": {
       "title": "Auditoría",
@@ -158,6 +176,7 @@
       "detail": {
         "backToAll": "Volver a todos los clientes",
         "notFound": "Cliente no encontrado.",
+        "nxtId": "ID de cliente (NXT)",
         "profileTitle": "Perfil empresarial",
         "rnc": "RNC / Identificación fiscal",
         "sector": "Sector",
@@ -209,6 +228,11 @@
         "delete": "Eliminar",
         "unassigned": "Sin asignar",
         "servicesLink": "Ir al catálogo de servicios",
+        "toolsTitle": "Herramientas asignadas",
+        "toolsEmpty": "Sin herramientas asignadas todavía.",
+        "assignTool": "Asignar herramienta",
+        "selectTool": "Selecciona una herramienta",
+        "unassignTool": "Quitar",
         "invoicesTitle": "Facturación",
         "invoiceDescription": "Descripción",
         "invoiceAmount": "Monto (USD)",
@@ -260,11 +284,11 @@
     "eyebrow": "Portal de Cliente",
     "title": "Inicia sesión",
     "subtitle": "Accede al panel de control de su cuenta NEXATIXS.",
-    "email": "Correo electrónico",
+    "email": "Correo o ID de cliente (NXT-...)",
     "password": "Contraseña",
     "submit": "Iniciar sesión",
     "submitting": "Verificando...",
-    "invalidCredentials": "Correo o contraseña incorrectos.",
+    "invalidCredentials": "Credenciales incorrectas.",
     "rateLimited": "Demasiados intentos. Intente nuevamente en 15 minutos.",
     "genericError": "Ocurrió un error al iniciar sesión. Intente de nuevo.",
     "noAccount": "¿Aún no es cliente?",
@@ -418,6 +442,9 @@
       },
       "noProjects": "Aún no tiene proyectos registrados.",
       "noLicenses": "Aún no tiene licencias registradas.",
+      "toolsTitle": "Sus herramientas",
+      "noTools": "Aún no tiene herramientas asignadas.",
+      "openTool": "Abrir",
       "progressSuffix": "{percent}% completado",
       "supportSuffix": "Implementación activa",
       "queuedSuffix": "Comienza en {days} días"
@@ -578,6 +605,15 @@
       "activa": "Activa",
       "por_vencer": "Por vencer",
       "expirada": "Expirada"
+    },
+    "toolStatus": {
+      "activa": "Activa",
+      "mantenimiento": "En mantenimiento",
+      "inactiva": "Inactiva"
+    },
+    "clientToolStatus": {
+      "activa": "Activa",
+      "suspendida": "Suspendida"
     }
   },
   "Captacion": {

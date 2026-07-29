@@ -4,9 +4,47 @@ import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 const bodySchema = z.object({
-  email: z.string().trim().email().max(255),
+  identifier: z.string().trim().min(1).max(255),
   password: z.string().min(1).max(200),
 });
+
+const NXT_ID_PATTERN = /^NXT-\d{4}-\d{5}$/i;
+
+// Login dual (NIC): el identifier puede ser un correo o el NXT-ID del
+// cliente (empresa). El NXT-ID no tiene contrasena propia — resuelve al
+// correo real de un usuario de esa empresa y reusa el mismo signInWithPassword
+// de siempre, asi que hereda el mismo rate limiting y auditoria sin duplicar
+// nada. Prioriza al admin_cliente; si no hay, usa el usuario mas antiguo.
+async function resolveEmailFromIdentifier(
+  admin: ReturnType<typeof createAdminClient>,
+  identifier: string,
+): Promise<string | null> {
+  if (!NXT_ID_PATTERN.test(identifier)) {
+    return identifier;
+  }
+
+  const { data: client } = await admin
+    .from("clients")
+    .select("id")
+    .eq("nxt_id", identifier.toUpperCase())
+    .maybeSingle();
+
+  if (!client) return null;
+
+  const { data: clientUsers } = await admin
+    .from("client_users")
+    .select("id, role, created_at")
+    .eq("client_id", client.id)
+    .order("created_at", { ascending: true });
+
+  const target =
+    clientUsers?.find((cu) => cu.role === "admin_cliente") ?? clientUsers?.[0] ?? null;
+
+  if (!target) return null;
+
+  const { data: userData } = await admin.auth.admin.getUserById(target.id);
+  return userData.user?.email ?? null;
+}
 
 function getClientIp(request: NextRequest) {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -49,13 +87,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: false, error: "invalid_request" }, { status: 400 });
     }
 
-    const { email, password } = parsed.data;
+    const { identifier, password } = parsed.data;
     const ip = getClientIp(request);
     const admin = createAdminClient();
 
     const { data: allowed } = await admin.rpc("check_auth_rate_limit", {
       p_scope: "login",
-      p_identifier: email,
+      p_identifier: identifier,
       p_ip: ip,
       p_window_minutes: 15,
       p_max_attempts: 5,
@@ -66,11 +104,19 @@ export async function POST(request: NextRequest) {
     }
 
     const userAgent = request.headers.get("user-agent") ?? "unknown";
+    const email = await resolveEmailFromIdentifier(admin, identifier);
+
+    if (!email) {
+      await admin.rpc("record_auth_attempt", { p_scope: "login", p_identifier: identifier, p_ip: ip });
+      logAuthEvent(admin, { actorId: null, email: identifier, event: "login_failure", ip, userAgent });
+      return NextResponse.json({ ok: false, error: "invalid_credentials" }, { status: 401 });
+    }
+
     const supabase = await createClient();
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error || !data.user) {
-      await admin.rpc("record_auth_attempt", { p_scope: "login", p_identifier: email, p_ip: ip });
+      await admin.rpc("record_auth_attempt", { p_scope: "login", p_identifier: identifier, p_ip: ip });
       logAuthEvent(admin, { actorId: null, email, event: "login_failure", ip, userAgent });
       return NextResponse.json({ ok: false, error: "invalid_credentials" }, { status: 401 });
     }

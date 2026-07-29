@@ -17,6 +17,8 @@ import { InvoiceStatusSelect } from "@/components/admin/InvoiceStatusSelect";
 import { ClientProfileForm } from "@/components/admin/ClientProfileForm";
 import { AddClientContactForm } from "@/components/admin/AddClientContactForm";
 import { ClientContactStatusSelect } from "@/components/admin/ClientContactStatusSelect";
+import { AddClientToolForm } from "@/components/admin/AddClientToolForm";
+import { ClientToolRow } from "@/components/admin/ClientToolRow";
 import { Building2, FileText, FolderKanban, KeyRound, LifeBuoy, TrendingUp } from "lucide-react";
 
 export default async function AdminClienteDetallePage({
@@ -40,7 +42,7 @@ export default async function AdminClienteDetallePage({
   const { data: client } = await supabase
     .from("clients")
     .select(
-      "id, company_name, created_at, rnc, sector, employee_count, company_size, country, city, website, domain, support_level",
+      "id, company_name, created_at, nxt_id, rnc, sector, employee_count, company_size, country, city, website, domain, support_level",
     )
     .eq("id", id)
     .single();
@@ -55,6 +57,8 @@ export default async function AdminClienteDetallePage({
     { data: tickets },
     { data: upsellRequests },
     { data: invoices },
+    { data: clientTools },
+    { data: allTools },
   ] = await Promise.all([
     supabase.from("client_users").select("id, full_name, role").eq("client_id", client.id),
     supabase
@@ -89,7 +93,15 @@ export default async function AdminClienteDetallePage({
       .select("id, invoice_number, description, amount, currency, status, due_date, issue_date")
       .eq("client_id", client.id)
       .order("issue_date", { ascending: false }),
+    supabase
+      .from("client_tools")
+      .select("id, status, tool_id, tool:tools(name, url, version)")
+      .eq("client_id", client.id),
+    supabase.from("tools").select("id, name").order("name", { ascending: true }),
   ]);
+
+  const assignedToolIds = new Set((clientTools ?? []).map((ct) => ct.tool_id));
+  const availableTools = (allTools ?? []).filter((tool) => !assignedToolIds.has(tool.id));
 
   const timelineEvents = [
     { date: client.created_at, icon: Building2, label: t("timelineClientCreated") },
@@ -133,6 +145,9 @@ export default async function AdminClienteDetallePage({
         <h1 className="mt-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           {client.company_name}
         </h1>
+        <p className="mt-1 text-sm text-foreground/50">
+          {t("nxtId")}: <span className="font-mono">{client.nxt_id}</span>
+        </p>
 
         <Card className="mt-6 bg-background">
           <CardTitle>{t("profileTitle")}</CardTitle>
@@ -276,6 +291,29 @@ export default async function AdminClienteDetallePage({
           </ul>
           <div className="mt-4 border-t border-foreground/10 pt-4">
             <AddLicenseForm clientId={client.id} />
+          </div>
+        </Card>
+
+        <Card className="mt-6 bg-background">
+          <CardTitle>{t("toolsTitle")}</CardTitle>
+          {!clientTools || clientTools.length === 0 ? (
+            <p className="mt-3 text-sm text-foreground/60">{t("toolsEmpty")}</p>
+          ) : (
+            <ul className="mt-4 space-y-2">
+              {clientTools.map((clientTool) => (
+                <ClientToolRow
+                  key={clientTool.id}
+                  clientTool={{
+                    id: clientTool.id,
+                    status: clientTool.status,
+                    tool: clientTool.tool,
+                  }}
+                />
+              ))}
+            </ul>
+          )}
+          <div className="mt-4 border-t border-foreground/10 pt-4">
+            <AddClientToolForm clientId={client.id} availableTools={availableTools} />
           </div>
         </Card>
 

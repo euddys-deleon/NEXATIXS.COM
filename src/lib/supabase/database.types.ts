@@ -289,6 +289,7 @@ export type Database = {
           domain: string | null
           employee_count: number | null
           id: string
+          nxt_id: string
           prospect_id: string | null
           rnc: string | null
           sector: string | null
@@ -305,6 +306,7 @@ export type Database = {
           domain?: string | null
           employee_count?: number | null
           id?: string
+          nxt_id?: string
           prospect_id?: string | null
           rnc?: string | null
           sector?: string | null
@@ -321,6 +323,7 @@ export type Database = {
           domain?: string | null
           employee_count?: number | null
           id?: string
+          nxt_id?: string
           prospect_id?: string | null
           rnc?: string | null
           sector?: string | null
@@ -336,6 +339,75 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      client_tools: {
+        Row: {
+          assigned_at: string
+          client_id: string
+          id: string
+          status: string
+          tool_id: string
+        }
+        Insert: {
+          assigned_at?: string
+          client_id: string
+          id?: string
+          status?: string
+          tool_id: string
+        }
+        Update: {
+          assigned_at?: string
+          client_id?: string
+          id?: string
+          status?: string
+          tool_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_tools_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_tools_tool_id_fkey"
+            columns: ["tool_id"]
+            isOneToOne: false
+            referencedRelation: "tools"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tools: {
+        Row: {
+          code: string
+          created_at: string
+          id: string
+          name: string
+          status: string
+          url: string | null
+          version: string | null
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          id?: string
+          name: string
+          status?: string
+          url?: string | null
+          version?: string | null
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          id?: string
+          name?: string
+          status?: string
+          url?: string | null
+          version?: string | null
+        }
+        Relationships: []
       }
       concentracion: {
         Row: {

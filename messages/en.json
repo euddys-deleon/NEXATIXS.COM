@@ -7,6 +7,7 @@
       "clients": "Clients",
       "tickets": "Tickets",
       "services": "Services",
+      "tools": "Tools",
       "plans": "Plans",
       "audit": "Audit Log"
     },
@@ -69,6 +70,23 @@
         "ciberseguridad": "Cybersecurity",
         "soporte": "Support"
       }
+    },
+    "tools": {
+      "title": "Tools Catalog",
+      "subtitle": "Real systems NEXATIXS operates for its clients (Portal, NAH, SOC, etc.). Assigned per client from their profile.",
+      "addTitle": "Register tool",
+      "code": "Code",
+      "name": "Name",
+      "url": "URL",
+      "version": "Version",
+      "status": "Status",
+      "add": "Add",
+      "save": "Save",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirmDelete": "Delete this tool from the catalog? It will also be removed from any client it's assigned to.",
+      "empty": "No tools registered yet."
     },
     "audit": {
       "title": "Audit Log",
@@ -158,6 +176,7 @@
       "detail": {
         "backToAll": "Back to all clients",
         "notFound": "Client not found.",
+        "nxtId": "Client ID (NXT)",
         "profileTitle": "Business profile",
         "rnc": "Tax ID",
         "sector": "Sector",
@@ -209,6 +228,11 @@
         "delete": "Delete",
         "unassigned": "Unassigned",
         "servicesLink": "Go to services catalog",
+        "toolsTitle": "Assigned tools",
+        "toolsEmpty": "No tools assigned yet.",
+        "assignTool": "Assign tool",
+        "selectTool": "Select a tool",
+        "unassignTool": "Remove",
         "invoicesTitle": "Billing",
         "invoiceDescription": "Description",
         "invoiceAmount": "Amount (USD)",
@@ -260,11 +284,11 @@
     "eyebrow": "Client Portal",
     "title": "Log in",
     "subtitle": "Access your NEXATIXS account dashboard.",
-    "email": "Email address",
+    "email": "Email or Client ID (NXT-...)",
     "password": "Password",
     "submit": "Log in",
     "submitting": "Verifying...",
-    "invalidCredentials": "Incorrect email or password.",
+    "invalidCredentials": "Incorrect credentials.",
     "rateLimited": "Too many attempts. Please try again in 15 minutes.",
     "genericError": "There was an error logging in. Please try again.",
     "noAccount": "Not a client yet?",
@@ -418,6 +442,9 @@
       },
       "noProjects": "No projects on record yet.",
       "noLicenses": "No licenses on record yet.",
+      "toolsTitle": "Your tools",
+      "noTools": "No tools assigned yet.",
+      "openTool": "Open",
       "progressSuffix": "{percent}% complete",
       "supportSuffix": "Active implementation",
       "queuedSuffix": "Starts in {days} days"
@@ -578,6 +605,15 @@
       "activa": "Active",
       "por_vencer": "Expiring soon",
       "expirada": "Expired"
+    },
+    "toolStatus": {
+      "activa": "Active",
+      "mantenimiento": "Under maintenance",
+      "inactiva": "Inactive"
+    },
+    "clientToolStatus": {
+      "activa": "Active",
+      "suspendida": "Suspended"
     }
   },
   "Captacion": {

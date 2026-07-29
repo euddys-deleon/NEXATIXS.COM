@@ -1,6 +1,6 @@
 import { redirect } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-import { Activity, FolderKanban, KeyRound, LifeBuoy } from "lucide-react";
+import { Activity, ExternalLink, FolderKanban, KeyRound, LifeBuoy } from "lucide-react";
 import { getPortalContext } from "@/lib/supabase/get-portal-context";
 import { getCategoryIcon } from "@/lib/portal-icons";
 import { daysUntil } from "@/lib/date-utils";
@@ -29,7 +29,7 @@ export default async function PortalDashboardPage({
 
   const t = await getTranslations("Portal.dashboard");
 
-  const [{ data: projects }, { data: licenses }, { data: tickets }, { data: client }] =
+  const [{ data: projects }, { data: licenses }, { data: tickets }, { data: client }, { data: clientTools }] =
     await Promise.all([
       supabase
         .from("projects")
@@ -49,6 +49,11 @@ export default async function PortalDashboardPage({
         .select("company_name, prospect_id")
         .eq("id", clientUser.client_id)
         .single(),
+      supabase
+        .from("client_tools")
+        .select("id, status, tool:tools(name, url, version)")
+        .eq("client_id", clientUser.client_id)
+        .eq("status", "activa"),
     ]);
 
   let displayId = "—";
@@ -157,6 +162,41 @@ export default async function PortalDashboardPage({
                 />
               ))}
             </ul>
+          </Card>
+        </div>
+
+        <div className="mt-10">
+          <Card className="bg-background">
+            <CardTitle>{t("toolsTitle")}</CardTitle>
+            {!clientTools || clientTools.length === 0 ? (
+              <p className="mt-3 text-sm text-foreground/60">{t("noTools")}</p>
+            ) : (
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {clientTools.map((clientTool) => (
+                  <li
+                    key={clientTool.id}
+                    className="flex items-center justify-between gap-3 rounded-lg border border-foreground/10 px-4 py-3"
+                  >
+                    <div>
+                      <p className="text-sm font-medium text-foreground">{clientTool.tool?.name}</p>
+                      {clientTool.tool?.version && (
+                        <p className="text-xs text-foreground/50">v{clientTool.tool.version}</p>
+                      )}
+                    </div>
+                    {clientTool.tool?.url && (
+                      <a
+                        href={clientTool.tool.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={buttonVariants({ variant: "outline", size: "sm" })}
+                      >
+                        {t("openTool")} <ExternalLink size={14} />
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
           </Card>
         </div>
 
