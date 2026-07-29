@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { Card, CardDescription, CardTitle } from "@/components/ui/Card";
 import { Link } from "@/i18n/navigation";
 import { MayfrenSection } from "@/components/home/MayfrenSection";
+import { KontaoSection } from "@/components/home/KontaoSection";
 import { servicePillars } from "@/lib/services-catalog";
 
 export async function generateMetadata() {
@@ -30,6 +31,7 @@ export default async function HerramientasPage() {
       </Section>
 
       <MayfrenSection />
+      <KontaoSection />
 
       <Section>
         <Container>

@@ -877,6 +877,23 @@
       "title": "Certificaciones y especializaciones",
       "subtitle": "Nuestro equipo está certificado por las principales marcas de tecnología a nivel mundial."
     },
+    "kontao": {
+      "eyebrow": "Herramienta Recomendada",
+      "title": "KONTAO",
+      "subtitle": "KONTAO es un sistema de punto de venta e inventario pensado para colmados y comercios: controla ventas, productos y cobros pendientes desde un panel simple, con reportes actualizados en tiempo real.",
+      "cta": "Conocer KONTAO",
+      "panelLabel": "Panel de hoy",
+      "panelBusiness": "Colmado La Esquina",
+      "salesLabel": "Ventas de hoy",
+      "salesValue": "RD$ 18,450",
+      "salesChange": "+12%",
+      "productsValue": "248",
+      "productsLabel": "Productos",
+      "pendingValue": "5",
+      "pendingLabel": "Cobros pendientes",
+      "recentSalesTitle": "Últimas ventas",
+      "footerNote": "Inventario al día, todo bajo control"
+    },
     "mayfren": {
       "eyebrow": "Producto Propio · SaaS",
       "title": "Mayfren CRM",
