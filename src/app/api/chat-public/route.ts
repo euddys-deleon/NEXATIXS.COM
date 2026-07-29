@@ -60,7 +60,13 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ reply: response.text ?? "" });
-  } catch {
-    return NextResponse.json({ error: "upstream_error" }, { status: 502 });
+  } catch (error) {
+    // TEMPORAL: exponer el mensaje real para diagnosticar el 502 en
+    // produccion (vercel logs no esta disponible en este entorno). Revertir
+    // a un mensaje generico en cuanto se resuelva.
+    return NextResponse.json(
+      { error: "upstream_error", detail: error instanceof Error ? error.message : String(error) },
+      { status: 502 },
+    );
   }
 }
