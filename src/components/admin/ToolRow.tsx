@@ -96,7 +96,13 @@ export function ToolRow({ tool }: { tool: Tool }) {
           {tool.name} <span className="text-foreground/40">({tool.code})</span>
         </p>
         <p className="text-xs text-foreground/50">
-          {[tool.url, tool.version && `v${tool.version}`].filter(Boolean).join(" · ")}
+          {tool.url && (
+            <a href={tool.url} target="_blank" rel="noreferrer" className="text-brand-blue hover:underline">
+              {tool.url}
+            </a>
+          )}
+          {tool.url && tool.version && " · "}
+          {tool.version && `v${tool.version}`}
         </p>
       </div>
 
