@@ -1,32 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { ExternalLink, Package, Receipt } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-
-// No hay un archivo de logo real disponible (la imagen se compartio en el
-// chat, no como archivo en disco) — se recrea el isotipo como SVG en linea,
-// aproximando los colores/forma de la marca real en vez de usar una captura.
-function KontaoLogo() {
-  return (
-    <svg viewBox="0 0 32 32" className="h-10 w-10" aria-hidden="true">
-      <rect width="32" height="32" rx="8" fill="#0E7A4C" />
-      <path
-        d="M11 7v18M11 16l8-9M11 16l8 9"
-        stroke="#FFFFFF"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      <circle cx="22" cy="10" r="2.5" fill="#F5C518" />
-    </svg>
-  );
-}
 
 export function KontaoSection() {
   const t = useTranslations("Home.kontao");
@@ -41,12 +22,15 @@ export function KontaoSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            <div className="flex items-center gap-3">
-              <KontaoLogo />
-              <span className="font-heading text-lg font-bold tracking-tight text-foreground">
-                KONTAO
-              </span>
-            </div>
+            <span className="relative block h-14 w-14">
+              <Image
+                src="/assets/brand/kontao/logo-icon.png"
+                alt="KONTAO"
+                fill
+                sizes="56px"
+                className="object-contain"
+              />
+            </span>
             <span className="mt-4 block font-heading text-sm font-semibold uppercase tracking-widest text-brand-blue">
               {t("eyebrow")}
             </span>
@@ -79,48 +63,14 @@ export function KontaoSection() {
               <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
               <span className="ml-3 truncate text-xs text-foreground/40">kontao.lat</span>
             </div>
-            <div className="space-y-4 bg-gradient-to-br from-[#0E7A4C]/5 via-transparent to-[#F5C518]/5 p-5">
-              <div className="flex items-center justify-between text-xs text-foreground/50">
-                <span>{t("panelLabel")}</span>
-                <span className="font-medium text-foreground/70">{t("panelBusiness")}</span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div className="col-span-1 rounded-xl bg-[#0E7A4C] p-4 text-white">
-                  <div className="flex items-center justify-between text-xs text-white/70">
-                    <span>{t("salesLabel")}</span>
-                    <span className="rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-medium">
-                      {t("salesChange")}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-xl font-bold">{t("salesValue")}</p>
-                </div>
-                <div className="col-span-1 flex flex-col gap-3">
-                  <div className="flex items-center gap-2 rounded-xl border border-foreground/10 bg-background/60 p-3 backdrop-blur-sm">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0E7A4C]/10 text-[#0E7A4C]">
-                      <Package size={16} />
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold text-foreground">{t("productsValue")}</p>
-                      <p className="text-[10px] text-foreground/50">{t("productsLabel")}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 rounded-xl border border-foreground/10 bg-background/60 p-3 backdrop-blur-sm">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F5C518]/20 text-[#a6820a]">
-                      <Receipt size={16} />
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold text-foreground">{t("pendingValue")}</p>
-                      <p className="text-[10px] text-foreground/50">{t("pendingLabel")}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-xl border border-foreground/10 bg-background/60 p-3 backdrop-blur-sm">
-                <p className="text-xs font-medium text-foreground/70">{t("recentSalesTitle")}</p>
-                <p className="mt-2 text-[10px] text-foreground/40">{t("footerNote")}</p>
-              </div>
+            <div className="relative aspect-[741/722] w-full">
+              <Image
+                src="/assets/brand/kontao/interfaz-ejemplo.png"
+                alt={t("title")}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-top"
+              />
             </div>
           </motion.div>
         </div>

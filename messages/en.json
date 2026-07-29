@@ -881,18 +881,7 @@
       "eyebrow": "Recommended Tool",
       "title": "KONTAO",
       "subtitle": "KONTAO is a point-of-sale and inventory system built for small stores and shops: track sales, products, and pending payments from a simple dashboard, with real-time updated reports.",
-      "cta": "Discover KONTAO",
-      "panelLabel": "Today's panel",
-      "panelBusiness": "Corner Store",
-      "salesLabel": "Today's sales",
-      "salesValue": "$18,450",
-      "salesChange": "+12%",
-      "productsValue": "248",
-      "productsLabel": "Products",
-      "pendingValue": "5",
-      "pendingLabel": "Pending payments",
-      "recentSalesTitle": "Recent sales",
-      "footerNote": "Inventory up to date, all under control"
+      "cta": "Discover KONTAO"
     },
     "mayfren": {
       "eyebrow": "Our Own Product · SaaS",
