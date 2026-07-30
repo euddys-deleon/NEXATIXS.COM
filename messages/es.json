@@ -292,7 +292,11 @@
     "rateLimited": "Demasiados intentos. Intente nuevamente en 15 minutos.",
     "genericError": "Ocurrió un error al iniciar sesión. Intente de nuevo.",
     "noAccount": "¿Aún no es cliente?",
-    "requestAccess": "Solicite una evaluación"
+    "requestAccess": "Solicite una evaluación",
+    "orDivider": "o",
+    "continueWithGoogle": "Continuar con Google",
+    "oauthError": "No se pudo iniciar sesión con Google. Intente de nuevo.",
+    "noAccountLinked": "Esta cuenta de Google no está asociada a ningún acceso de NEXATIXS."
   },
   "Auth": {
     "changePassword": {

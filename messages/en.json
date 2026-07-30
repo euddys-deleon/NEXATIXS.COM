@@ -292,7 +292,11 @@
     "rateLimited": "Too many attempts. Please try again in 15 minutes.",
     "genericError": "There was an error logging in. Please try again.",
     "noAccount": "Not a client yet?",
-    "requestAccess": "Request an evaluation"
+    "requestAccess": "Request an evaluation",
+    "orDivider": "or",
+    "continueWithGoogle": "Continue with Google",
+    "oauthError": "Couldn't sign in with Google. Please try again.",
+    "noAccountLinked": "This Google account isn't linked to any NEXATIXS access."
   },
   "Auth": {
     "changePassword": {
