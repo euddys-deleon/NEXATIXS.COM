@@ -781,7 +781,9 @@
     "news": "Noticias",
     "support": "Soporte",
     "login": "Portal Clientes",
-    "menu": "Menú"
+    "menu": "Menú",
+    "projects": "Proyectos",
+    "contact": "Contacto"
   },
   "Plans": {
     "eyebrow": "Planes y Precios",
@@ -881,6 +883,12 @@
       "title": "Certificaciones y especializaciones",
       "subtitle": "Nuestro equipo está certificado por las principales marcas de tecnología a nivel mundial."
     },
+    "projects": {
+      "eyebrow": "Nuestro Trabajo",
+      "title": "Proyectos y Productos Propios",
+      "subtitle": "Plataformas y productos que hemos diseñado, desarrollado y seguimos operando para nuestros clientes y para nuestra propia operación.",
+      "ctaAll": "Ver todos los proyectos"
+    },
     "kontao": {
       "eyebrow": "Herramienta Recomendada",
       "title": "KONTAO",
@@ -937,6 +945,56 @@
     "comingSoonSubtitle": "Estamos ampliando nuestro catálogo propio en cada uno de estos pilares tecnológicos.",
     "comingSoonCardText": "Próximamente en nuestro catálogo. Escríbenos si necesitas esta solución hoy.",
     "comingSoonCta": "Solicitar información"
+  },
+  "Projects": {
+    "eyebrow": "Portafolio",
+    "title": "Proyectos y Productos Propios",
+    "subtitle": "Un vistazo a las plataformas que hemos construido y operamos activamente. Cada proyecto nace de una necesidad real de un cliente o de nuestra propia operación.",
+    "ctaBoxTitle": "¿Tienes un proyecto en mente?",
+    "ctaBoxText": "Cuéntanos qué necesitas y te ayudamos a definir el alcance sin compromiso.",
+    "ctaBoxButton": "Hablar con nosotros",
+    "items": {
+      "kontao": {
+        "title": "KONTAO",
+        "summary": "Sistema de punto de venta e inventario pensado para colmados y comercios: controla ventas, productos y cobros pendientes desde un panel simple.",
+        "description": "KONTAO es un sistema de punto de venta e inventario pensado para colmados y comercios: controla ventas, productos y cobros pendientes desde un panel simple, con reportes actualizados en tiempo real.",
+        "tags": ["Punto de Venta", "Inventario", "SaaS"],
+        "cta": "Conocer KONTAO"
+      },
+      "mayfren": {
+        "title": "Mayfren CRM",
+        "summary": "CRM propio que centraliza soporte técnico, inventario, monitoreo de equipos y automatización de procesos en un solo panel.",
+        "description": "Mayfren es el CRM desarrollado por NEXATIXS que centraliza en un solo lugar la gestión del soporte técnico (helpdesk con tickets, prioridades y SLA), el inventario tecnológico, el monitoreo en tiempo real de los equipos (CPU, RAM, disco y software instalado), la evaluación del desempeño del personal y la automatización de procesos empresariales.",
+        "tags": ["CRM", "Helpdesk", "SaaS"],
+        "cta": "Conocer Mayfren"
+      }
+    }
+  },
+  "Contact": {
+    "eyebrow": "Contacto",
+    "title": "Hablemos de tu proyecto",
+    "subtitle": "Cuéntanos qué necesitas y un especialista de NEXATIXS te contactará a la brevedad.",
+    "phoneLabel": "Teléfono",
+    "emailLabel": "Correo",
+    "hoursLabel": "Horario",
+    "hoursValue": "Lunes a viernes, 8:00 a.m. – 6:00 p.m.",
+    "locationLabel": "Ubicación",
+    "locationValue": "República Dominicana",
+    "form": {
+      "title": "Envíanos un mensaje",
+      "subtitle": "Completa el formulario y te responderemos lo antes posible.",
+      "nameLabel": "Nombre completo",
+      "emailLabel": "Correo electrónico",
+      "phoneLabel": "Teléfono (opcional)",
+      "companyLabel": "Empresa (opcional)",
+      "subjectLabel": "Asunto",
+      "messageLabel": "Mensaje",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando…",
+      "errorGeneric": "No pudimos enviar tu mensaje. Intenta de nuevo en unos minutos.",
+      "successTitle": "¡Recibimos tu mensaje!",
+      "successText": "Nuestro equipo fue notificado y te contactará pronto. Guarda tu número de referencia:"
+    }
   },
   "Support": {
     "eyebrow": "Soporte",

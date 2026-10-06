@@ -1158,6 +1158,45 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_messages: {
+        Row: {
+          company_name: string | null
+          contact_email: string
+          contact_name: string
+          contact_phone: string | null
+          created_at: string
+          display_id: string
+          id: string
+          message: string
+          status: string
+          subject: string
+        }
+        Insert: {
+          company_name?: string | null
+          contact_email: string
+          contact_name: string
+          contact_phone?: string | null
+          created_at?: string
+          display_id: string
+          id?: string
+          message: string
+          status?: string
+          subject: string
+        }
+        Update: {
+          company_name?: string | null
+          contact_email?: string
+          contact_name?: string
+          contact_phone?: string | null
+          created_at?: string
+          display_id?: string
+          id?: string
+          message?: string
+          status?: string
+          subject?: string
+        }
+        Relationships: []
+      }
       support_tickets: {
         Row: {
           contact_email: string
@@ -1535,6 +1574,17 @@ export type Database = {
           p_contact_phone: string
           p_form_type: string
           p_payload: Json
+        }
+        Returns: string
+      }
+      create_contact_message: {
+        Args: {
+          p_company_name: string
+          p_contact_email: string
+          p_contact_name: string
+          p_contact_phone: string
+          p_message: string
+          p_subject: string
         }
         Returns: string
       }

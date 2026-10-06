@@ -5,6 +5,7 @@ import { ValuesGrid } from "@/components/home/ValuesGrid";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { CoverageMap } from "@/components/home/CoverageMap";
 import { PartnersMarquee } from "@/components/home/PartnersMarquee";
+import { ProjectsPreview } from "@/components/home/ProjectsPreview";
 import { MayfrenSection } from "@/components/home/MayfrenSection";
 import { CtaFinal } from "@/components/home/CtaFinal";
 
@@ -18,6 +19,7 @@ export default function HomePage() {
       <ServicesPreview />
       <CoverageMap />
       <PartnersMarquee />
+      <ProjectsPreview />
       <MayfrenSection />
       <CtaFinal />
     </main>

@@ -16,10 +16,12 @@ const navItems = [
   { href: "/nosotros", key: "about" },
   { href: "/servicios", key: "services" },
   { href: "/soluciones", key: "solutions" },
+  { href: "/proyectos", key: "projects" },
   { href: "/herramientas", key: "tools" },
   { href: "/planes", key: "plans" },
   { href: "/noticias", key: "news" },
   { href: "/soporte", key: "support" },
+  { href: "/contacto", key: "contact" },
 ] as const;
 
 export function Header() {

@@ -781,7 +781,9 @@
     "news": "News",
     "support": "Support",
     "login": "Client Portal",
-    "menu": "Menu"
+    "menu": "Menu",
+    "projects": "Projects",
+    "contact": "Contact"
   },
   "Plans": {
     "eyebrow": "Plans & Pricing",
@@ -881,6 +883,12 @@
       "title": "Certifications and specializations",
       "subtitle": "Our team is certified by the world's leading technology brands."
     },
+    "projects": {
+      "eyebrow": "Our Work",
+      "title": "Projects & Own Products",
+      "subtitle": "Platforms and products we have designed, built, and continue to operate for our clients and for our own operation.",
+      "ctaAll": "View all projects"
+    },
     "kontao": {
       "eyebrow": "Recommended Tool",
       "title": "KONTAO",
@@ -937,6 +945,56 @@
     "comingSoonSubtitle": "We're expanding our own catalog across each of these technology pillars.",
     "comingSoonCardText": "Coming soon to our catalog. Reach out if you need this solution today.",
     "comingSoonCta": "Request information"
+  },
+  "Projects": {
+    "eyebrow": "Portfolio",
+    "title": "Projects & Own Products",
+    "subtitle": "A look at the platforms we have built and actively operate. Every project starts from a real need, either a client's or our own.",
+    "ctaBoxTitle": "Have a project in mind?",
+    "ctaBoxText": "Tell us what you need and we'll help you scope it, no strings attached.",
+    "ctaBoxButton": "Talk to us",
+    "items": {
+      "kontao": {
+        "title": "KONTAO",
+        "summary": "Point-of-sale and inventory system built for small shops and stores: track sales, products, and pending payments from a simple dashboard.",
+        "description": "KONTAO is a point-of-sale and inventory system built for small shops and stores: track sales, products, and pending payments from a simple dashboard, with real-time reports.",
+        "tags": ["Point of Sale", "Inventory", "SaaS"],
+        "cta": "Discover KONTAO"
+      },
+      "mayfren": {
+        "title": "Mayfren CRM",
+        "summary": "Our own CRM that centralizes technical support, inventory, device monitoring, and process automation in a single dashboard.",
+        "description": "Mayfren is the CRM built by NEXATIXS that centralizes technical support (helpdesk with tickets, priorities and SLAs), technology inventory, real-time device monitoring (CPU, RAM, disk and installed software), staff performance evaluation, and business process automation — all in one place.",
+        "tags": ["CRM", "Helpdesk", "SaaS"],
+        "cta": "Discover Mayfren"
+      }
+    }
+  },
+  "Contact": {
+    "eyebrow": "Contact",
+    "title": "Let's talk about your project",
+    "subtitle": "Tell us what you need and a NEXATIXS specialist will contact you shortly.",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "hoursLabel": "Hours",
+    "hoursValue": "Monday to Friday, 8:00 a.m. – 6:00 p.m.",
+    "locationLabel": "Location",
+    "locationValue": "Dominican Republic",
+    "form": {
+      "title": "Send us a message",
+      "subtitle": "Fill out the form and we'll get back to you as soon as possible.",
+      "nameLabel": "Full name",
+      "emailLabel": "Email address",
+      "phoneLabel": "Phone (optional)",
+      "companyLabel": "Company (optional)",
+      "subjectLabel": "Subject",
+      "messageLabel": "Message",
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "errorGeneric": "We couldn't send your message. Please try again in a few minutes.",
+      "successTitle": "We received your message!",
+      "successText": "Our team was notified and will contact you soon. Save your reference number:"
+    }
   },
   "Support": {
     "eyebrow": "Support",
