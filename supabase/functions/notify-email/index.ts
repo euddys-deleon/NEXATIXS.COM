@@ -120,6 +120,36 @@ async function handleAppointment(id: string) {
   return { internalResult, clientResult };
 }
 
+async function handleContactMessage(id: string) {
+  const { data: contactMessage, error } = await supabase
+    .from("contact_messages")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error || !contactMessage) {
+    console.error("[notify-email] No se pudo leer el mensaje de contacto", id, error);
+    return { sent: false, reason: "not_found" };
+  }
+
+  const html = `
+    <h2>Nuevo mensaje de contacto: ${contactMessage.display_id}</h2>
+    <p><strong>Nombre:</strong> ${contactMessage.contact_name}</p>
+    <p><strong>Empresa:</strong> ${contactMessage.company_name ?? "No proporcionada"}</p>
+    <p><strong>Correo:</strong> ${contactMessage.contact_email}</p>
+    <p><strong>Telefono:</strong> ${contactMessage.contact_phone ?? "No proporcionado"}</p>
+    <p><strong>Asunto:</strong> ${contactMessage.subject}</p>
+    <p><strong>Mensaje:</strong></p>
+    <p>${String(contactMessage.message).replace(/\n/g, "<br/>")}</p>
+  `;
+
+  return sendEmail(
+    SUPPORT_INBOX,
+    `[Contacto] ${contactMessage.display_id} — ${contactMessage.subject}`,
+    html,
+  );
+}
+
 async function handleStatusOtp(payload: { to?: string; code?: string; displayId?: string }) {
   const { to, code, displayId } = payload;
 
@@ -160,7 +190,8 @@ Deno.serve(async (req: Request) => {
       });
     }
 
-    if (!id || (type !== "support_ticket" && type !== "appointment")) {
+    const validTypes = ["support_ticket", "appointment", "contact_message"];
+    if (!id || !validTypes.includes(type)) {
       return new Response(JSON.stringify({ error: "invalid_payload" }), {
         status: 400,
         headers: { "Content-Type": "application/json" },
@@ -168,7 +199,11 @@ Deno.serve(async (req: Request) => {
     }
 
     const result =
-      type === "support_ticket" ? await handleSupportTicket(id) : await handleAppointment(id);
+      type === "support_ticket"
+        ? await handleSupportTicket(id)
+        : type === "appointment"
+          ? await handleAppointment(id)
+          : await handleContactMessage(id);
 
     return new Response(JSON.stringify(result), {
       status: 200,
