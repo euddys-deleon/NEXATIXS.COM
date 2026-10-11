@@ -862,6 +862,12 @@
       "subtitle": "KONTAO es un sistema de punto de venta e inventario pensado para colmados y comercios: controla ventas, productos y cobros pendientes desde un panel simple, con reportes actualizados en tiempo real.",
       "cta": "Conocer KONTAO"
     },
+    "citasrd": {
+      "eyebrow": "Producto Propio · Salud",
+      "title": "CitasRD",
+      "subtitle": "CitasRD es la plataforma que desarrollamos para conectar pacientes con especialistas médicos en República Dominicana: búsqueda por especialidad, ubicación y ARS, disponibilidad en tiempo real y agendamiento de citas en línea, tanto para pacientes como para los propios médicos a través de Citas Pro.",
+      "cta": "Conocer CitasRD"
+    },
     "mayfren": {
       "eyebrow": "Producto Propio · SaaS",
       "title": "Mayfren CRM",
